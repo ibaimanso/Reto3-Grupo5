@@ -16,7 +16,10 @@ public class VistaPrincipal extends JFrame {
 	}
 	public static void main(String[] args) {
 		VistaPrincipal ventana = new VistaPrincipal();
-
+		ventana.setVisible(true);
+		ventana.cambiarDePanel(0);
+		ventana.setResizable(false);
+		ventana.setSize(620,400);
 	}
 
 }
