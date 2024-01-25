@@ -11,10 +11,21 @@ package model;
 	import java.awt.event.MouseEvent;
 	import java.awt.event.MouseListener;
 	import java.awt.event.MouseAdapter;
+import javax.swing.SwingConstants;
 	
 	public class Bienvenida extends JPanel{
 		public Bienvenida() {
 			setLayout(null);
+			
+			JLabel lblNewLabel_1 = new JLabel("FINEST CINES");
+			lblNewLabel_1.setFont(new Font("Ink Free", Font.BOLD, 39));
+			lblNewLabel_1.setBounds(164, 38, 399, 178);
+			add(lblNewLabel_1);
+			
+			JLabel lblNewLabel = new JLabel("fondoBienvenida");
+			lblNewLabel.setIcon(new ImageIcon("multimedia/cine.jpg"));
+			lblNewLabel.setBounds(0, -166, 595, 712);
+			add(lblNewLabel);
 		}
 
 
