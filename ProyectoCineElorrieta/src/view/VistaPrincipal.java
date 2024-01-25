@@ -3,8 +3,12 @@ package view;
 import javax.swing.JFrame;
 
 import model.Bienvenida;
+import java.awt.Toolkit;
 
 public class VistaPrincipal extends JFrame {
+	public VistaPrincipal() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
+	}
 	
 	public void cambiarDePanel(int i) {
 
@@ -19,7 +23,7 @@ public class VistaPrincipal extends JFrame {
 		ventana.setVisible(true);
 		ventana.cambiarDePanel(0);
 		ventana.setResizable(false);
-		ventana.setSize(620,400);
+		ventana.setSize(620,420);
 	}
 
 }

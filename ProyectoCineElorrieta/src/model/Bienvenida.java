@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 			add(lblNewLabel_1);
 			
 			JLabel lblNewLabel = new JLabel("fondoBienvenida");
-			lblNewLabel.setIcon(new ImageIcon("C:\\Users\\in1dm3-v\\Downloads\\cine.jpg"));
+			lblNewLabel.setIcon(new ImageIcon("multimedia/cine.jpg"));
 			lblNewLabel.setBounds(0, -166, 595, 712);
 			add(lblNewLabel);
 		}
