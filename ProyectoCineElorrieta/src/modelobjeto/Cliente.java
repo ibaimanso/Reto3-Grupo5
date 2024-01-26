@@ -5,7 +5,7 @@ public class Cliente {
 	 * Objeto CLiente
 	 */
 
-	private int dni;
+	private String dni;
 	private String nombrecli;
 	private String apellido;
 	private String sexo;
@@ -15,7 +15,7 @@ public class Cliente {
 
 	}
 
-	public Cliente(int dni, String nombrecli, String apellido, String sexo, String contraseña) {
+	public Cliente(String dni, String nombrecli, String apellido, String sexo, String contraseña) {
 
 		this.dni = dni;
 		this.nombrecli = nombrecli;
@@ -24,11 +24,11 @@ public class Cliente {
 		this.contraseña = contraseña;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
