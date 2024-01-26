@@ -1,8 +1,8 @@
 package view;
 
 import javax.swing.JFrame;
-
 import model.Bienvenida;
+import model.Login;
 import java.awt.Toolkit;
 
 public class VistaPrincipal extends JFrame {
@@ -14,7 +14,10 @@ public class VistaPrincipal extends JFrame {
 
 		switch (i) {
 		case 0:
-			setContentPane(new model.Bienvenida());
+			setContentPane(new Bienvenida(this));
+			break;
+		case 1:
+			setContentPane(new Login(this));
 			break;
 		}
 	}
@@ -22,7 +25,6 @@ public class VistaPrincipal extends JFrame {
 		VistaPrincipal ventana = new VistaPrincipal();
 		ventana.setVisible(true);
 		ventana.cambiarDePanel(0);
-		ventana.setResizable(false);
 		ventana.setSize(620,420);
 	}
 
