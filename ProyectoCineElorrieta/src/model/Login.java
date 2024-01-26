@@ -24,6 +24,11 @@ public class Login extends JPanel{
 
 	public Login(VistaPrincipal ventana) {
 		
+		
+		
+		setSize(ventana.getSize());
+		setVisible(true);
+		setLayout(null);
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -32,17 +37,17 @@ public class Login extends JPanel{
 		JPanel panelLogin = new JPanel();
 		panelLogin.setBackground(new Color(202, 46, 45));
 		panelLogin.setBounds(0, 0, 700, 535);
-		add(panelLogin);
-		panelLogin.setLayout(null);
-		
+
 		/**
-		 * Una label con el nombre "Cine Elorrieta" 
+		 * Una label con el nombre "FinestCines" 
 		 */
-		JLabel lblCineElorrieta = new JLabel("Finest Cines");
-		lblCineElorrieta.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCineElorrieta.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		lblCineElorrieta.setBounds(200, 77, 234, 72);
-		panelLogin.add(lblCineElorrieta);
+		JLabel lblFinestCines = new JLabel("Finest Cines");
+		lblFinestCines.setHorizontalAlignment(SwingConstants.LEFT);
+		lblFinestCines.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		lblFinestCines.setBounds(200, 77, 234, 72);
+		panelLogin.add(lblFinestCines);
+		
+	
 
 		/**
 		 * Label que te indica un texto con el nombre "Usuario"
@@ -118,19 +123,30 @@ public class Login extends JPanel{
             public void keyReleased(KeyEvent e) {
             }
         });
-		btnContinuar.setBounds(200, 305, 175, 20);
+		btnContinuar.setBounds(200, 321, 175, 20);
 		panelLogin.add(btnContinuar);
 		
 		/**
 		 * Label para el fondo del panel
 		 */
+		
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setBackground(Color.LIGHT_GRAY);
+		btnRegistrarse.setBounds(200, 358, 175, 20);
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "Rellene los campos con sus datos, por favor");
+					ventana.cambiarDePanel(2);
+			
+		panelLogin.add(btnRegistrarse);
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon("multimedia/FondoLogin.png"));
 		lblFondo.setBounds(-14, -93, 782, 676);
 		lblFondo.setFocusable(false);
 		panelLogin.add(lblFondo);
 		return;
+			}
+		});
 	}
 }
-	
 
