@@ -17,10 +17,7 @@ import javax.swing.SwingConstants;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 
-public class Login extends JPanel{
-
-	public JTextField txtfieldUsuario;
-	public JTextField textFieldContraseña;
+public class Login extends JPanel {
 
 	public Login(VistaPrincipal ventana) {
 
@@ -55,7 +52,7 @@ public class Login extends JPanel{
 		/**
 		 * Textfield para que pueda escribir el usuario
 		 */
-		txtfieldUsuario = new JTextField();
+		JTextField txtfieldUsuario = new JTextField();
 		txtfieldUsuario.setBounds(200, 198, 175, 20);
 		panelLogin.add(txtfieldUsuario);
 		txtfieldUsuario.setColumns(10);
@@ -71,7 +68,7 @@ public class Login extends JPanel{
 		/**
 		 * Textfield para que pueda escribir la contraseña
 		 */
-		textFieldContraseña = new JTextField();
+		JTextField textFieldContraseña = new JTextField();
 		textFieldContraseña.setColumns(10);
 		textFieldContraseña.setBounds(200, 274, 175, 20);
 		panelLogin.add(textFieldContraseña);
@@ -124,12 +121,22 @@ public class Login extends JPanel{
 		/**
 		 * Label para el fondo del panel
 		 */
+		
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setBackground(Color.LIGHT_GRAY);
+		btnRegistrarse.setBounds(200, 336, 175, 20);
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "Complete los campos con sus datos, por favor");
+			}});
+		
+		panelLogin.add(btnRegistrarse);
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon("multimedia/FondoLogin.png"));
 		lblFondo.setBounds(-14, -93, 782, 676);
 		lblFondo.setFocusable(false);
 		panelLogin.add(lblFondo);
 		return;
-	}
+	
+			}
 }
-
