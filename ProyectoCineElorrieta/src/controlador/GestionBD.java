@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class GestionBD {
 
-	private Connection conexion;
+	private static Connection conexion;
 	
 	public GestionBD() {
 		iniciarConexion();
@@ -59,6 +59,30 @@ public class GestionBD {
 			
 			e.printStackTrace();
 		}
+
+	}
+	
+	public static boolean informacioncliente2(String usuario, String contraseña) {
+		boolean login = false;
+		try {
+			Statement consulta = conexion.createStatement();
+
+			String query = "SELECT * FROM cliente ";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				if(resultadoConsulta.getString(1).contentEquals(usuario) & resultadoConsulta.getString(5).contentEquals(contraseña)) {
+					login = true;
+				}
+					
+			}
+			consulta.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		return login;
 
 	}
 	

@@ -13,13 +13,14 @@ public class VistaPrincipal extends JFrame {
 	
 	public VistaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
-	VistaPrincipal ventana = new VistaPrincipal();
-	ventana.setVisible(true);
-	ventana.cambiarDePanel(0);
-	ventana.setSize(620,420);
-	ventana.setResizable(false);
+		setVisible(true);
+		cambiarDePanel(0);
+		setSize(620,420);
+		setResizable(false);
 		
 	}
+	
+	
 	
 	public void cambiarDePanel(int i) {
 
@@ -35,6 +36,7 @@ public class VistaPrincipal extends JFrame {
 	public static void main(String[] args) {
 		GestionBD gestion = new GestionBD();
 		VistaPrincipal ventana = new VistaPrincipal();
+		
 //		gestion.iniciarConexion();
 		gestion.informacioncliente();
 
