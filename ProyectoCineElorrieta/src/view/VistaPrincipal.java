@@ -1,15 +1,13 @@
 package view;
 
 import javax.swing.JFrame;
-
-
-
 import controlador.GestionBD;
 import model.Bienvenida;
 import model.Login;
 import model.Registro;
 
 import java.awt.Toolkit;
+
 
 public class VistaPrincipal extends JFrame {
 	
@@ -35,15 +33,13 @@ public class VistaPrincipal extends JFrame {
 		}
 	}
 	public static void main(String[] args) {
-		GestionBD gestion = new GestionBD();
+	
 		VistaPrincipal ventana = new VistaPrincipal();
 		ventana.cambiarDePanel(0);
 		ventana.setVisible(true);
 		ventana.setSize(620,420);
 		ventana.setResizable(false);
 	
-//		gestion.iniciarConexion();
-		gestion.informacioncliente();
 
 	}
 

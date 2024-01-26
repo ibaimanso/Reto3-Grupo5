@@ -14,7 +14,7 @@ public class Registro extends JPanel {
 	
 	public Registro(VistaPrincipal ventana) {
 		
-		setSize(ventana.getSize());
+		setSize(new Dimension(609, 582));
 		setVisible(true);
 		setLayout(null);
 		

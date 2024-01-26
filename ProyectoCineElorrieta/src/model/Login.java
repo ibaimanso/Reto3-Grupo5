@@ -23,12 +23,7 @@ public class Login extends JPanel{
 	public JTextField textFieldContraseña;
 
 	public Login(VistaPrincipal ventana) {
-		
-		
-		
-		setSize(ventana.getSize());
-		setVisible(true);
-		setLayout(null);
+
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -37,17 +32,17 @@ public class Login extends JPanel{
 		JPanel panelLogin = new JPanel();
 		panelLogin.setBackground(new Color(202, 46, 45));
 		panelLogin.setBounds(0, 0, 700, 535);
+		add(panelLogin);
+		panelLogin.setLayout(null);
 
 		/**
-		 * Una label con el nombre "FinestCines" 
+		 * Una label con el nombre "Cine Elorrieta" 
 		 */
-		JLabel lblFinestCines = new JLabel("Finest Cines");
-		lblFinestCines.setHorizontalAlignment(SwingConstants.LEFT);
-		lblFinestCines.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		lblFinestCines.setBounds(200, 77, 234, 72);
-		panelLogin.add(lblFinestCines);
-		
-	
+		JLabel lblCineElorrieta = new JLabel("Finest Cines");
+		lblCineElorrieta.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCineElorrieta.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		lblCineElorrieta.setBounds(200, 77, 234, 72);
+		panelLogin.add(lblCineElorrieta);
 
 		/**
 		 * Label que te indica un texto con el nombre "Usuario"
@@ -56,7 +51,7 @@ public class Login extends JPanel{
 		lblUsuario.setFont(new Font("Rockwell", Font.BOLD, 20));
 		lblUsuario.setBounds(200, 160, 165, 27);
 		panelLogin.add(lblUsuario);
-		
+
 		/**
 		 * Textfield para que pueda escribir el usuario
 		 */
@@ -64,7 +59,7 @@ public class Login extends JPanel{
 		txtfieldUsuario.setBounds(200, 198, 175, 20);
 		panelLogin.add(txtfieldUsuario);
 		txtfieldUsuario.setColumns(10);
-		
+
 		/**
 		 * Label que te indica un texto con el nombre "Contraseña"
 		 */
@@ -72,7 +67,7 @@ public class Login extends JPanel{
 		lblcontraseña.setFont(new Font("Rockwell", Font.BOLD, 20));
 		lblcontraseña.setBounds(200, 236, 165, 27);
 		panelLogin.add(lblcontraseña);
-		
+
 		/**
 		 * Textfield para que pueda escribir la contraseña
 		 */
@@ -80,7 +75,7 @@ public class Login extends JPanel{
 		textFieldContraseña.setColumns(10);
 		textFieldContraseña.setBounds(200, 274, 175, 20);
 		panelLogin.add(textFieldContraseña);
-		
+
 		/**
 		 * Boton cuya función es que pase del PanelLogin al PanelListaGeneros o al PanelAdmin, dependiendo del
 		// usuario y contraseña, cuando el usuario y contraseña estén bien, si no salta un error.
@@ -100,7 +95,7 @@ public class Login extends JPanel{
 				}
 			}
 		});
-		
+
 		/**
 		 * KeyListener para el campo de contraseña 
 		 */
@@ -108,7 +103,7 @@ public class Login extends JPanel{
             @Override
             public void keyTyped(KeyEvent e) {
             }
-            
+
             /**
              * Llama al ActionListener del botón si se presiona "Enter" en el campo de contraseña
              */
@@ -123,30 +118,18 @@ public class Login extends JPanel{
             public void keyReleased(KeyEvent e) {
             }
         });
-		btnContinuar.setBounds(200, 321, 175, 20);
+		btnContinuar.setBounds(200, 305, 175, 20);
 		panelLogin.add(btnContinuar);
-		
+
 		/**
 		 * Label para el fondo del panel
 		 */
-		
-		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.setBackground(Color.LIGHT_GRAY);
-		btnRegistrarse.setBounds(200, 358, 175, 20);
-		btnRegistrarse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(null, "Rellene los campos con sus datos, por favor");
-					ventana.cambiarDePanel(2);
-			
-		panelLogin.add(btnRegistrarse);
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon("multimedia/FondoLogin.png"));
 		lblFondo.setBounds(-14, -93, 782, 676);
 		lblFondo.setFocusable(false);
 		panelLogin.add(lblFondo);
 		return;
-			}
-		});
 	}
 }
 
