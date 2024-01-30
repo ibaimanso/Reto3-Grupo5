@@ -1,22 +1,35 @@
 package model;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import controlador.GestionBD;
+import logica.GestionDeLaInformacion;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
+import javax.swing.JButton;
 
 public class Registro extends JPanel {
-	private JTextField textFieldDNI;
+	private JTextField txtDni;
+	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textFieldContraseña;
+	private GestionDeLaInformacion gestionINF = new GestionDeLaInformacion();
+
 	
 	
 	public Registro(VistaPrincipal ventana) {
@@ -28,63 +41,86 @@ public class Registro extends JPanel {
 		JLabel lblFinestCines = new JLabel("FINEST CINES");
 		lblFinestCines.setToolTipText("");
 		lblFinestCines.setFont(new Font("Lucida Bright", Font.PLAIN, 25));
-		lblFinestCines.setBounds(242, 89, 359, 90);
+		lblFinestCines.setBounds(170, 73, 359, 90);
 		add(lblFinestCines);
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon("multimedia/FondoLogin"));
-		lblFondo.setBounds(-24, -24, 611, 558);
-		add(lblFondo);
 		
 		JLabel lblDNI = new JLabel("DNI");
 		lblDNI.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
-		lblDNI.setBounds(160, 174, 67, 36);
+		lblDNI.setBounds(52, 174, 67, 36);
 		add(lblDNI);
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
-		lblNombre.setBounds(160, 238, 67, 36);
+		lblNombre.setBounds(52, 238, 67, 36);
 		add(lblNombre);
 		
-		textFieldDNI = new JTextField();
-		textFieldDNI.setBounds(160, 207, 134, 20);
-		add(textFieldDNI);
-		textFieldDNI.setColumns(10);
+		txtDni = new JTextField();
+		txtDni.setBounds(52, 206, 134, 20);
+		add(txtDni);
+		txtDni.setColumns(10);
 		
-		textFieldApellido = new JTextField();
-		textFieldApellido.setColumns(10);
-		textFieldApellido.setBounds(160, 272, 134, 20);
-		add(textFieldApellido);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setColumns(10);
+		textFieldNombre.setBounds(52, 273, 134, 20);
+		add(textFieldNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
-		lblApellido.setBounds(160, 303, 67, 36);
+		lblApellido.setBounds(52, 304, 67, 36);
 		add(lblApellido);
 		
 		JLabel lblGenero = new JLabel("Genero");
 		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
-		lblGenero.setBounds(373, 174, 67, 36);
+		lblGenero.setBounds(284, 174, 67, 36);
 		add(lblGenero);
 		
-		JComboBox comboBoxGenero = new JComboBox();
-		comboBoxGenero.setBounds(373, 206, 156, 21);
-		add(comboBoxGenero);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(160, 336, 134, 20);
-		add(textField);
+		textFieldApellido = new JTextField();
+		textFieldApellido.setColumns(10);
+		textFieldApellido.setBounds(52, 340, 134, 20);
+		add(textFieldApellido);
 		
 		JLabel lblContraseña = new JLabel("Contraseña");
 		lblContraseña.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
-		lblContraseña.setBounds(373, 238, 123, 36);
+		lblContraseña.setBounds(282, 238, 123, 36);
 		add(lblContraseña);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(373, 272, 134, 20);
-		add(textField_1);
+		textFieldContraseña = new JTextField();
+		textFieldContraseña.setColumns(10);
+		textFieldContraseña.setBounds(284, 273, 156, 20);
+		add(textFieldContraseña);
 		
-
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\in1dw3\\git\\Reto3-Grupo5\\ProyectoCineElorrieta\\multimedia\\FondoLogin.png"));
+		lblNewLabel.setBounds(10, -25, 560, 556);
+		add(lblNewLabel);		
+		
+		JButton btnNewButton = new JButton("Registrarse");
+		btnNewButton.setBounds(284, 339, 156, 23);
+		add(btnNewButton);
+		
+		JRadioButton rdbHombre = new JRadioButton("Hombre");
+		rdbHombre.setBounds(284, 205, 109, 23);
+		add(rdbHombre);
+		
+		JRadioButton rdbMujer = new JRadioButton("Mujer");
+		rdbMujer.setBounds(396, 205, 109, 23);
+		add(rdbMujer);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String dniFormulario= txtDni.getText();
+				String nobreFormulario = textFieldNombre.getText();
+				String apellidoFormulario = textFieldApellido.getText();
+				String sexoFormulario = "";
+				String contraseñaFormulario =  textFieldContraseña.getText();
+				
+				
+				if(rdbHombre.isSelected()) {
+					sexoFormulario = rdbHombre.getText();
+				}
+				if(rdbMujer.isSelected()) {
+					sexoFormulario = rdbMujer.getText();
+				}
+				gestionINF.recojerInformacionFormulario(dniFormulario, nobreFormulario, apellidoFormulario, sexoFormulario,  contraseñaFormulario , ventana);
+			}});
 	}
-}
+	}

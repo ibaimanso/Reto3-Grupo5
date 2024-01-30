@@ -1,5 +1,8 @@
 package modelobjeto;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Cliente {
 	/*
 	 * Objeto CLiente
@@ -22,6 +25,13 @@ public class Cliente {
 		this.apellido = apellido;
 		this.sexo = sexo;
 		this.contraseña = contraseña;
+	}
+	
+	public boolean validarDNI(String dni) {
+	     String regex = "^[0-9]{8}[a-zA-Z]$";
+	        Pattern pattern = Pattern.compile(regex);
+	        Matcher matcher = pattern.matcher(dni);
+	        return matcher.matches();
 	}
 
 	public String getDni() {
