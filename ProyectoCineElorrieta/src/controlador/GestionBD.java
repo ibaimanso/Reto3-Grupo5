@@ -51,31 +51,32 @@ public class GestionBD {
 		System.out.println("Conexion cerrada");
 	}
 
-	public void informacioncliente() {
-		// Query para sacar toda la info de los departamentos
-		try {
-			Statement consulta = conexion.createStatement();
+//	public void informacioncliente() {
+//		// Query para sacar toda la info de los departamentos
+//		try {
+//			Statement consulta = conexion.createStatement();
+//
+//			String query = "SELECT * FROM cliente ";
+//			ResultSet resultadoConsulta = consulta.executeQuery(query);
+//			while (resultadoConsulta.next()) {
+//				System.out.println(resultadoConsulta.getString(1) + "\t" + resultadoConsulta.getString(2) + "\t"
+//						+ resultadoConsulta.getString(3) + resultadoConsulta.getString(4) + "\t"
+//						+ resultadoConsulta.getString(5) + "\t");
 
-			String query = "SELECT * FROM cliente ";
-			ResultSet resultadoConsulta = consulta.executeQuery(query);
-			while (resultadoConsulta.next()) {
-				System.out.println(resultadoConsulta.getString(1) + "\t" + resultadoConsulta.getString(2) + "\t"
-						+ resultadoConsulta.getString(3) + resultadoConsulta.getString(4) + "\t"
-						+ resultadoConsulta.getString(5) + "\t");
+//			}
+//			consulta.close();
 
-			}
-			consulta.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 		public void insertUsuario(ArrayList<String> datosUsuario, VistaPrincipal ventana) {
+
 			try {
 				Statement consulta = conexion.createStatement();
 
-				String insert = "INSERT INTO usuario VALUES ('" + datosUsuario.get(0) + "','" + datosUsuario.get(1) + "','"
+				String insert = "INSERT INTO clientes VALUES ('" + datosUsuario.get(0) + "','" + datosUsuario.get(1) + "','"
 						+ datosUsuario.get(2) + "','" + datosUsuario.get(3) + "', '" + datosUsuario.get(4) + "')";
 
 				consulta.executeUpdate(insert);

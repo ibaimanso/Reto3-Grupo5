@@ -20,7 +20,8 @@ public class GestionDeLaInformacion {
 	
 
 	private GestionBD gestionBD;
-	private ArrayList<String> DatosUsuario;
+	ArrayList<String> datosUsuario = new ArrayList<String>();;
+
 	
 
 	
@@ -40,7 +41,7 @@ private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 		String desencriptado = new String(cipher.doFinal(mensajeBytes));
 		return desencriptado ;
 	}
-	public void recojerInformacionFormulario(String dniFormulario, String nombreFormulario,
+	public void recojerInformacionFormulario(String dniFormulario, String nobreFormulario,
 			String apellidoFormulario, String sexoFormulario, String contraseñaFormulario, VistaPrincipal ventana) {
 
 		String textoDNI = dniFormulario;
@@ -50,7 +51,8 @@ private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 		if (!dni.find()) {
 			JOptionPane.showMessageDialog(null, "DNI no valido");
 		} else {
-			DatosUsuario.add(dni.group());
+			datosUsuario.add(dni.group());
+			
 		}
 
 		String textoPass = contraseñaFormulario;
@@ -60,17 +62,17 @@ private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 		if (!pass.find()) {
 			JOptionPane.showMessageDialog(null, "Contraseña no valida");
 		} else {
-			DatosUsuario.add(pass.group());
+			datosUsuario.add(pass.group());
 		}
 
-		String textoNombre = nombreFormulario;
+		String textoNombre = nobreFormulario;
 		Pattern patron2 = Pattern.compile("^[a-z]+$", Pattern.CASE_INSENSITIVE);
 		Matcher nombre = patron2.matcher(textoNombre);
 
 		if (!nombre.find()) {
 			JOptionPane.showMessageDialog(null, "Nombre no valido");
 		} else {
-			DatosUsuario.add(nombre.group());
+			datosUsuario.add(nombre.group());
 		}
 
 		String textoApellido = apellidoFormulario;
@@ -80,12 +82,12 @@ private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 		if (!apellido.find()) {
 			JOptionPane.showMessageDialog(null, "Apellido no valido");
 		} else {
-			DatosUsuario.add(apellido.group());
+			datosUsuario.add(apellido.group());
 		}
 
-		DatosUsuario.add(sexoFormulario);
+		datosUsuario.add(sexoFormulario);
 
-		gestionBD.insertUsuario(DatosUsuario, ventana);
+		gestionBD.insertUsuario(datosUsuario, ventana);
 	}
 	
 	
