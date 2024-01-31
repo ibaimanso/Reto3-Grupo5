@@ -25,7 +25,7 @@ public class Login extends JPanel{
 	public JTextField textFieldContraseña;
 
 	public Login(VistaPrincipal ventana) {
-		String lblUsuario;
+		
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -88,15 +88,15 @@ public class Login extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			
 				 
-				if (GestionBD.informacioncliente2(txtfieldUsuario.getText() && (textFieldContraseña.getText()) {
-				JOptionPane.showMessageDialog(null, "Has iniciado sesion");
-				ventana.cambiarDePanel(2);
-			} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
-				JOptionPane.showMessageDialog(null, "Has iniciado sesion como ADMIN");
-				ventana.cambiarDePanel(3);
-			}else {
-				JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTA");
-			}
+//				if (GestionBD.informacioncliente2(txtfieldUsuario.getText() && (textFieldContraseña.getText()) {
+//				JOptionPane.showMessageDialog(null, "Has iniciado sesion");
+//				ventana.cambiarDePanel(2);
+//			} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
+//				JOptionPane.showMessageDialog(null, "Has iniciado sesion como ADMIN");
+//				ventana.cambiarDePanel(3);
+//			}else {
+//				JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTA");
+//			}
 			}
 		});
 		
