@@ -1,26 +1,26 @@
 package modelobjeto;
 
-public class entradas {
-	private String id_entrada;
+public class entrada {
+	private int id_entrada;
 	private int id_sesion;
 	private int id_compra;
 
-	public entradas() {
+	public entrada() {
 
 	}
-
-	public entradas(String id_entrada, int id_sesion, int id_compra) {
+	
+	public entrada(int id_entrada, int id_sesion, int id_compra) {
 		super();
 		this.id_entrada = id_entrada;
 		this.id_sesion = id_sesion;
 		this.id_compra = id_compra;
 	}
 
-	public String getId_entrada() {
+	public int getId_entrada() {
 		return id_entrada;
 	}
 
-	public void setId_entrada(String id_entrada) {
+	public void setId_entrada(int id_entrada) {
 		this.id_entrada = id_entrada;
 	}
 
@@ -46,4 +46,5 @@ public class entradas {
 	}
 	
 
+	
 }

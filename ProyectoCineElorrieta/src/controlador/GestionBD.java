@@ -67,7 +67,7 @@ public class GestionBD {
 
 	}
 	
-	public static boolean informacioncliente2(String usuario, String contraseña) {
+	public static boolean Login(String usuario, String contraseña) {
 		boolean login = false;
 		try {
 			Statement consulta = conexion.createStatement();

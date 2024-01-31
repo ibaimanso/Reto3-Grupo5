@@ -89,7 +89,7 @@ public class Login extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			
 				 
-				if (GestionDeLaInformacion.getnombreusaurio(txtfieldUsuario.getText())) {
+				if (GestionBD.Login(txtfieldUsuario.getText())) {
 				JOptionPane.showMessageDialog(null, "Has iniciado sesion");
 				ventana.cambiarDePanel(2);
 		} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
