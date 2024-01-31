@@ -5,7 +5,6 @@ import controlador.GestionBD;
 import model.Bienvenida;
 import model.Login;
 import model.Registro;
-
 import java.awt.Toolkit;
 
 
@@ -33,12 +32,16 @@ public class VistaPrincipal extends JFrame {
 		}
 	}
 	public static void main(String[] args) {
+		
 	
 		VistaPrincipal ventana = new VistaPrincipal();
+		GestionBD iniconn = new GestionBD();
+		iniconn.iniciarConexion();
 		ventana.cambiarDePanel(0);
 		ventana.setVisible(true);
 		ventana.setSize(620,420);
 		ventana.setResizable(false);
+		
 	
 
 	}
