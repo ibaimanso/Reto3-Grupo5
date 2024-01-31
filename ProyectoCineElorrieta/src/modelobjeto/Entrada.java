@@ -1,15 +1,15 @@
 package modelobjeto;
 
-public class entrada {
+public class Entrada {
 	private int id_entrada;
 	private int id_sesion;
 	private int id_compra;
 
-	public entrada() {
+	public Entrada() {
 
 	}
 	
-	public entrada(int id_entrada, int id_sesion, int id_compra) {
+	public Entrada(int id_entrada, int id_sesion, int id_compra) {
 		super();
 		this.id_entrada = id_entrada;
 		this.id_sesion = id_sesion;

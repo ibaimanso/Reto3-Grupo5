@@ -1,17 +1,17 @@
 package modelobjeto;
 
-public class sala {
+public class Sala {
 	private String id_sala;
 	private String nombre_sala;
 	private String genero;
 	private String id_cine;
 
-	public sala() {
+	public Sala() {
 
 	}
 	
 
-	public sala(String id_sala, String nombre_sala, String genero, String id_cine) {
+	public Sala(String id_sala, String nombre_sala, String genero, String id_cine) {
 		super();
 		this.id_sala = id_sala;
 		this.nombre_sala = nombre_sala;
