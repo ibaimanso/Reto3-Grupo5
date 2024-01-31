@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controlador.GestionBD;
+import logica.GestionDeLaInformacion;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 
@@ -88,15 +89,16 @@ public class Login extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			
 				 
-//				if (GestionBD.informacioncliente2(txtfieldUsuario.getText() && (textFieldContraseña.getText()) {
-//				JOptionPane.showMessageDialog(null, "Has iniciado sesion");
-//				ventana.cambiarDePanel(2);
-//			} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
-//				JOptionPane.showMessageDialog(null, "Has iniciado sesion como ADMIN");
-//				ventana.cambiarDePanel(3);
-//			}else {
-//				JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTA");
-//			}
+				if (GestionDeLaInformacion.getnombreusaurio(txtfieldUsuario.getText())) {
+				JOptionPane.showMessageDialog(null, "Has iniciado sesion");
+				ventana.cambiarDePanel(2);
+		} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
+			JOptionPane.showMessageDialog(null, "Has iniciado sesion como ADMIN");
+			ventana.cambiarDePanel(3);
+			}else {
+				JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTA");
+			}
+				
 			}
 		});
 		

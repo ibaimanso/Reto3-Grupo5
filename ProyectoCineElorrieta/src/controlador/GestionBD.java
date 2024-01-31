@@ -90,8 +90,8 @@ public class GestionBD {
 		return login;
 
 	}
-	public ArrayList<Cliente> querynombre(String nombre) throws SQLException {
-		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
+	public void  querynombre(String nombre)  {
+		Cliente objeto = new Cliente ();
 
 		// Statement / PreparedStatement
 
@@ -131,49 +131,7 @@ public class GestionBD {
 
 		return cliente;
 	}
-	public ArrayList<Cliente> querycontraseña(String contraseña) throws SQLException {
-		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
-
-		// Statement / PreparedStatement
-
-		String query = "SELECT contraseña FROM cliente";
-
-		PreparedStatement consulta = conexion.prepareStatement(query);
-
-		ResultSet resultadoConsulta = consulta.executeQuery();
-
-		String usauriocon = "";
-		boolean encontrado = false;
-		while (resultadoConsulta.next() && !encontrado) {
-
-			String nombrepas= resultadoConsulta.getString(5);
-		
-			
-
-			if (nombrepas.contains(contraseña)) {
-				usauriocon = nombrepas;
-				encontrado = true;
-			}
-		}
-		if (usauriocon == null) {
-			
-			System.out.println("Nuari");
-			
-		} else {
-			query = "SELECT * FROM cliente";
-			consulta = conexion.prepareStatement(query);
-			resultadoConsulta = consulta.executeQuery();
-			while (resultadoConsulta.next()) {
-				if (usauriocon == resultadoConsulta.getString(1))
-
-					cliente.add(new Cliente(resultadoConsulta.getString(1), resultadoConsulta.getString(4),
-					resultadoConsulta.getString(1),resultadoConsulta.getString(1),resultadoConsulta.getString(1)
-					));
-			}
-		}
-
-		return cliente;
-	}
+	
 
 	}
 	
