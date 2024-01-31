@@ -76,7 +76,7 @@ public class GestionBD {
 			try {
 				Statement consulta = conexion.createStatement();
 
-				String insert = "INSERT INTO clientes VALUES ('" + datosUsuario.get(0) + "','" + datosUsuario.get(1) + "','"
+				String insert = "INSERT INTO clientes(DNI,Nombre,Apellido,Sexo,VALUES ('" + datosUsuario.get(0) + "','" + datosUsuario.get(1) + "','"
 						+ datosUsuario.get(2) + "','" + datosUsuario.get(3) + "', '" + datosUsuario.get(4) + "')";
 
 				consulta.executeUpdate(insert);
@@ -85,6 +85,7 @@ public class GestionBD {
 				consulta.close();
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Campos inválidos");
 				ventana.cambiarDePanel(2);
 			}
