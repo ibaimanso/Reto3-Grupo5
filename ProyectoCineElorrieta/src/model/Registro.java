@@ -4,9 +4,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
 import controlador.GestionBD;
 import logica.GestionDeLaInformacion;
+import modelobjeto.Cliente;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,7 +16,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -98,29 +97,34 @@ public class Registro extends JPanel {
 		btnNewButton.setBounds(284, 339, 156, 23);
 		add(btnNewButton);
 		
-		JRadioButton rdbHombre = new JRadioButton("Hombre");
+		JRadioButton rdbHombre = new JRadioButton("H");
 		rdbHombre.setBounds(284, 205, 109, 23);
 		add(rdbHombre);
 		
-		JRadioButton rdbMujer = new JRadioButton("Mujer");
+		JRadioButton rdbMujer = new JRadioButton("M");
 		rdbMujer.setBounds(396, 205, 109, 23);
 		add(rdbMujer);
+	
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String dniFormulario= txtDni.getText();
-				String nobreFormulario = textFieldNombre.getText();
-				String apellidoFormulario = textFieldApellido.getText();
-				String sexoFormulario = "";
-				String contraseñaFormulario =  textFieldContraseña.getText();
+				Cliente cliente = new Cliente();
+				cliente.setDni(txtDni.getText()); 
+				cliente.setNombrecli(textFieldNombre.getText());
+				cliente.setContraseña(textFieldContraseña.getText());
+				
+
+				cliente.setContraseña(textFieldContraseña.getText());
 				
 				
 				if(rdbHombre.isSelected()) {
-					sexoFormulario = rdbHombre.getText();
+					cliente.setSexo(rdbHombre.getText());
 				}
 				if(rdbMujer.isSelected()) {
-					sexoFormulario = rdbMujer.getText();
+					cliente.setSexo(rdbMujer.getText());
 				}
-				gestionINF.recojerInformacionFormulario(dniFormulario, nobreFormulario, apellidoFormulario, sexoFormulario,  contraseñaFormulario , ventana);
+				GestionBD gestionBd = new GestionBD();
+				gestionBd.insertUsuario(cliente, ventana);
+				//gestionINF.recogerInformacionFormulario(cliente , ventana);
 			}});
 	}
 	}

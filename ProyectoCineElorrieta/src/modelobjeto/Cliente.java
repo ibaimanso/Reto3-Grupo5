@@ -27,12 +27,8 @@ public class Cliente {
 		this.contraseña = contraseña;
 	}
 	
-	public boolean validarDNI(String dni) {
-	     String regex = "^[0-9]{8}[a-zA-Z]$";
-	        Pattern pattern = Pattern.compile(regex);
-	        Matcher matcher = pattern.matcher(dni);
-	        return matcher.matches();
-	}
+
+	
 
 	public String getDni() {
 		return dni;

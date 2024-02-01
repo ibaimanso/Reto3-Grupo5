@@ -13,6 +13,7 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 
 import controlador.GestionBD;
+import modelobjeto.Cliente;
 import view.VistaPrincipal;
 
 
@@ -41,55 +42,55 @@ private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 		String desencriptado = new String(cipher.doFinal(mensajeBytes));
 		return desencriptado ;
 	}
-	public void recojerInformacionFormulario(String dniFormulario, String nobreFormulario,
-			String apellidoFormulario, String sexoFormulario, String contraseñaFormulario, VistaPrincipal ventana) {
-
-		String textoDNI = dniFormulario;
-		Pattern patron = Pattern.compile("^[0-9]{8}[A-Z]$", Pattern.CASE_INSENSITIVE);
-		Matcher dni = patron.matcher(textoDNI);
-
-		if (!dni.find()) {
-			JOptionPane.showMessageDialog(null, "DNI no valido");
-		} else {
-			datosUsuario.add(dni.group());
-			
-		}
-
-		String textoPass = contraseñaFormulario;
-		Pattern patron1 = Pattern.compile("^[\\S]{6,14}+$", Pattern.CASE_INSENSITIVE);
-		Matcher pass = patron1.matcher(textoPass);
-
-		if (!pass.find()) {
-			JOptionPane.showMessageDialog(null, "Contraseña no valida");
-		} else {
-			datosUsuario.add(pass.group());
-		}
-
-		String textoNombre = nobreFormulario;
-		Pattern patron2 = Pattern.compile("^[a-z]+$", Pattern.CASE_INSENSITIVE);
-		Matcher nombre = patron2.matcher(textoNombre);
-
-		if (!nombre.find()) {
-			JOptionPane.showMessageDialog(null, "Nombre no valido");
-		} else {
-			datosUsuario.add(nombre.group());
-		}
-
-		String textoApellido = apellidoFormulario;
-		Pattern patron3 = Pattern.compile("^[a-z]+$", Pattern.CASE_INSENSITIVE);
-		Matcher apellido = patron3.matcher(textoApellido);
-
-		if (!apellido.find()) {
-			JOptionPane.showMessageDialog(null, "Apellido no valido");
-		} else {
-			datosUsuario.add(apellido.group());
-		}
-
-		datosUsuario.add(sexoFormulario);
-
-		gestionBD.insertUsuario(datosUsuario, ventana);
-	}
-	
-	
-	
+//	public void recogerInformacionFormulario(Cliente cliente, VistaPrincipal ventana) {
+//
+//		String textoDNI = ;
+//		Pattern patron = Pattern.compile("^[0-9]{8}[A-Z]$", Pattern.CASE_INSENSITIVE);
+//		Matcher dni = patron.matcher(textoDNI);
+//
+//		if (!dni.find()) {
+//			JOptionPane.showMessageDialog(null, "DNI no valido");
+//		} else {
+//			datosUsuario.add(dni.group());
+//			
+//		}
+//		String textoNombre = nobreFormulario;
+//		Pattern patron2 = Pattern.compile("^[a-z]+$", Pattern.CASE_INSENSITIVE);
+//		Matcher nombre = patron2.matcher(textoNombre);
+//
+//		if (!nombre.find()) {
+//			JOptionPane.showMessageDialog(null, "Nombre no valido");
+//		} else {
+//			
+//		}
+//
+//		
+//		String textoApellido = apellidoFormulario;
+//		Pattern patron3 = Pattern.compile("^[a-z]+$", Pattern.CASE_INSENSITIVE);
+//		Matcher apellido = patron3.matcher(textoApellido);
+//
+//		if (!apellido.find()) {
+//			JOptionPane.showMessageDialog(null, "Apellido no valido");
+//		} else {
+//		}
+//
+//		String textoPass = ;
+//		Pattern patron1 = Pattern.compile("^[\\S]{6,14}+$", Pattern.CASE_INSENSITIVE);
+//		Matcher pass = patron1.matcher(textoPass);
+//
+//		if (!pass.find()) {
+//			JOptionPane.showMessageDialog(null, "Contraseña no valida");
+//		} else {
+//		}
+//
+//	
+//		
+//
+//		
+//
+//		gestionBD.insertUsuario(datosUsuario, ventana);
+//	}
+//	
+//	
+//	
 }
