@@ -110,9 +110,8 @@ public class Registro extends JPanel {
 				Cliente cliente = new Cliente();
 				cliente.setDni(txtDni.getText()); 
 				cliente.setNombrecli(textFieldNombre.getText());
+				cliente.setNombrecli(textFieldApellido.getText());
 				cliente.setContraseña(textFieldContraseña.getText());
-				
-
 				cliente.setContraseña(textFieldContraseña.getText());
 				
 				

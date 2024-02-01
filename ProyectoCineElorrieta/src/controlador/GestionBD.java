@@ -29,14 +29,13 @@ public class GestionBD {
 	public void iniciarConexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/grupo5prog", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine", "root", "");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
 		} catch (SQLException e) {
 			System.out.println("Base de datos no encontrada");
 		}
-		System.out.println("Conectando...");
-		System.out.println("Conexion establecida");
+	
 
 	}
 
@@ -73,49 +72,27 @@ public class GestionBD {
 //		}
 //	}
 	public void insertUsuario(Cliente cliente, VistaPrincipal ventana) {
+			
+		iniciarConexion();
 
+		try {
+			Statement consulta = conexion.createStatement();
 
-//		try {
-//			Statement consulta = conexion.createStatement();
-		String insert= "INSERT INTO cliente (dni, nombrecli, apellido, sexo, contraseña) VALUES (?, ?, ?, ?, ?)";
-
-			try {
-			    // Preparar la sentencia
-			    PreparedStatement consulta = conexion.prepareStatement(insert);
-			    
-			    // Establecer los valores para los parámetros de la consulta
-			    consulta.setString(1, cliente.getDni());
-			    consulta.setString(2, cliente.getNombrecli());
-			    consulta.setString(3, cliente.getApellido());
-			    consulta.setString(4, cliente.getSexo());
-			    consulta.setString(5, cliente.getContraseña());
-			    
-			    // Ejecutar la inserción
-			    consulta.executeUpdate();
-				JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
-				ventana.cambiarDePanel(1);
-				consulta.close();
-			    
-			    // Cerrar la conexión
-			} catch (SQLException e) {
-			    e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Campos inválidos");
-				ventana.cambiarDePanel(2);
-
-			    // Manejar la excepción apropiadamente
-			}
-
-//			String insert = "INSERT INTOcliente VALUES ('" + cliente.getDni() + "','"
-//				+ cliente.getNombrecli() + "','" + cliente.getApellido() +"', '" + cliente.getSexo() + "', '" + cliente.getContraseña() + "')";
+			String insert = "INSERT INTO cliente ( DNI, Nombre, Apellido, Sexo, Contraseña) VALUES ('" + cliente.getDni() + "','"
+				+ cliente.getNombrecli() + "','" + cliente.getApellido() +"', '" + cliente.getSexo() + "', '" + cliente.getContraseña() + "')";
+			
 
 
 			
-			//consulta.executeUpdate(insert);
-		
+			consulta.executeUpdate(insert);
+			JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
+			ventana.cambiarDePanel(1);
+			consulta.close();
 
-		//} catch (Exception e) {
-	
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Campos inválidos");
+			ventana.cambiarDePanel(2);
 		}
 
 	}
-
+}
