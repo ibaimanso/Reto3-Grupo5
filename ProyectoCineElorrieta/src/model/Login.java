@@ -24,9 +24,10 @@ public class Login extends JPanel{
 
 	public JTextField txtfieldUsuario;
 	public JTextField textFieldContraseña;
+	private GestionDeLaInformacion gestion;
 
 	public Login(VistaPrincipal ventana) {
-		
+		gestion = new GestionDeLaInformacion();
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -87,18 +88,12 @@ public class Login extends JPanel{
 		btnContinuar.setBackground(Color.LIGHT_GRAY);
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-				 
-				if (GestionBD.Login(txtfieldUsuario.getText())) {
-				JOptionPane.showMessageDialog(null, "Has iniciado sesion");
-				ventana.cambiarDePanel(2);
-		} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
-			JOptionPane.showMessageDialog(null, "Has iniciado sesion como ADMIN");
-			ventana.cambiarDePanel(3);
+			if (gestion.testUsuarioYContraseña(txtfieldUsuario.getText(), textFieldContraseña.getText()) == true) {
+				System.out.println("funciona");
 			}else {
-				JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTA");
-			}
+				System.out.println("no funciona");
 				
+			}
 			}
 		});
 		

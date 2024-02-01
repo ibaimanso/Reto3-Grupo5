@@ -38,7 +38,7 @@ public class VistaPrincipal extends JFrame {
 		VistaPrincipal ventana = new VistaPrincipal();
 		
 //		gestion.iniciarConexion();
-		gestion.informacioncliente();
+	//	gestion.informacioncliente();
 
 	}
 
