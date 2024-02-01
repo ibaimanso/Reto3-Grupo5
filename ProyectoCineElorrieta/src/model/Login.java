@@ -88,10 +88,13 @@ public class Login extends JPanel{
 		btnContinuar.setBackground(Color.LIGHT_GRAY);
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			if (gestion.testUsuarioYContraseña(txtfieldUsuario.getText(), textFieldContraseña.getText()) == true) {
-				System.out.println("funciona");
+				//TODO pasar a la pantalla cines
 			}else {
-				System.out.println("no funciona");
+				JOptionPane.showMessageDialog(null,"usuario o contraseña erronea");
+
+
 				
 			}
 			}
