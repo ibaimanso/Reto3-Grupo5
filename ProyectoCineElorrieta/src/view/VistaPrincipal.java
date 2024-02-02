@@ -10,18 +10,17 @@ import modelobjeto.Cine;
 
 import java.awt.Toolkit;
 
-
 public class VistaPrincipal extends JFrame {
-	
+
 	public VistaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
 		setVisible(true);
 		cambiarDePanel(0);
-		setSize(620,420);
+		setSize(620, 420);
 		setResizable(false);
-		
+
 	}
-	
+
 	public void cambiarDePanel(int i) {
 
 		switch (i) {
@@ -38,15 +37,15 @@ public class VistaPrincipal extends JFrame {
 			setContentPane(new Cines(this));
 		}
 	}
+
 	public static void main(String[] args) {
-		
-	
+
 		VistaPrincipal ventana = new VistaPrincipal();
-		ventana.cambiarDePanel(0);
+		ventana.cambiarDePanel(3);
 		ventana.setVisible(true);
-		ventana.setSize(620,420);
+		ventana.setSize(620, 420);
 		ventana.setResizable(false);
-		
+
 	}
 
 }

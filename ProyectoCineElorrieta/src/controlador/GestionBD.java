@@ -26,7 +26,10 @@ public class GestionBD {
 	public void iniciarConexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine", "root", "");
+			// conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine",
+			// "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
+
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
 		} catch (SQLException e) {
@@ -103,7 +106,7 @@ public class GestionBD {
 		try {
 			Statement consulta = conexion.createStatement();
 
-			String query = "SELECT * FROM cliente ";
+			String query = "SELECT * FROM clientes ";
 			ResultSet resultadoConsulta = consulta.executeQuery(query);
 			while (resultadoConsulta.next()) {
 				if (resultadoConsulta.getString(1).contentEquals(usuario)
