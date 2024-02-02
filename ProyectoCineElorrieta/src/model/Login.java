@@ -90,6 +90,7 @@ public class Login extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				
 			if (gestion.testUsuarioYContraseña(txtfieldUsuario.getText(), textFieldContraseña.getText()) == true) {
+				System.out.println("funca");
 				//TODO pasar a la pantalla cines
 			}else {
 				JOptionPane.showMessageDialog(null,"usuario o contraseña erronea");
