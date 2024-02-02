@@ -19,13 +19,10 @@ import controlador.GestionBD;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 
-public class Login extends JPanel{
-
-	public JTextField txtfieldUsuario;
-	public JTextField textFieldContraseña;
+public class Login extends JPanel {
+	private String lblUsuario;
 
 	public Login(VistaPrincipal ventana) {
-		String lblUsuario;
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -36,9 +33,9 @@ public class Login extends JPanel{
 		panelLogin.setBounds(0, 0, 700, 535);
 		add(panelLogin);
 		panelLogin.setLayout(null);
-		
+
 		/**
-		 * Una label con el nombre "Cine Elorrieta" 
+		 * Una label con el nombre "Cine Elorrieta"
 		 */
 		JLabel lblCineElorrieta = new JLabel("Finest Cines");
 		lblCineElorrieta.setHorizontalAlignment(SwingConstants.LEFT);
@@ -53,15 +50,15 @@ public class Login extends JPanel{
 		lblUsuario.setFont(new Font("Rockwell", Font.BOLD, 20));
 		lblUsuario.setBounds(200, 160, 165, 27);
 		panelLogin.add(lblUsuario);
-		
+
 		/**
 		 * Textfield para que pueda escribir el usuario
 		 */
-		txtfieldUsuario = new JTextField();
+		JTextField txtfieldUsuario = new JTextField();
 		txtfieldUsuario.setBounds(200, 198, 175, 20);
 		panelLogin.add(txtfieldUsuario);
 		txtfieldUsuario.setColumns(10);
-		
+
 		/**
 		 * Label que te indica un texto con el nombre "Contraseña"
 		 */
@@ -69,72 +66,70 @@ public class Login extends JPanel{
 		lblcontraseña.setFont(new Font("Rockwell", Font.BOLD, 20));
 		lblcontraseña.setBounds(200, 236, 165, 27);
 		panelLogin.add(lblcontraseña);
-		
+
 		/**
 		 * Textfield para que pueda escribir la contraseña
 		 */
-		textFieldContraseña = new JTextField();
+		JTextField textFieldContraseña = new JTextField();
 		textFieldContraseña.setColumns(10);
 		textFieldContraseña.setBounds(200, 274, 175, 20);
 		panelLogin.add(textFieldContraseña);
-		
+
 		/**
-		 * Boton cuya función es que pase del PanelLogin al PanelListaGeneros o al PanelAdmin, dependiendo del
-		// usuario y contraseña, cuando el usuario y contraseña estén bien, si no salta un error.
+		 * Boton cuya función es que pase del PanelLogin al PanelListaGeneros o al
+		 * PanelAdmin, dependiendo del // usuario y contraseña, cuando el usuario y
+		 * contraseña estén bien, si no salta un error.
 		 */
 		JButton btnContinuar = new JButton("Login");
 		btnContinuar.setBackground(Color.LIGHT_GRAY);
-		btnContinuar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				 
-				if (GestionBD.informacioncliente2(txtfieldUsuario.getText() && (textFieldContraseña.getText()) {
-				JOptionPane.showMessageDialog(null, "Has iniciado sesion");
-				ventana.cambiarDePanel(2);
-			} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
-				JOptionPane.showMessageDialog(null, "Has iniciado sesion como ADMIN");
-				ventana.cambiarDePanel(3);
-			}else {
-				JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTA");
+
+		/**
+		 * KeyListener para el campo de contraseña
+		 */
+		textFieldContraseña.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
 			}
+
+			/**
+			 * Llama al ActionListener del botón si se presiona "Enter" en el campo de
+			 * contraseña
+			 */
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					btnContinuar.doClick();
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
 			}
 		});
-		
-		/**
-		 * KeyListener para el campo de contraseña 
-		 */
-        textFieldContraseña.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-            
-            /**
-             * Llama al ActionListener del botón si se presiona "Enter" en el campo de contraseña
-             */
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    btnContinuar.doClick();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
 		btnContinuar.setBounds(200, 305, 175, 20);
 		panelLogin.add(btnContinuar);
-		
+
 		/**
 		 * Label para el fondo del panel
 		 */
+
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setBackground(Color.LIGHT_GRAY);
+		btnRegistrarse.setBounds(200, 336, 175, 20);
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Complete los campos con sus datos, por favor");
+				ventana.cambiarDePanel(2);
+			}
+		});
+
+		panelLogin.add(btnRegistrarse);
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon("multimedia/FondoLogin.png"));
 		lblFondo.setBounds(-14, -93, 782, 676);
 		lblFondo.setFocusable(false);
 		panelLogin.add(lblFondo);
 		return;
+
 	}
 }
-	
-
