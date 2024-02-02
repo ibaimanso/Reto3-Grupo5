@@ -5,19 +5,22 @@ public class Pelicula {
 	private int idpeli;
 	private int duracion;
 	private String genero;
+	private double precio;
 	
 	public Pelicula() {
 		
 	}
-	public Pelicula(String nombrepeli, int idpeli, int duracion,String genero ) {
-		
-		
+	
+
+	public Pelicula(String nombrepeli, int idpeli, int duracion, String genero, double precio) {
+		super();
 		this.nombrepeli = nombrepeli;
 		this.idpeli = idpeli;
 		this.duracion = duracion;
 		this.genero = genero;
-		
+		this.precio = precio;
 	}
+
 
 	public String getNombrepeli() {
 		return nombrepeli;
@@ -27,13 +30,14 @@ public class Pelicula {
 		this.nombrepeli = nombrepeli;
 	}
 
-	
 	public int getIdpeli() {
 		return idpeli;
 	}
+
 	public void setIdpeli(int idpeli) {
 		this.idpeli = idpeli;
 	}
+
 	public int getDuracion() {
 		return duracion;
 	}
@@ -50,9 +54,20 @@ public class Pelicula {
 		this.genero = genero;
 	}
 
-	@Override
-	public String toString() {
-		return "Pelicula " + nombrepeli + "/n idpeli" + idpeli + "/n duracion" + duracion + "/n genero" + genero;
+	public double getPrecio() {
+		return precio;
 	}
 
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Pelicula [nombrepeli=" + nombrepeli + ", idpeli=" + idpeli + ", duracion=" + duracion + ", genero="
+				+ genero + ", precio=" + precio + "]";
+	}
+	
+	
 }

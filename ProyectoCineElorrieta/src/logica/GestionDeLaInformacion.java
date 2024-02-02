@@ -9,12 +9,16 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 import modelobjeto.Cliente;
 import view.VistaPrincipal;
-
+import controlador.GestionBD;
 public class GestionDeLaInformacion {
 
+
+	private GestionBD gestionBD;
 	private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 
 	public GestionDeLaInformacion() {
+		 gestionBD = new GestionBD();
+		
 	}
 
 	
@@ -75,4 +79,12 @@ public class GestionDeLaInformacion {
 		}
 
 	}
+
+	public boolean testUsuarioYContraseña(String usuario, String contraseña) {
+		
+		boolean login = false;
+		login = gestionBD.Login(usuario, contraseña);
+		return login;
+	}
+
 }

@@ -3,8 +3,11 @@ package view;
 import javax.swing.JFrame;
 import controlador.GestionBD;
 import model.Bienvenida;
+import model.Cines;
 import model.Login;
 import model.Registro;
+import modelobjeto.Cine;
+
 import java.awt.Toolkit;
 
 
@@ -12,8 +15,10 @@ public class VistaPrincipal extends JFrame {
 	
 	public VistaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
-	
-
+		setVisible(true);
+		cambiarDePanel(0);
+		setSize(620,420);
+		setResizable(false);
 		
 	}
 	
@@ -29,6 +34,8 @@ public class VistaPrincipal extends JFrame {
 		case 2:
 			setContentPane(new Registro(this));
 			break;
+		case 3:
+			setContentPane(new Cines(this));
 		}
 	}
 	public static void main(String[] args) {
@@ -40,8 +47,6 @@ public class VistaPrincipal extends JFrame {
 		ventana.setSize(620,420);
 		ventana.setResizable(false);
 		
-	
-
 	}
 
 }

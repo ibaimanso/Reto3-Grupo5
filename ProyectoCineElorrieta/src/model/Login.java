@@ -14,13 +14,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import logica.GestionDeLaInformacion;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 
 public class Login extends JPanel {
 
+	public JTextField txtfieldUsuario;
+	public JTextField textFieldContraseña;
+	private GestionDeLaInformacion gestion;
+
 	public Login(VistaPrincipal ventana) {
 
+		gestion = new GestionDeLaInformacion();
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -77,19 +84,20 @@ public class Login extends JPanel {
 		 * Boton cuya función es que pase del PanelLogin al PanelListaGeneros o al PanelAdmin, dependiendo del
 		// usuario y contraseña, cuando el usuario y contraseña estén bien, si no salta un error.
 		 */
-		JButton btnContinuar = new JButton("Continuar");
+		JButton btnContinuar = new JButton("Login");
 		btnContinuar.setBackground(Color.LIGHT_GRAY);
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if ((txtfieldUsuario.getText().equals("elorrieta")) && (textFieldContraseña.getText().equals("elorrieta"))) {
-					JOptionPane.showMessageDialog(null, "Has iniciado sesion");
-					ventana.cambiarDePanel(2);
-				} else if ((txtfieldUsuario.getText().equals("admin")) && (textFieldContraseña.getText().equals("admin"))) {
-					JOptionPane.showMessageDialog(null, "Has iniciado sesion como ADMIN");
-					ventana.cambiarDePanel(3);
-				}else {
-					JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTA");
-				}
+				
+			if (gestion.testUsuarioYContraseña(txtfieldUsuario.getText(), textFieldContraseña.getText()) == true) {
+				JOptionPane.showMessageDialog(null, "Has iniciado sesión");
+				ventana.cambiarDePanel(3);
+			}else {
+				JOptionPane.showMessageDialog(null,"usuario o contraseña erronea");
+
+
+				
+			}
 			}
 		});
 

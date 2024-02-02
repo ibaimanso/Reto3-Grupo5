@@ -1,25 +1,18 @@
 package model;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import controlador.GestionBD;
-import logica.GestionDeLaInformacion;
 import modelobjeto.Cliente;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 public class Registro extends JPanel {

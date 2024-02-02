@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import model.Registro;
 
 import javax.swing.JOptionPane;
@@ -15,10 +14,11 @@ import javax.swing.JOptionPane;
 import logica.GestionDeLaInformacion;
 import modelobjeto.Cliente;
 import view.VistaPrincipal;
+import modelobjeto.Cliente;
 
 public class GestionBD {
 
-	public void GestionBD() {
+	public GestionBD() {
 		iniciarConexion();
 
 	}
@@ -31,17 +31,20 @@ public class GestionBD {
 	public void iniciarConexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine", "root", "");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
 		} catch (SQLException e) {
 			System.out.println("Base de datos no encontrada");
 		}
-	
+
+		System.out.println("Conectando...");
+		System.out.println("Conexion establecida");
 
 	}
 
 	// Cierre de conexion a la base de datos
+	
 	public void cerrarConexion() {
 		System.out.println("Cerrando...");
 		try {
@@ -81,16 +84,13 @@ public class GestionBD {
 	
 	public void insertUsuario(Cliente cliente, VistaPrincipal ventana) {
 			
-		iniciarConexion();
 
+		// Query para sacar toda la info de los departamentos
 		try {
 			Statement consulta = conexion.createStatement();
 
 			String insert = "INSERT INTO cliente ( DNI, Nombre, Apellido, Sexo, Contraseña) VALUES ('" + cliente.getDni() + "','"
 				+ cliente.getNombrecli() + "','" + cliente.getApellido() +"', '" + cliente.getSexo() + "', '" + cliente.getContraseña() + "')";
-			
-
-
 			
 			consulta.executeUpdate(insert);
 			JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
@@ -103,4 +103,31 @@ public class GestionBD {
 		}
 
 	}
+
+
+	public boolean Login(String usuario, String contraseña) {
+		boolean login = false;
+		try {
+			Statement consulta = conexion.createStatement();
+
+			String query = "SELECT * FROM cliente ";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				if (resultadoConsulta.getString(1).contentEquals(usuario)
+						& resultadoConsulta.getString(5).contentEquals(contraseña)) {
+					login = true;
+					}
+
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return login;
+
+	}
+
 }
