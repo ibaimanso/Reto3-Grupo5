@@ -5,7 +5,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
+import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import view.VistaPrincipal;
 
@@ -18,8 +22,7 @@ public class GestionBD {
 
 	private Connection conexion;
 
-	
-	//Conexion a la Base de Datos
+	// Conexion a la Base de Datos
 	public void iniciarConexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -36,7 +39,7 @@ public class GestionBD {
 	}
 
 	// Cierre de conexion a la base de datos
-	
+
 	public void cerrarConexion() {
 		System.out.println("Cerrando...");
 		try {
@@ -69,21 +72,20 @@ public class GestionBD {
 //			e.printStackTrace();
 //		}
 //	}
-	
-	
-	//Insert de el panel de registro para poder registrar nuevos ususarios en
-	//la Base de Datos de la aplicación
-	
+
+	// Insert de el panel de registro para poder registrar nuevos ususarios en
+	// la Base de Datos de la aplicación
+
 	public void insertUsuario(Cliente cliente, VistaPrincipal ventana) {
-			
 
 		// Query para sacar toda la info de los departamentos
 		try {
 			Statement consulta = conexion.createStatement();
 
-			String insert = "INSERT INTO cliente ( DNI, Nombre, Apellido, Sexo, Contraseña) VALUES ('" + cliente.getDni() + "','"
-				+ cliente.getNombrecli() + "','" + cliente.getApellido() +"', '" + cliente.getSexo() + "', '" + cliente.getContraseña() + "')";
-			
+			String insert = "INSERT INTO cliente ( DNI, Nombre, Apellido, Sexo, Contraseña) VALUES ('"
+					+ cliente.getDni() + "','" + cliente.getNombrecli() + "','" + cliente.getApellido() + "', '"
+					+ cliente.getSexo() + "', '" + cliente.getContraseña() + "')";
+
 			consulta.executeUpdate(insert);
 			JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
 			ventana.cambiarDePanel(1);
@@ -96,7 +98,6 @@ public class GestionBD {
 
 	}
 
-
 	public boolean Login(String usuario, String contraseña) {
 		boolean login = false;
 		try {
@@ -108,7 +109,7 @@ public class GestionBD {
 				if (resultadoConsulta.getString(1).contentEquals(usuario)
 						& resultadoConsulta.getString(5).contentEquals(contraseña)) {
 					login = true;
-					}
+				}
 
 			}
 			consulta.close();
@@ -120,6 +121,26 @@ public class GestionBD {
 		}
 		return login;
 
+	}
+
+	public ArrayList<Cine> buscarCines() {
+		ArrayList<Cine> cines = new ArrayList<Cine>();
+		Cine cine;
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "SELECT * FROM cines";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				cine = new Cine(resultadoConsulta.getString(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3));
+				cines.add(cine);
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cines;
 	}
 
 }

@@ -1,27 +1,34 @@
 package logica;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
+
+import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.Pelicula;
 import view.VistaPrincipal;
 import controlador.GestionBD;
-public class GestionDeLaInformacion {
 
+public class GestionDeLaInformacion {
 
 	private GestionBD gestionBD;
 	private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
+	private ArrayList<Cine> cine;
+	private Cine cineSelecionado;
+	private ArrayList<Pelicula> peliculas;
+	private Pelicula peliculaSelecionada;
 
 	public GestionDeLaInformacion() {
-		 gestionBD = new GestionBD();
-		
+		gestionBD = new GestionBD();
+
 	}
 
-	
 	/*
 	 * Metodo para encriptar la contraseña en la base de datos
 	 */
@@ -81,10 +88,32 @@ public class GestionDeLaInformacion {
 	}
 
 	public boolean testUsuarioYContraseña(String usuario, String contraseña) {
-		
+
 		boolean login = false;
 		login = gestionBD.Login(usuario, contraseña);
 		return login;
+	}
+
+	public ArrayList<Cine> DevolverCines() {
+		cine = gestionBD.buscarCines();
+		return cine;
+	}
+
+	public void ElegirCine(String nombre) {
+		for (int i = 0; i < cine.size(); i++) {
+			if (cine.get(i).getNombrecine().equalsIgnoreCase(nombre)) {
+				cineSelecionado = cine.get(i);
+			}
+		}
+	}
+
+	public String SacarCine() {
+		return cineSelecionado.getNombrecine();
+	}
+
+	public ArrayList<Cine> DevolverPeliculas() {
+		// cine = gestionBD.buscarCines();
+		return cine;
 	}
 
 }
