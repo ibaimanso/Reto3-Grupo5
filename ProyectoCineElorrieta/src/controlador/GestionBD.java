@@ -2,19 +2,12 @@ package controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import model.Registro;
-
 import javax.swing.JOptionPane;
-
-import logica.GestionDeLaInformacion;
 import modelobjeto.Cliente;
 import view.VistaPrincipal;
-import modelobjeto.Cliente;
 
 public class GestionBD {
 
@@ -24,7 +17,6 @@ public class GestionBD {
 	}
 
 	private Connection conexion;
-	private GestionDeLaInformacion gestionINF;
 
 	
 	//Conexion a la Base de Datos
