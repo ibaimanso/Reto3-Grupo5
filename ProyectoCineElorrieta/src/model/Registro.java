@@ -27,7 +27,6 @@ public class Registro extends JPanel {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldContraseña;
-	private GestionDeLaInformacion gestionINF = new GestionDeLaInformacion();
 
 	
 	
@@ -93,9 +92,9 @@ public class Registro extends JPanel {
 		lblNewLabel.setBounds(10, -25, 560, 556);
 		add(lblNewLabel);		
 		
-		JButton btnNewButton = new JButton("Registrarse");
-		btnNewButton.setBounds(284, 339, 156, 23);
-		add(btnNewButton);
+		JButton btnRegistro = new JButton("Registrarse");
+		btnRegistro.setBounds(284, 339, 156, 23);
+		add(btnRegistro);
 		
 		JRadioButton rdbHombre = new JRadioButton("H");
 		rdbHombre.setBounds(284, 205, 109, 23);
@@ -105,13 +104,18 @@ public class Registro extends JPanel {
 		rdbMujer.setBounds(396, 205, 109, 23);
 		add(rdbMujer);
 	
-		btnNewButton.addActionListener(new ActionListener() {
+		
+		/*
+		 * Función para que los textfields de el panel de registro
+		 * se guarden en los atributos de el objeto cliente al hacer click en el boton de registro.
+		 */
+		
+		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cliente cliente = new Cliente();
 				cliente.setDni(txtDni.getText()); 
 				cliente.setNombrecli(textFieldNombre.getText());
-				cliente.setNombrecli(textFieldApellido.getText());
-				cliente.setContraseña(textFieldContraseña.getText());
+				cliente.setApellido(textFieldApellido.getText());
 				cliente.setContraseña(textFieldContraseña.getText());
 				
 				
@@ -123,7 +127,6 @@ public class Registro extends JPanel {
 				}
 				GestionBD gestionBd = new GestionBD();
 				gestionBd.insertUsuario(cliente, ventana);
-				//gestionINF.recogerInformacionFormulario(cliente , ventana);
 			}});
 	}
 	}

@@ -26,10 +26,12 @@ public class GestionBD {
 	private Connection conexion;
 	private GestionDeLaInformacion gestionINF;
 
+	
+	//Conexion a la Base de Datos
 	public void iniciarConexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
 		} catch (SQLException e) {
@@ -39,6 +41,7 @@ public class GestionBD {
 
 	}
 
+	// Cierre de conexion a la base de datos
 	public void cerrarConexion() {
 		System.out.println("Cerrando...");
 		try {
@@ -71,6 +74,11 @@ public class GestionBD {
 //			e.printStackTrace();
 //		}
 //	}
+	
+	
+	//Insert de el panel de registro para poder registrar nuevos ususarios en
+	//la Base de Datos de la aplicación
+	
 	public void insertUsuario(Cliente cliente, VistaPrincipal ventana) {
 			
 		iniciarConexion();

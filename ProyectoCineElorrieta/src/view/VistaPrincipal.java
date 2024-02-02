@@ -35,7 +35,6 @@ public class VistaPrincipal extends JFrame {
 		
 	
 		VistaPrincipal ventana = new VistaPrincipal();
-		GestionBD iniconn = new GestionBD();
 		ventana.cambiarDePanel(0);
 		ventana.setVisible(true);
 		ventana.setSize(620,420);
