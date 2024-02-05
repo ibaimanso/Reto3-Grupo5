@@ -17,11 +17,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class Cines extends JPanel {
-	private GestionDeLaInformacion gestion;
 	private ArrayList<Cine> cines;
 
-	public Cines(VistaPrincipal ventana) {
-		gestion = new GestionDeLaInformacion();
+	public Cines(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		cines = gestion.devolverCines();
 
 		// setSize(ventana.getSize());
@@ -31,7 +29,7 @@ public class Cines extends JPanel {
 
 		// Inicio de la parte del carrito y nombre del cine
 		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
-		// lblNombreUsuario.setText(gestion.devolverNombreUsuario());
+		lblNombreUsuario.setText(gestion.devolverNombreUsuario());
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(10, 11, 145, 18);
 		add(lblNombreUsuario);
@@ -54,15 +52,15 @@ public class Cines extends JPanel {
 		lblFondoParaCarrito.setBounds(-373, -279, 600, 397);
 		add(lblFondoParaCarrito);
 
-		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-			lblFondoParaCarrito.setVisible(false);
-			btnCarrito.setVisible(false);
-			lblNombreUsuario.setVisible(false);
-		} else {
-			lblFondoParaCarrito.setVisible(true);
-			btnCarrito.setVisible(true);
-			lblNombreUsuario.setVisible(true);
-		}
+//		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
+//			lblFondoParaCarrito.setVisible(false);
+//			btnCarrito.setVisible(false);
+//			lblNombreUsuario.setVisible(false);
+//		} else {
+//			lblFondoParaCarrito.setVisible(true);
+//			btnCarrito.setVisible(true);
+//			lblNombreUsuario.setVisible(true);
+//		}
 		// Fin de la parte del carrito y nombre del cine
 
 		JLabel lblBienvenida = new JLabel("SELECIONE EL CINE");

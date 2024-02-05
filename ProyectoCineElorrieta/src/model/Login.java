@@ -23,11 +23,9 @@ public class Login extends JPanel {
 
 	public JTextField txtfieldUsuario;
 	public JTextField textFieldContraseña;
-	private GestionDeLaInformacion gestion;
+	// private GestionDeLaInformacion gestion;
 
-	public Login(VistaPrincipal ventana) {
-
-		gestion = new GestionDeLaInformacion();
+	public Login(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		/**
 		 * Tamaño del panel y otras funciones
 		 */

@@ -162,12 +162,6 @@ public class GestionBD {
 			while (resultadoConsulta.next()) {
 				usuario = new Cliente(resultadoConsulta.getString(1), resultadoConsulta.getString(2),
 						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getString(5));
-				System.out.println(resultadoConsulta.getString(1));
-				System.out.println(resultadoConsulta.getString(2));
-				System.out.println(resultadoConsulta.getString(3));
-				System.out.println(resultadoConsulta.getString(4));
-				System.out.println(resultadoConsulta.getString(5));
-
 			}
 			consulta.close();
 

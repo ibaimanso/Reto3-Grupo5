@@ -120,18 +120,17 @@ public class GestionDeLaInformacion {
 	}
 
 	public void guardarUsuario(String dni) {
-		usuario = gestionBD.buscarUsuario(dni);
-//		Cliente c = gestionBD.buscarUsuario(dni);
-//		usuario = new Cliente(c.getDni(), c.getNombrecli(), c.getApellido(), c.getSexo(), c.getContraseña());
-		usuario.getDni();
-		usuario.getNombrecli();
-		usuario.getApellido();
-		usuario.getSexo();
-		usuario.getContraseña();
+		this.usuario = gestionBD.buscarUsuario(dni);
+		System.out.println(usuario.getDni());
+		System.out.println(usuario.getNombrecli());
+		System.out.println(usuario.getApellido());
+		System.out.println(usuario.getSexo());
+		System.out.println(usuario.getContraseña());
 	}
 
 	public String devolverNombreUsuario() {
-		return usuario.getNombrecli();
+		String respuesta = usuario.getNombrecli();
+		return respuesta;
 	}
 
 	public Integer devolverLongitudDeEntradas() {
