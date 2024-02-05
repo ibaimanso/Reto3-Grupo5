@@ -3,17 +3,22 @@ package model;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controlador.Controlador;
 import view.VistaPrincipal;
 import java.awt.Font;
 import java.awt.Dimension;
+import java.awt.Color;
+import javax.swing.JButton;
 
 public class Peliculas extends JPanel {
+	private int contador = 0;
 	
 	public Peliculas(VistaPrincipal ventana) {
 		/**
 		 * Se le da una altura y una anchura al JPanel. Se hace que no se pueda
 		 * redimensionar la VentanaPrincipal
 		 */
+		Controlador cont = new Controlador();
 		setSize(new Dimension(664, 452));
 		setVisible(true);
 		setLayout(null);
@@ -24,6 +29,8 @@ public class Peliculas extends JPanel {
 		add(lblFinestCines);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setForeground(Color.WHITE);
 		panel.setBounds(31, 107, 623, 264);
 		add(panel);
 		panel.setLayout(null);
@@ -51,5 +58,13 @@ public class Peliculas extends JPanel {
 		lblPrecio.setFont(new Font("Nirmala UI", Font.BOLD, 12));
 		lblPrecio.setBounds(176, 125, 129, 27);
 		panel.add(lblPrecio);
+		
+		JButton btnNewButton = new JButton("<");
+		btnNewButton.setBounds(31, 382, 89, 23);
+		add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton(">");
+		btnNewButton_1.setBounds(130, 382, 89, 23);
+		add(btnNewButton_1);
 	}
 }

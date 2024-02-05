@@ -28,7 +28,7 @@ public class GestionBD {
 			Class.forName("com.mysql.jdbc.Driver");
 			// conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine",
 			// "root", "");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
@@ -85,7 +85,7 @@ public class GestionBD {
 		try {
 			Statement consulta = conexion.createStatement();
 
-			String insert = "INSERT INTO cliente ( DNI, Nombre, Apellido, Sexo, Contraseña) VALUES ('"
+			String insert = "INSERT INTO clientes ( DNI, Nombre, Apellido, Sexo, Contraseña) VALUES ('"
 					+ cliente.getDni() + "','" + cliente.getNombrecli() + "','" + cliente.getApellido() + "', '"
 					+ cliente.getSexo() + "', '" + cliente.getContraseña() + "')";
 
