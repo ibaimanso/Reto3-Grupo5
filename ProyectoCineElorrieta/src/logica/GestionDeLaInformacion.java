@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.Entrada;
 import modelobjeto.Pelicula;
 import view.VistaPrincipal;
 import controlador.GestionBD;
@@ -19,14 +20,16 @@ public class GestionDeLaInformacion {
 
 	private GestionBD gestionBD;
 	private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
+	private Cliente usuario;
 	private ArrayList<Cine> cine;
 	private Cine cineSelecionado;
 	private ArrayList<Pelicula> peliculas;
-	private Pelicula peliculaSelecionada;
+	// private Pelicula peliculaSelecionada;
+	private ArrayList<Entrada> entradasCompradas;
 
 	public GestionDeLaInformacion() {
 		gestionBD = new GestionBD();
-
+		entradasCompradas = new ArrayList<Entrada>();
 	}
 
 	/*
@@ -94,7 +97,7 @@ public class GestionDeLaInformacion {
 		return login;
 	}
 
-	public ArrayList<Cine> DevolverCines() {
+	public ArrayList<Cine> devolverCines() {
 		cine = gestionBD.buscarCines();
 		return cine;
 	}
@@ -111,9 +114,29 @@ public class GestionDeLaInformacion {
 		return cineSelecionado.getNombrecine();
 	}
 
-	public ArrayList<Cine> DevolverPeliculas() {
+	public ArrayList<Pelicula> DevolverPeliculas() {
 		// cine = gestionBD.buscarCines();
-		return cine;
+		return peliculas;
+	}
+
+	public void guardarUsuario(String dni) {
+		usuario = gestionBD.buscarUsuario(dni);
+//		Cliente c = gestionBD.buscarUsuario(dni);
+//		usuario = new Cliente(c.getDni(), c.getNombrecli(), c.getApellido(), c.getSexo(), c.getContraseña());
+		usuario.getDni();
+		usuario.getNombrecli();
+		usuario.getApellido();
+		usuario.getSexo();
+		usuario.getContraseña();
+	}
+
+	public String devolverNombreUsuario() {
+		return usuario.getNombrecli();
+	}
+
+	public Integer devolverLongitudDeEntradas() {
+		Integer longitudEntradas = entradasCompradas.size();
+		return longitudEntradas;
 	}
 
 }

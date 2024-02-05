@@ -36,8 +36,8 @@ public class GestionBD {
 			System.out.println("Base de datos no encontrada");
 		}
 
-		System.out.println("Conectando...");
-		System.out.println("Conexion establecida");
+//		System.out.println("Conectando...");
+//		System.out.println("Conexion establecida");
 
 	}
 
@@ -144,6 +144,37 @@ public class GestionBD {
 			e.printStackTrace();
 		}
 		return cines;
+	}
+
+	/**
+	 * Metodo para buscra un cliente en la base de datos
+	 * 
+	 * @param dni
+	 * @return
+	 */
+
+	public Cliente buscarUsuario(String dni) {
+		Cliente usuario = new Cliente();
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "SELECT * FROM clientes cli where cli.DNI like '" + dni + "'";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				usuario = new Cliente(resultadoConsulta.getString(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getString(5));
+				System.out.println(resultadoConsulta.getString(1));
+				System.out.println(resultadoConsulta.getString(2));
+				System.out.println(resultadoConsulta.getString(3));
+				System.out.println(resultadoConsulta.getString(4));
+				System.out.println(resultadoConsulta.getString(5));
+
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return usuario;
 	}
 
 }

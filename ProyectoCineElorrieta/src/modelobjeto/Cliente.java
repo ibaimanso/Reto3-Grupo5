@@ -1,8 +1,5 @@
 package modelobjeto;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Cliente {
 	/*
 	 * Objeto CLiente
@@ -26,9 +23,6 @@ public class Cliente {
 		this.sexo = sexo;
 		this.contraseña = contraseña;
 	}
-	
-
-	
 
 	public String getDni() {
 		return dni;
@@ -69,12 +63,11 @@ public class Cliente {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Cliente :DNI " + dni + "/n nombre" + nombrecli + "/n apellido" + apellido + "/n sexo" + sexo
 				+ "/n contraseña" + contraseña;
 	}
-
 
 }
