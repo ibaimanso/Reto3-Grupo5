@@ -9,8 +9,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import model.Peliculas;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.Pelicula;
 import view.VistaPrincipal;
 
 public class GestionBD {
@@ -146,4 +148,22 @@ public class GestionBD {
 		return cines;
 	}
 
+	public ArrayList<Pelicula> buscarPelis() {
+	    ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+	    try {
+	        Statement consulta = conexion.createStatement();
+	        String query = "SELECT * FROM peliculas ";
+	        ResultSet resultadoConsulta = consulta.executeQuery(query);
+	        while (resultadoConsulta.next()) {
+	           peliculas.add(new Pelicula(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
+	                    resultadoConsulta.getString(3), resultadoConsulta.getInt(4), resultadoConsulta.getDouble(5)));
+	        }
+	        System.out.println(peliculas);
+	        consulta.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return peliculas;
+	}
 }
+

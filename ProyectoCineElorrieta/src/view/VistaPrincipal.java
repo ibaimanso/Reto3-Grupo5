@@ -5,6 +5,7 @@ import controlador.GestionBD;
 import model.Bienvenida;
 import model.Cines;
 import model.Login;
+import model.Peliculas;
 import model.Registro;
 import modelobjeto.Cine;
 
@@ -35,13 +36,17 @@ public class VistaPrincipal extends JFrame {
 			break;
 		case 3:
 			setContentPane(new Cines(this));
+
+		case 4:
+			setContentPane(new Peliculas(this));
+			break;
 		}
 	}
 
 	public static void main(String[] args) {
 
 		VistaPrincipal ventana = new VistaPrincipal();
-		ventana.cambiarDePanel(0);
+		ventana.cambiarDePanel(4);
 		ventana.setVisible(true);
 		ventana.setSize(620, 420);
 		ventana.setResizable(false);

@@ -1,33 +1,20 @@
 package modelobjeto;
 
 public class Pelicula {
-	private String nombrepeli;
 	private int idpeli;
-	private int duracion;
+	private String nombrepeli;
 	private String genero;
-	private double precio;
+	private int duracion;
 	
-	public Pelicula() {
-		
-	}
 	
 
-	public Pelicula(String nombrepeli, int idpeli, int duracion, String genero, double precio) {
-		super();
-		this.nombrepeli = nombrepeli;
-		this.idpeli = idpeli;
-		this.duracion = duracion;
-		this.genero = genero;
-		this.precio = precio;
+	public Pelicula(int idPelicula, String nombrePelicula, String generoPelicula, int duracion, double precio) {
+
 	}
 
-
-	public String getNombrepeli() {
-		return nombrepeli;
-	}
-
-	public void setNombrepeli(String nombrepeli) {
-		this.nombrepeli = nombrepeli;
+	public String toString() {
+		return "Pelicula [idpeli=" + idpeli + ", nombrepeli=" + nombrepeli + ", genero=" + genero + ", duracion="
+				+ duracion + ", precio=" + precio + "]";
 	}
 
 	public int getIdpeli() {
@@ -38,12 +25,12 @@ public class Pelicula {
 		this.idpeli = idpeli;
 	}
 
-	public int getDuracion() {
-		return duracion;
+	public String getNombrepeli() {
+		return nombrepeli;
 	}
 
-	public void setDuracion(int duracion) {
-		this.duracion = duracion;
+	public void setNombrepeli(String nombrepeli) {
+		this.nombrepeli = nombrepeli;
 	}
 
 	public String getGenero() {
@@ -54,6 +41,14 @@ public class Pelicula {
 		this.genero = genero;
 	}
 
+	public int getDuracion() {
+		return duracion;
+	}
+
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+
 	public double getPrecio() {
 		return precio;
 	}
@@ -62,12 +57,7 @@ public class Pelicula {
 		this.precio = precio;
 	}
 
+	private double precio;
 
-	@Override
-	public String toString() {
-		return "Pelicula [nombrepeli=" + nombrepeli + ", idpeli=" + idpeli + ", duracion=" + duracion + ", genero="
-				+ genero + ", precio=" + precio + "]";
-	}
-	
-	
+
 }

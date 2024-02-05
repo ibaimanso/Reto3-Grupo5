@@ -78,9 +78,10 @@ public class Cines extends JPanel {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO sacarPelicula
+				
 				
 				comboBox.getSelectedItem();
+				
 			}
 		});
 		btnAceptar.setBounds(207, 238, 207, 23);
