@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.io.File;
+
 public class Pelicula {
 	private int idpeli;
 	private String nombrepeli;
