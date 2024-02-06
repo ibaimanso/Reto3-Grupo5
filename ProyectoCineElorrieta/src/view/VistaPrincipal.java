@@ -8,6 +8,7 @@ import model.Cines;
 import model.Login;
 import model.Peliculas;
 import model.Registro;
+import model.SelecionDeFechas;
 
 import java.awt.Toolkit;
 
@@ -41,6 +42,9 @@ public class VistaPrincipal extends JFrame {
 			break;
 		case 4:
 			setContentPane(new Peliculas(this, gestion));
+			break;
+		case 5:
+			setContentPane(new SelecionDeFechas(this, gestion));
 			break;
 		}
 	}

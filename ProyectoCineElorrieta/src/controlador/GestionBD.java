@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Pelicula;
+import modelobjeto.Sesion;
 import view.VistaPrincipal;
 
 public class GestionBD {
@@ -27,9 +28,10 @@ public class GestionBD {
 			Class.forName("com.mysql.jdbc.Driver");
 			// conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine",
 			// "root", "");
-			//conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
-
+			// conexion =
+			// DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root",
+			// "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
@@ -148,30 +150,28 @@ public class GestionBD {
 	}
 
 	public ArrayList<Pelicula> buscarPelis(String idCine) {
-	    ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
-	    Pelicula pelicula;
-	    try {
-	        Statement consulta = conexion.createStatement();
-	        String query = "select pel.ID_Pelicula, pel.Nombre_Pelicula ,pel.Genero_Pelicula, pel.Duracion, pel.Precio, min(ses.Dia) as DiaMinimo, min(ses.Hora) HoraMinima "
-	        		+ "from peliculas pel \r\n"
-	        		+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
-	        		+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
-	        		+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n"
-	        		+ "where cin.ID_Cine like '"+ idCine+ "'\r\n"
-	        		+ "group by pel.ID_Pelicula\r\n"
-	        		+ "order by DiaMinimo asc, HoraMinima asc; ";
-	        ResultSet resultadoConsulta = consulta.executeQuery(query);
-	        while (resultadoConsulta.next()) {
-	       pelicula = new Pelicula(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
-	                    resultadoConsulta.getString(3), resultadoConsulta.getInt(4), resultadoConsulta.getDouble(5));
-	       peliculas.add(pelicula);
-	      }
-	        consulta.close();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return peliculas;
+		ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+		Pelicula pelicula;
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "select pel.ID_Pelicula, pel.Nombre_Pelicula ,pel.Genero_Pelicula, pel.Duracion, pel.Precio, min(ses.Dia) as DiaMinimo, min(ses.Hora) HoraMinima from cinegrupo5.peliculas pel \r\n"
+					+ "join cinegrupo5.sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+					+ "join cinegrupo5.salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+					+ "join cinegrupo5.cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + idCine
+					+ "'\r\n" + "group by pel.ID_Pelicula\r\n" + "order by DiaMinimo asc, HoraMinima asc; ";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				pelicula = new Pelicula(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3), resultadoConsulta.getInt(4), resultadoConsulta.getDouble(5));
+				peliculas.add(pelicula);
+			}
+			consulta.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return peliculas;
 	}
+
 	/**
 	 * Metodo para buscra un cliente en la base de datos
 	 * 
@@ -197,5 +197,75 @@ public class GestionBD {
 		return usuario;
 	}
 
-}
+	public ArrayList<Sesion> buscarSesiones(int IDPelicula, String IDCine) {
+		ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
+		Sesion sesion;
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "select ses.ID_Sesion, ses.Hora, ses.Dia, ses.ID_Sala, ses.ID_Pelicula from peliculas pel \r\n"
+					+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+					+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+					+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
+					+ "' and pel.ID_Pelicula = " + IDPelicula;
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				sesion = new Sesion(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getInt(5));
+				sesiones.add(sesion);
+			}
+			consulta.close();
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sesiones;
+	}
+
+	public ArrayList<Sesion> buscarSesionesPorFecha(int IDPelicula, String IDCine, String dia) {
+		ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
+		Sesion sesion;
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "select ses.ID_Sesion, ses.Hora, ses.Dia, ses.ID_Sala, ses.ID_Pelicula from peliculas pel \r\n"
+					+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+					+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+					+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
+					+ "' and pel.ID_Pelicula = " + IDPelicula + "and ses.Dia like '" + dia + "'";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				sesion = new Sesion(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getInt(5));
+				sesiones.add(sesion);
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sesiones;
+	}
+
+	public Sesion buscarSesion(int IDPelicula, String IDCine, String dia, String hora) {
+		Sesion sesion = new Sesion();
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "select ses.ID_Sesion, ses.Hora, ses.Dia, ses.ID_Sala, ses.ID_Pelicula from peliculas pel \r\n"
+					+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+					+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+					+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
+					+ "' and pel.ID_Pelicula = " + IDPelicula + "and ses.Dia like '" + dia + "' and ses.Hora like '"
+					+ hora + "'";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				sesion = new Sesion(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getInt(5));
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sesion;
+	}
+
+}
