@@ -24,9 +24,7 @@ public class Peliculas extends JPanel {
 
 	public Peliculas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 	
-		peliculas = gestion.DevolverPeliculas();
-	
-
+		peliculas = gestion.devolverPeliculas();
 		/**
 		 * Se le da una altura y una anchura al JPanel. Se hace que no se pueda
 		 * redimensionar la VentanaPrincipal

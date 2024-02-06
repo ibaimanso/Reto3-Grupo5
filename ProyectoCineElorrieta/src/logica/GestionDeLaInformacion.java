@@ -98,8 +98,8 @@ public class GestionDeLaInformacion {
 	}
 
 	public ArrayList<Cine> devolverCines() {
-		cine = gestionBD.buscarCines();
-		return cine;
+		this.cine = gestionBD.buscarCines();
+		return this.cine;
 	}
 
 	public void elegirCine(String nombre) {
@@ -120,13 +120,11 @@ public class GestionDeLaInformacion {
 				cineSelecionado = cine.get(i);
 			}
 		}
-		peliculas = gestionBD.buscarPelis(cineSelecionado.getId_cine());
-		// TODO recoger string; cineSelecionado.getIDCine
 	}
 
-	public ArrayList<Pelicula> DevolverPeliculas() {
-		// cine = gestionBD.buscarCines();
-		return peliculas;
+	public ArrayList<Pelicula> devolverPeliculas() {
+		this.peliculas = gestionBD.buscarPelis(cineSelecionado.getId_cine());
+		return this.peliculas;
 	}
 
 	public void guardarUsuario(String dni) {

@@ -31,14 +31,14 @@ public class VistaPrincipal extends JFrame {
 			setContentPane(new Bienvenida(this));
 			break;
 		case 1:
-			setContentPane(new Login(this, this.gestion));
+			setContentPane(new Login(this, gestion));
 			break;
 		case 2:
-			setContentPane(new Registro(this, this.gestion));
+			setContentPane(new Registro(this, gestion));
 			break;
 		case 3:
 			setContentPane(new Cines(this, gestion));
-
+			break;
 		case 4:
 			setContentPane(new Peliculas(this, gestion));
 			break;

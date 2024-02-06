@@ -52,15 +52,15 @@ public class Cines extends JPanel {
 		lblFondoParaCarrito.setBounds(-373, -279, 600, 397);
 		add(lblFondoParaCarrito);
 
-//		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-//			lblFondoParaCarrito.setVisible(false);
-//			btnCarrito.setVisible(false);
-//			lblNombreUsuario.setVisible(false);
-//		} else {
-//			lblFondoParaCarrito.setVisible(true);
-//			btnCarrito.setVisible(true);
-//			lblNombreUsuario.setVisible(true);
-//		}
+		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
+			lblFondoParaCarrito.setVisible(false);
+			btnCarrito.setVisible(false);
+			lblNombreUsuario.setVisible(false);
+		} else {
+			lblFondoParaCarrito.setVisible(true);
+			btnCarrito.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+		}
 		// Fin de la parte del carrito y nombre del cine
 
 		JLabel lblBienvenida = new JLabel("SELECIONE EL CINE");
