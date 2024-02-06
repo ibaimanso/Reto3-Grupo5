@@ -8,13 +8,13 @@ import java.util.regex.Pattern;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
-
+import controlador.GestionBD;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Entrada;
 import modelobjeto.Pelicula;
+import modelobjeto.Sesion;
 import view.VistaPrincipal;
-import controlador.GestionBD;
 
 public class GestionDeLaInformacion {
 
@@ -24,8 +24,14 @@ public class GestionDeLaInformacion {
 	private ArrayList<Cine> cine;
 	private Cine cineSelecionado;
 	private ArrayList<Pelicula> peliculas;
-	// private Pelicula peliculaSelecionada;
+	private Pelicula peliculaSelecionada;
+	private ArrayList<Sesion> sesiones;
+	private String fecha;
+	private String hora;
+	private Sesion sesionElejida;
 	private ArrayList<Entrada> entradasCompradas;
+
+	private ObjetoManejoFicheros gestionFicheros;
 
 	public GestionDeLaInformacion() {
 		gestionBD = new GestionBD();
@@ -35,6 +41,7 @@ public class GestionDeLaInformacion {
 	/*
 	 * Metodo para encriptar la contraseña en la base de datos
 	 */
+
 	public String desencriptar(String mensajeEncriptado) throws Exception {
 		byte[] mensajeBytes = Base64.getDecoder().decode(mensajeEncriptado);
 		Key claveAES = new SecretKeySpec(CLAVE_ENCRIPTACION.getBytes(), "AES");
@@ -114,17 +121,38 @@ public class GestionDeLaInformacion {
 		return cineSelecionado.getNombrecine();
 	}
 
-	public void selecionarCine(String cineElegido) {
-		for (int i = 0; i < cine.size(); i++) {
-			if (cine.get(i).getNombrecine().equalsIgnoreCase(cineElegido)) {
-				cineSelecionado = cine.get(i);
-			}
-		}
-	}
-
 	public ArrayList<Pelicula> devolverPeliculas() {
 		this.peliculas = gestionBD.buscarPelis(cineSelecionado.getId_cine());
 		return this.peliculas;
+	}
+
+	public void elegirPelicula(Pelicula pelicula) {
+		peliculaSelecionada = pelicula;
+	}
+
+	public ArrayList<Sesion> devolverSesiones() {
+		this.sesiones = gestionBD.buscarSesiones(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine());
+		return this.sesiones;
+	}
+
+	public void elegirDia(String dia) {
+		fecha = dia;
+	}
+
+	public ArrayList<Sesion> devolverSesionesPorDia() {
+		this.sesiones = gestionBD.buscarSesionesPorFecha(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine(),
+				fecha);
+		return this.sesiones;
+	}
+
+	public void elegirHora(String hora) {
+		this.hora = hora;
+	}
+
+	public Sesion devolverSesionPorDiaYHora() {
+		this.sesionElejida = gestionBD.buscarSesion(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine(),
+				fecha, hora);
+		return this.sesionElejida;
 	}
 
 	public void guardarUsuario(String dni) {

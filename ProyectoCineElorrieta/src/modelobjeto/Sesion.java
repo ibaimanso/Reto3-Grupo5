@@ -10,17 +10,14 @@ public class Sesion {
 	public Sesion() {
 
 	}
-	
 
-	public Sesion(int iD_Sesiones, String id_sala, int id_pelicula, String hora, String dia) {
-		super();
+	public Sesion(int iD_Sesiones, String hora, String dia, String id_sala, int id_pelicula) {
 		id_sesiones = iD_Sesiones;
 		this.id_sala = id_sala;
 		this.id_pelicula = id_pelicula;
 		Hora = hora;
 		Dia = dia;
 	}
-
 
 	public int getid_sesiones() {
 		return id_sesiones;
@@ -62,15 +59,10 @@ public class Sesion {
 		Dia = dia;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Sesiones [id_sesiones=" + id_sesiones + ", id_sala=" + id_sala + ", id_pelicula=" + id_pelicula
 				+ ", Hora=" + Hora + ", Dia=" + Dia + "]";
 	}
-	
-
-	
-	
 
 }

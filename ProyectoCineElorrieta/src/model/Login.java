@@ -20,7 +20,7 @@ import view.VistaPrincipal;
 import java.awt.Dimension;
 
 public class Login extends JPanel {
-
+	private String lblUsuario;
 	public JTextField txtfieldUsuario;
 	public JTextField textFieldContraseña;
 	// private GestionDeLaInformacion gestion;
