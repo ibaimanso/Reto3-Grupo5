@@ -3,6 +3,7 @@ package logica;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.crypto.Cipher;
@@ -102,7 +103,7 @@ public class GestionDeLaInformacion {
 		return cine;
 	}
 
-	public void ElegirCine(String nombre) {
+	public void elegirCine(String nombre) {
 		for (int i = 0; i < cine.size(); i++) {
 			if (cine.get(i).getNombrecine().equalsIgnoreCase(nombre)) {
 				cineSelecionado = cine.get(i);
@@ -110,8 +111,17 @@ public class GestionDeLaInformacion {
 		}
 	}
 
-	public String SacarCine() {
+	public String sacarCine() {
 		return cineSelecionado.getNombrecine();
+	}
+
+	public void selecionarCine(String cineElegido) {
+		for (int i = 0; i < cine.size(); i++) {
+			if (cine.get(i).getNombrecine().equalsIgnoreCase(cineElegido)) {
+				cineSelecionado = cine.get(i);
+			}
+		}
+		// TODO recoger string; cineSelecionado.getIDCine
 	}
 
 	public ArrayList<Pelicula> DevolverPeliculas() {
@@ -121,15 +131,10 @@ public class GestionDeLaInformacion {
 
 	public void guardarUsuario(String dni) {
 		this.usuario = gestionBD.buscarUsuario(dni);
-		System.out.println(usuario.getDni());
-		System.out.println(usuario.getNombrecli());
-		System.out.println(usuario.getApellido());
-		System.out.println(usuario.getSexo());
-		System.out.println(usuario.getContraseña());
 	}
 
 	public String devolverNombreUsuario() {
-		String respuesta = usuario.getNombrecli();
+		String respuesta = usuario.getNombrecli() + " " + usuario.getApellido();
 		return respuesta;
 	}
 
