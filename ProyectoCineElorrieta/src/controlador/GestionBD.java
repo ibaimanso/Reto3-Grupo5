@@ -28,7 +28,7 @@ public class GestionBD {
 			// conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cine",
 			// "root", "");
 			//conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
 
 
 		} catch (ClassNotFoundException e) {
@@ -152,10 +152,11 @@ public class GestionBD {
 	    Pelicula pelicula;
 	    try {
 	        Statement consulta = conexion.createStatement();
-	        String query = "select pel.ID_Pelicula, pel.Nombre_Pelicula ,pel.Genero_Pelicula, pel.Duracion, pel.Precio, min(ses.Dia) as DiaMinimo, min(ses.Hora) HoraMinima from cinegrupo5.peliculas pel \r\n"
-	        		+ "join cinegrupo5.sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
-	        		+ "join cinegrupo5.salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
-	        		+ "join cinegrupo5.cines cin on sal.ID_Cine = cin.ID_Cine\r\n"
+	        String query = "select pel.ID_Pelicula, pel.Nombre_Pelicula ,pel.Genero_Pelicula, pel.Duracion, pel.Precio, min(ses.Dia) as DiaMinimo, min(ses.Hora) HoraMinima "
+	        		+ "from peliculas pel \r\n"
+	        		+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+	        		+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+	        		+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n"
 	        		+ "where cin.ID_Cine like '"+ idCine+ "'\r\n"
 	        		+ "group by pel.ID_Pelicula\r\n"
 	        		+ "order by DiaMinimo asc, HoraMinima asc; ";
