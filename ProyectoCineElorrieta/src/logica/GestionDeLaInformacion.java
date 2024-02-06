@@ -111,9 +111,13 @@ public class GestionDeLaInformacion {
 		return cineSelecionado.getNombrecine();
 	}
 
+	
+
 	public ArrayList<Cine> DevolverPeliculas() {
 		// cine = gestionBD.buscarCines();
 		return cine;
 	}
 
-}
+
+	}
+

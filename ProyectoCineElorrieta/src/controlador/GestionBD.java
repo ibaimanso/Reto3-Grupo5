@@ -148,17 +148,24 @@ public class GestionBD {
 		return cines;
 	}
 
-	public ArrayList<Pelicula> buscarPelis() {
+	public ArrayList<Pelicula> buscarPelis(String idCine) {
 	    ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+	    Pelicula pelicula;
 	    try {
 	        Statement consulta = conexion.createStatement();
-	        String query = "SELECT * FROM peliculas ";
+	        String query = "select pel.ID_Pelicula, pel.Nombre_Pelicula ,pel.Genero_Pelicula, pel.Duracion, pel.Precio, min(ses.Dia) as DiaMinimo, min(ses.Hora) HoraMinima from cinegrupo5.peliculas pel \r\n"
+	        		+ "join cinegrupo5.sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+	        		+ "join cinegrupo5.salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+	        		+ "join cinegrupo5.cines cin on sal.ID_Cine = cin.ID_Cine\r\n"
+	        		+ "where cin.ID_Cine like '"+ idCine+ "'\r\n"
+	        		+ "group by pel.ID_Pelicula\r\n"
+	        		+ "order by DiaMinimo asc, HoraMinima asc; ";
 	        ResultSet resultadoConsulta = consulta.executeQuery(query);
 	        while (resultadoConsulta.next()) {
-	           peliculas.add(new Pelicula(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
-	                    resultadoConsulta.getString(3), resultadoConsulta.getInt(4), resultadoConsulta.getDouble(5)));
-	        }
-	        System.out.println(peliculas);
+	       pelicula = new Pelicula(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
+	                    resultadoConsulta.getString(3), resultadoConsulta.getInt(4), resultadoConsulta.getDouble(5));
+	       peliculas.add(pelicula);
+	      }
 	        consulta.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace();

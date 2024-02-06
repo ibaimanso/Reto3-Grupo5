@@ -8,8 +8,17 @@ public class Pelicula {
 	
 	
 
-	public Pelicula(int idPelicula, String nombrePelicula, String generoPelicula, int duracion, double precio) {
+	public Pelicula() {
+		
+	}
 
+	public Pelicula(int idpeli, String nombrepeli, String genero, int duracion, double precio) {
+		super();
+		this.idpeli = idpeli;
+		this.nombrepeli = nombrepeli;
+		this.genero = genero;
+		this.duracion = duracion;
+		this.precio = precio;
 	}
 
 	public String toString() {
