@@ -1,22 +1,37 @@
 package modelobjeto;
 
 public class Pelicula {
-	private String nombrepeli;
 	private int idpeli;
-	private int duracion;
+	private String nombrepeli;
 	private String genero;
+	private int duracion;
 	
+	
+
 	public Pelicula() {
 		
 	}
-	public Pelicula(String nombrepeli, int idpeli, int duracion,String genero ) {
-		
-		
-		this.nombrepeli = nombrepeli;
+
+	public Pelicula(int idpeli, String nombrepeli, String genero, int duracion, double precio) {
+		super();
 		this.idpeli = idpeli;
-		this.duracion = duracion;
+		this.nombrepeli = nombrepeli;
 		this.genero = genero;
-		
+		this.duracion = duracion;
+		this.precio = precio;
+	}
+
+	public String toString() {
+		return "Pelicula [idpeli=" + idpeli + ", nombrepeli=" + nombrepeli + ", genero=" + genero + ", duracion="
+				+ duracion + ", precio=" + precio + "]";
+	}
+
+	public int getIdpeli() {
+		return idpeli;
+	}
+
+	public void setIdpeli(int idpeli) {
+		this.idpeli = idpeli;
 	}
 
 	public String getNombrepeli() {
@@ -27,21 +42,6 @@ public class Pelicula {
 		this.nombrepeli = nombrepeli;
 	}
 
-	
-	public int getIdpeli() {
-		return idpeli;
-	}
-	public void setIdpeli(int idpeli) {
-		this.idpeli = idpeli;
-	}
-	public int getDuracion() {
-		return duracion;
-	}
-
-	public void setDuracion(int duracion) {
-		this.duracion = duracion;
-	}
-
 	public String getGenero() {
 		return genero;
 	}
@@ -50,9 +50,23 @@ public class Pelicula {
 		this.genero = genero;
 	}
 
-	@Override
-	public String toString() {
-		return "Pelicula " + nombrepeli + "/n idpeli" + idpeli + "/n duracion" + duracion + "/n genero" + genero;
+	public int getDuracion() {
+		return duracion;
 	}
+
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	private double precio;
+
 
 }

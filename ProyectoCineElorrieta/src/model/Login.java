@@ -15,14 +15,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import controlador.GestionBD;
+import logica.GestionDeLaInformacion;
 import view.VistaPrincipal;
 import java.awt.Dimension;
 
 public class Login extends JPanel {
 	private String lblUsuario;
+	public JTextField txtfieldUsuario;
+	public JTextField textFieldContraseña;
+	// private GestionDeLaInformacion gestion;
 
-	public Login(VistaPrincipal ventana) {
+	public Login(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -82,6 +85,19 @@ public class Login extends JPanel {
 		 */
 		JButton btnContinuar = new JButton("Login");
 		btnContinuar.setBackground(Color.LIGHT_GRAY);
+		btnContinuar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (gestion.testUsuarioYContraseña(txtfieldUsuario.getText(), textFieldContraseña.getText()) == true) {
+					JOptionPane.showMessageDialog(null, "Has iniciado sesión");
+					gestion.guardarUsuario(txtfieldUsuario.getText());
+					ventana.cambiarDePanel(3);
+				} else {
+					JOptionPane.showMessageDialog(null, "usuario o contraseña erronea");
+
+				}
+			}
+		});
 
 		/**
 		 * KeyListener para el campo de contraseña
