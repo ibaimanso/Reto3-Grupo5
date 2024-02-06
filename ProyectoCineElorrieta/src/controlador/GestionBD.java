@@ -6,10 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
-import model.Peliculas;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Pelicula;
@@ -38,8 +35,8 @@ public class GestionBD {
 			System.out.println("Base de datos no encontrada");
 		}
 
-		System.out.println("Conectando...");
-		System.out.println("Conexion establecida");
+//		System.out.println("Conectando...");
+//		System.out.println("Conexion establecida");
 
 	}
 
@@ -172,5 +169,30 @@ public class GestionBD {
 	    }
 	    return peliculas;
 	}
+	/**
+	 * Metodo para buscra un cliente en la base de datos
+	 * 
+	 * @param dni
+	 * @return
+	 */
+
+	public Cliente buscarUsuario(String dni) {
+		Cliente usuario = new Cliente();
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "SELECT * FROM clientes cli where cli.DNI like '" + dni + "'";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				usuario = new Cliente(resultadoConsulta.getString(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getString(5));
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return usuario;
+	}
+
 }
 

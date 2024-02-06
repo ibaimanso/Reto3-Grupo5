@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.Entrada;
 import modelobjeto.Pelicula;
 import view.VistaPrincipal;
 import controlador.GestionBD;
@@ -19,14 +20,16 @@ public class GestionDeLaInformacion {
 
 	private GestionBD gestionBD;
 	private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
+	private Cliente usuario;
 	private ArrayList<Cine> cine;
 	private Cine cineSelecionado;
 	private ArrayList<Pelicula> peliculas;
-	private Pelicula peliculaSelecionada;
+	// private Pelicula peliculaSelecionada;
+	private ArrayList<Entrada> entradasCompradas;
 
 	public GestionDeLaInformacion() {
 		gestionBD = new GestionBD();
-
+		entradasCompradas = new ArrayList<Entrada>();
 	}
 
 	/*
@@ -94,12 +97,12 @@ public class GestionDeLaInformacion {
 		return login;
 	}
 
-	public ArrayList<Cine> DevolverCines() {
+	public ArrayList<Cine> devolverCines() {
 		cine = gestionBD.buscarCines();
 		return cine;
 	}
 
-	public void ElegirCine(String nombre) {
+	public void elegirCine(String nombre) {
 		for (int i = 0; i < cine.size(); i++) {
 			if (cine.get(i).getNombrecine().equalsIgnoreCase(nombre)) {
 				cineSelecionado = cine.get(i);
@@ -107,17 +110,37 @@ public class GestionDeLaInformacion {
 		}
 	}
 
-	public String SacarCine() {
+	public String sacarCine() {
 		return cineSelecionado.getNombrecine();
 	}
 
-	
+	public void selecionarCine(String cineElegido) {
+		for (int i = 0; i < cine.size(); i++) {
+			if (cine.get(i).getNombrecine().equalsIgnoreCase(cineElegido)) {
+				cineSelecionado = cine.get(i);
+			}
+		}
+		peliculas = gestionBD.buscarPelis(cineSelecionado.getId_cine());
+		// TODO recoger string; cineSelecionado.getIDCine
+	}
 
-	public ArrayList<Cine> DevolverPeliculas() {
+	public ArrayList<Pelicula> DevolverPeliculas() {
 		// cine = gestionBD.buscarCines();
-		return cine;
+		return peliculas;
 	}
 
-
+	public void guardarUsuario(String dni) {
+		this.usuario = gestionBD.buscarUsuario(dni);
 	}
 
+	public String devolverNombreUsuario() {
+		String respuesta = usuario.getNombrecli() + " " + usuario.getApellido();
+		return respuesta;
+	}
+
+	public Integer devolverLongitudDeEntradas() {
+		Integer longitudEntradas = entradasCompradas.size();
+		return longitudEntradas;
+	}
+
+}

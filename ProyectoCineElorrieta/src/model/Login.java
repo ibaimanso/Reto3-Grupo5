@@ -23,11 +23,9 @@ public class Login extends JPanel {
 
 	public JTextField txtfieldUsuario;
 	public JTextField textFieldContraseña;
-	private GestionDeLaInformacion gestion;
+	// private GestionDeLaInformacion gestion;
 
-	public Login(VistaPrincipal ventana) {
-
-		gestion = new GestionDeLaInformacion();
+	public Login(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		/**
 		 * Tamaño del panel y otras funciones
 		 */
@@ -40,7 +38,7 @@ public class Login extends JPanel {
 		panelLogin.setLayout(null);
 
 		/**
-		 * Una label con el nombre "Cine Elorrieta" 
+		 * Una label con el nombre "Cine Elorrieta"
 		 */
 		JLabel lblCineElorrieta = new JLabel("Finest Cines");
 		lblCineElorrieta.setHorizontalAlignment(SwingConstants.LEFT);
@@ -81,64 +79,66 @@ public class Login extends JPanel {
 		panelLogin.add(textFieldContraseña);
 
 		/**
-		 * Boton cuya función es que pase del PanelLogin al PanelListaGeneros o al PanelAdmin, dependiendo del
-		// usuario y contraseña, cuando el usuario y contraseña estén bien, si no salta un error.
+		 * Boton cuya función es que pase del PanelLogin al PanelListaGeneros o al
+		 * PanelAdmin, dependiendo del // usuario y contraseña, cuando el usuario y
+		 * contraseña estén bien, si no salta un error.
 		 */
 		JButton btnContinuar = new JButton("Login");
 		btnContinuar.setBackground(Color.LIGHT_GRAY);
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			if (gestion.testUsuarioYContraseña(txtfieldUsuario.getText(), textFieldContraseña.getText()) == true) {
-				JOptionPane.showMessageDialog(null, "Has iniciado sesión");
-				ventana.cambiarDePanel(3);
-			}else {
-				JOptionPane.showMessageDialog(null,"usuario o contraseña erronea");
 
+				if (gestion.testUsuarioYContraseña(txtfieldUsuario.getText(), textFieldContraseña.getText()) == true) {
+					JOptionPane.showMessageDialog(null, "Has iniciado sesión");
+					gestion.guardarUsuario(txtfieldUsuario.getText());
+					ventana.cambiarDePanel(3);
+				} else {
+					JOptionPane.showMessageDialog(null, "usuario o contraseña erronea");
 
-				
-			}
+				}
 			}
 		});
 
 		/**
-		 * KeyListener para el campo de contraseña 
+		 * KeyListener para el campo de contraseña
 		 */
-        textFieldContraseña.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
+		textFieldContraseña.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
 
-            /**
-             * Llama al ActionListener del botón si se presiona "Enter" en el campo de contraseña
-             */
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    btnContinuar.doClick();
-                }
-            }
+			/**
+			 * Llama al ActionListener del botón si se presiona "Enter" en el campo de
+			 * contraseña
+			 */
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					btnContinuar.doClick();
+				}
+			}
 
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
+			@Override
+			public void keyReleased(KeyEvent e) {
+			}
+		});
 		btnContinuar.setBounds(200, 305, 175, 20);
 		panelLogin.add(btnContinuar);
 
 		/**
 		 * Label para el fondo del panel
 		 */
-		
+
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setBackground(Color.LIGHT_GRAY);
 		btnRegistrarse.setBounds(200, 336, 175, 20);
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(null, "Complete los campos con sus datos, por favor");
-					ventana.cambiarDePanel(2);
-			}});
-		
+				JOptionPane.showMessageDialog(null, "Complete los campos con sus datos, por favor");
+				ventana.cambiarDePanel(2);
+			}
+		});
+
 		panelLogin.add(btnRegistrarse);
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon("multimedia/FondoLogin.png"));
@@ -146,6 +146,6 @@ public class Login extends JPanel {
 		lblFondo.setFocusable(false);
 		panelLogin.add(lblFondo);
 		return;
-	
-			}
+
+	}
 }

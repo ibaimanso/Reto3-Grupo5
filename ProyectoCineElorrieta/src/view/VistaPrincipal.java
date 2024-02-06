@@ -1,21 +1,23 @@
 package view;
 
 import javax.swing.JFrame;
-import controlador.GestionBD;
+
+import logica.GestionDeLaInformacion;
 import model.Bienvenida;
 import model.Cines;
 import model.Login;
 import model.Peliculas;
 import model.Registro;
-import modelobjeto.Cine;
 
 import java.awt.Toolkit;
 
 public class VistaPrincipal extends JFrame {
+	private GestionDeLaInformacion gestion;
 
 	public VistaPrincipal() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gestion = new GestionDeLaInformacion();
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
-		setVisible(true);
 		cambiarDePanel(0);
 		setSize(620, 420);
 		setResizable(false);
@@ -29,28 +31,24 @@ public class VistaPrincipal extends JFrame {
 			setContentPane(new Bienvenida(this));
 			break;
 		case 1:
-			setContentPane(new Login(this));
+			setContentPane(new Login(this, this.gestion));
 			break;
 		case 2:
-			setContentPane(new Registro(this));
+			setContentPane(new Registro(this, this.gestion));
 			break;
 		case 3:
-			setContentPane(new Cines(this));
+			setContentPane(new Cines(this, gestion));
 
 		case 4:
-			setContentPane(new Peliculas(this));
+			setContentPane(new Peliculas(this, gestion));
 			break;
 		}
 	}
 
 	public static void main(String[] args) {
-
 		VistaPrincipal ventana = new VistaPrincipal();
-		ventana.cambiarDePanel(4);
+//		ventana.cambiarDePanel(1);
 		ventana.setVisible(true);
-		ventana.setSize(620, 420);
-		ventana.setResizable(false);
-
 	}
 
 }

@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import view.VistaPrincipal;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import controlador.GestionBD;
+import logica.GestionDeLaInformacion;
 import modelobjeto.Cine;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -17,36 +17,22 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class Cines extends JPanel {
-	private GestionBD gestion;
 	private ArrayList<Cine> cines;
 
-	public Cines(VistaPrincipal ventana) {
-		gestion = new GestionBD();
-		cines = gestion.buscarCines();
+	public Cines(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
+		cines = gestion.devolverCines();
 
 		// setSize(ventana.getSize());
 		setSize(620, 420);
 		setVisible(true);
 		setLayout(null);
 
+		// Inicio de la parte del carrito y nombre del cine
 		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
+		lblNombreUsuario.setText(gestion.devolverNombreUsuario());
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(10, 11, 145, 18);
 		add(lblNombreUsuario);
-
-		JLabel lblBienvenida = new JLabel("SELECIONE EL CINE");
-		lblBienvenida.setForeground(new Color(255, 255, 255));
-		lblBienvenida.setFont(new Font("High Tower Text", Font.BOLD, 35));
-		lblBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBienvenida.setBounds(37, 74, 540, 89);
-		add(lblBienvenida);
-
-		JComboBox<String> comboBox = new JComboBox<String>();
-		for (int i = 0; i < cines.size(); i++) {
-			comboBox.addItem(cines.get(i).getNombrecine());
-		}
-		comboBox.setBounds(207, 174, 207, 22);
-		add(comboBox);
 
 		JButton btnCarrito = new JButton("");
 		btnCarrito.setFocusPainted(false);
@@ -66,10 +52,36 @@ public class Cines extends JPanel {
 		lblFondoParaCarrito.setBounds(-373, -279, 600, 397);
 		add(lblFondoParaCarrito);
 
+//		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
+//			lblFondoParaCarrito.setVisible(false);
+//			btnCarrito.setVisible(false);
+//			lblNombreUsuario.setVisible(false);
+//		} else {
+//			lblFondoParaCarrito.setVisible(true);
+//			btnCarrito.setVisible(true);
+//			lblNombreUsuario.setVisible(true);
+//		}
+		// Fin de la parte del carrito y nombre del cine
+
+		JLabel lblBienvenida = new JLabel("SELECIONE EL CINE");
+		lblBienvenida.setForeground(new Color(255, 255, 255));
+		lblBienvenida.setFont(new Font("High Tower Text", Font.BOLD, 35));
+		lblBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBienvenida.setBounds(37, 74, 540, 89);
+		add(lblBienvenida);
+
+		JComboBox<String> comboBox = new JComboBox<String>();
+		for (int i = 0; i < cines.size(); i++) {
+			comboBox.addItem(cines.get(i).getNombrecine());
+		}
+		comboBox.setBounds(207, 174, 207, 22);
+		add(comboBox);
+
 		JButton btnNewButton = new JButton("¿Volver al login?");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO devolver variables a su valor original y volver a login
+				// TODO devolver variables a valor original
+				ventana.cambiarDePanel(1);
 			}
 		});
 		btnNewButton.setBounds(407, 342, 170, 23);
@@ -77,11 +89,9 @@ public class Cines extends JPanel {
 
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				comboBox.getSelectedItem();
-				
+			public void actionPerformed(ActionEvent e) {				
+				gestion.elegirCine((String) comboBox.getSelectedItem());
+				ventana.cambiarDePanel(4);
 			}
 		});
 		btnAceptar.setBounds(207, 238, 207, 23);

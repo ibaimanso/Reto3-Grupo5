@@ -3,6 +3,7 @@ package model;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import controlador.GestionBD;
+import logica.GestionDeLaInformacion;
 import modelobjeto.Cliente;
 import view.VistaPrincipal;
 import java.awt.Dimension;
@@ -21,105 +22,103 @@ public class Registro extends JPanel {
 	private JTextField textFieldApellido;
 	private JTextField textFieldContraseña;
 
-	
-	
-	public Registro(VistaPrincipal ventana) {
-		
+	public Registro(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
+
 		setSize(new Dimension(609, 582));
 		setVisible(true);
 		setLayout(null);
-		
+
 		JLabel lblFinestCines = new JLabel("FINEST CINES");
 		lblFinestCines.setToolTipText("");
 		lblFinestCines.setFont(new Font("Lucida Bright", Font.PLAIN, 25));
 		lblFinestCines.setBounds(170, 73, 359, 90);
 		add(lblFinestCines);
-		
+
 		JLabel lblDNI = new JLabel("DNI");
 		lblDNI.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		lblDNI.setBounds(52, 174, 67, 36);
 		add(lblDNI);
-		
+
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		lblNombre.setBounds(52, 238, 67, 36);
 		add(lblNombre);
-		
+
 		txtDni = new JTextField();
 		txtDni.setBounds(52, 206, 134, 20);
 		add(txtDni);
 		txtDni.setColumns(10);
-		
+
 		textFieldNombre = new JTextField();
 		textFieldNombre.setColumns(10);
 		textFieldNombre.setBounds(52, 273, 134, 20);
 		add(textFieldNombre);
-		
+
 		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		lblApellido.setBounds(52, 304, 67, 36);
 		add(lblApellido);
-		
+
 		JLabel lblGenero = new JLabel("Genero");
 		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		lblGenero.setBounds(284, 174, 67, 36);
 		add(lblGenero);
-		
+
 		textFieldApellido = new JTextField();
 		textFieldApellido.setColumns(10);
 		textFieldApellido.setBounds(52, 340, 134, 20);
 		add(textFieldApellido);
-		
+
 		JLabel lblContraseña = new JLabel("Contraseña");
 		lblContraseña.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		lblContraseña.setBounds(282, 238, 123, 36);
 		add(lblContraseña);
-		
+
 		textFieldContraseña = new JTextField();
 		textFieldContraseña.setColumns(10);
 		textFieldContraseña.setBounds(284, 273, 156, 20);
 		add(textFieldContraseña);
-		
+
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\in1dw3\\git\\Reto3-Grupo5\\ProyectoCineElorrieta\\multimedia\\FondoLogin.png"));
+		lblNewLabel.setIcon(new ImageIcon(
+				"C:\\Users\\in1dw3\\git\\Reto3-Grupo5\\ProyectoCineElorrieta\\multimedia\\FondoLogin.png"));
 		lblNewLabel.setBounds(10, -25, 560, 556);
-		add(lblNewLabel);		
-		
+		add(lblNewLabel);
+
 		JButton btnRegistro = new JButton("Registrarse");
 		btnRegistro.setBounds(284, 339, 156, 23);
 		add(btnRegistro);
-		
+
 		JRadioButton rdbHombre = new JRadioButton("H");
 		rdbHombre.setBounds(284, 205, 109, 23);
 		add(rdbHombre);
-		
+
 		JRadioButton rdbMujer = new JRadioButton("M");
 		rdbMujer.setBounds(396, 205, 109, 23);
 		add(rdbMujer);
-	
-		
+
 		/*
-		 * Función para que los textfields de el panel de registro
-		 * se guarden en los atributos de el objeto cliente al hacer click en el boton de registro.
+		 * Función para que los textfields de el panel de registro se guarden en los
+		 * atributos de el objeto cliente al hacer click en el boton de registro.
 		 */
-		
+
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cliente cliente = new Cliente();
-				cliente.setDni(txtDni.getText()); 
+				cliente.setDni(txtDni.getText());
 				cliente.setNombrecli(textFieldNombre.getText());
 				cliente.setApellido(textFieldApellido.getText());
 				cliente.setContraseña(textFieldContraseña.getText());
-				
-				
-				if(rdbHombre.isSelected()) {
+
+				if (rdbHombre.isSelected()) {
 					cliente.setSexo(rdbHombre.getText());
 				}
-				if(rdbMujer.isSelected()) {
+				if (rdbMujer.isSelected()) {
 					cliente.setSexo(rdbMujer.getText());
 				}
 				GestionBD gestionBd = new GestionBD();
 				gestionBd.insertUsuario(cliente, ventana);
-			}});
+			}
+		});
 	}
-	}
+}
