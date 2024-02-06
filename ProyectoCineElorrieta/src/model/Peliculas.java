@@ -2,9 +2,7 @@ package model;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import controlador.GestionBD;
 import logica.GestionDeLaInformacion;
-import modelobjeto.Cine;
 import modelobjeto.Pelicula;
 import view.VistaPrincipal;
 import java.awt.Font;
@@ -19,7 +17,6 @@ import java.awt.event.ActionEvent;
 
 public class Peliculas extends JPanel {
 	private int contador;
-	private GestionBD gestion;
 	private ArrayList<Pelicula> peliculas;
 
 	public Peliculas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
@@ -65,15 +62,6 @@ public class Peliculas extends JPanel {
 		lblPrecio.setBounds(176, 125, 129, 27);
 		panel.add(lblPrecio);
 		
-		
-		JButton btnUltimo = new JButton("Ultima");
-		btnUltimo.setBounds(99, 241, 89, 23);
-		panel.add(btnUltimo);
-		
-		JButton btnPrimero = new JButton("Primera");
-		btnPrimero.setBounds(10, 241, 89, 23);
-		panel.add(btnPrimero);
-		
 		JLabel lblFinestCines = new JLabel("FINEST CINES");
 		lblFinestCines.setBounds(32, -135, 399, 178);
 		panel.add(lblFinestCines);
@@ -92,13 +80,7 @@ public class Peliculas extends JPanel {
 					lblDuracion.setText((peliculas.get(contador).getDuracion() + ""));
 					lblGenero.setText(peliculas.get(contador).getGenero());
 					lblPrecio.setText(peliculas.get(contador).getPrecio() + "");
-					if (contador == 0) {
-						btnPrimero.setEnabled(false);
-						btnUltimo.setEnabled(true);
-					} else {
-						btnPrimero.setEnabled(true);
-						btnUltimo.setEnabled(true);
-					}
+				
 					}
 				}
 			}
@@ -116,13 +98,8 @@ public class Peliculas extends JPanel {
 						lblDuracion.setText(peliculas.get(contador).getDuracion() + "");
 						lblGenero.setText(peliculas.get(contador).getGenero());
 						lblPrecio.setText(peliculas.get(contador).getPrecio() + "");
-						if (contador == 0) {
-							btnPrimero.setEnabled(false);
-							btnUltimo.setEnabled(true);
-						} else {
-							btnPrimero.setEnabled(true);
-							btnUltimo.setEnabled(true);
-						}
+				
+						
 				}
 			}
 		});
