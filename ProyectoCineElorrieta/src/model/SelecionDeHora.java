@@ -69,11 +69,21 @@ public class SelecionDeHora extends JPanel {
 			comboBox.addItem(sesiones.get(i).getHora());
 		}
 
+		JButton btnVolver = new JButton("");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.cambiarDePanel(3);
+			}
+		});
+		btnVolver.setIcon(new ImageIcon("multimedia/flecha_volver (1).png"));
+		btnVolver.setBounds(479, 11, 46, 43);
+		panel.add(btnVolver);
+
 		JButton btnElegirFecha = new JButton("Aceptar");
 		btnElegirFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestion.elegirHora((String) comboBox.getSelectedItem());
-				//ventana.cambiarDePanel(7);
+				// ventana.cambiarDePanel(7);
 			}
 		});
 		btnElegirFecha.setBounds(358, 148, 134, 23);
