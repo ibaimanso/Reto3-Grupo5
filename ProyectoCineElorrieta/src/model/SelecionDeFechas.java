@@ -63,10 +63,10 @@ public class SelecionDeFechas extends JPanel {
 
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(358, 70, 134, 22);
-		panel.add(comboBox);
 		for (int i = 0; i < dias.size(); i++) {
 			comboBox.addItem(dias.get(i));
 		}
+		panel.add(comboBox);
 
 		JButton btnElegirFecha = new JButton("Aceptar");
 		btnElegirFecha.addActionListener(new ActionListener() {
