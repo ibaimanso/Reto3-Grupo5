@@ -19,7 +19,7 @@ public class VistaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gestion = new GestionDeLaInformacion();
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
-		cambiarDePanel(0);
+		//cambiarDePanel(0);
 		setSize(620, 420);
 		setResizable(false);
 
@@ -51,7 +51,7 @@ public class VistaPrincipal extends JFrame {
 
 	public static void main(String[] args) {
 		VistaPrincipal ventana = new VistaPrincipal();
-//		ventana.cambiarDePanel(1);
+	ventana.cambiarDePanel(0);
 		ventana.setVisible(true);
 	}
 

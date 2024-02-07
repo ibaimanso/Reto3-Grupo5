@@ -3,6 +3,7 @@ package model;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import logica.GestionDeLaInformacion;
+import modelobjeto.Cine;
 import modelobjeto.Pelicula;
 import view.VistaPrincipal;
 import java.awt.Font;
@@ -20,10 +21,15 @@ public class Peliculas extends JPanel {
 	private JButton btnUltimo;
 	private JButton btnPrimero;
 	private ArrayList<Pelicula> peliculas;
+	private String cineElegido;
+
 
 	public Peliculas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 
+	
 		peliculas = gestion.devolverPeliculas();
+		cineElegido = gestion.sacarCine();
+
 
 		/**
 		 * Se le da una altura y una anchura al JPanel. Se hace que no se pueda
@@ -36,9 +42,11 @@ public class Peliculas extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setForeground(Color.WHITE);
-		panel.setBounds(31, 82, 623, 264);
+		panel.setBounds(31, 93, 623, 264);
 		add(panel);
 		panel.setLayout(null);
+		
+		
 
 		JLabel fotopelicula = new JLabel("");
 		ImageIcon icon = new ImageIcon("multimedia/" + peliculas.get(contador).getNombrepeli() + ".jpg");
@@ -99,11 +107,6 @@ public class Peliculas extends JPanel {
 		});
 		panel.add(btnPrimero);
 
-		JLabel lblFinestCines = new JLabel("FINEST CINES");
-		lblFinestCines.setBounds(32, -135, 399, 178);
-		panel.add(lblFinestCines);
-		lblFinestCines.setFont(new Font("Ink Free", Font.BOLD, 39));
-
 		JButton btnAtras = new JButton("<");
 		btnAtras.setBounds(10, 206, 89, 23);
 		panel.add(btnAtras);
@@ -133,6 +136,35 @@ public class Peliculas extends JPanel {
 		});
 		btnAdelante.setBounds(99, 206, 89, 23);
 		panel.add(btnAdelante);
+		
+		JButton btnComprar = new JButton("Sesiones");
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.cambiarDePanel(5);
+			}
+		});
+		btnComprar.setBounds(409, 206, 116, 23);
+		panel.add(btnComprar);
+		
+		JButton btnVolver = new JButton("");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.cambiarDePanel(3);
+			}
+		});
+		btnVolver.setIcon(new ImageIcon("multimedia/flecha_volver (1).png"));
+		btnVolver.setBounds(479, 11, 46, 43);
+		panel.add(btnVolver);
+		
+		JLabel lblNombreEmpresa = new JLabel("FINEST CINES");
+		lblNombreEmpresa.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 34));
+		lblNombreEmpresa.setBounds(31, 11, 431, 46);
+		add(lblNombreEmpresa);
+		
+		JLabel lblCineElegido = new JLabel(cineElegido);
+		lblCineElegido.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 11));
+		lblCineElegido.setBounds(31, 68, 95, 14);
+		add(lblCineElegido);
 
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
