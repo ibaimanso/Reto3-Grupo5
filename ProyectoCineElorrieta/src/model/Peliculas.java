@@ -36,6 +36,42 @@ public class Peliculas extends JPanel {
 		setVisible(true);
 		setLayout(null);
 
+		// Inicio de la parte del carrito y nombre del cine
+		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
+		lblNombreUsuario.setText(gestion.devolverNombreUsuario());
+		lblNombreUsuario.setForeground(new Color(255, 255, 255));
+		lblNombreUsuario.setBounds(495, 11, 145, 18);
+		add(lblNombreUsuario);
+
+		JButton btnCarrito = new JButton("");
+		btnCarrito.setFocusPainted(false);
+		btnCarrito.setBorderPainted(false);
+		// btnCarrito.setContentAreaFilled(false);
+		btnCarrito.setBackground(new Color(0, 0, 0));
+		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
+		btnCarrito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCarrito.setBounds(523, 29, 60, 60);
+		add(btnCarrito);
+
+		JLabel lblFondoParaCarrito = new JLabel("");
+		lblFondoParaCarrito.setIcon(new ImageIcon("multimedia/rectangulo-negro-login.png"));
+		lblFondoParaCarrito.setBounds(435, -286, 600, 397);
+		add(lblFondoParaCarrito);
+
+		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
+			lblFondoParaCarrito.setVisible(false);
+			btnCarrito.setVisible(false);
+			lblNombreUsuario.setVisible(false);
+		} else {
+			lblFondoParaCarrito.setVisible(true);
+			btnCarrito.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+		}
+		// Fin de la parte del carrito y nombre del cine
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setForeground(Color.WHITE);

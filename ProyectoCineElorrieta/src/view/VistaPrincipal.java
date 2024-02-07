@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import logica.GestionDeLaInformacion;
 import model.Bienvenida;
 import model.Cines;
+import model.CompraDeEntradas;
 import model.Login;
 import model.Peliculas;
 import model.Registro;
@@ -20,7 +21,7 @@ public class VistaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gestion = new GestionDeLaInformacion();
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
-		//cambiarDePanel(0);
+		// cambiarDePanel(0);
 		setSize(620, 420);
 		setResizable(false);
 
@@ -50,12 +51,15 @@ public class VistaPrincipal extends JFrame {
 		case 6:
 			setContentPane(new SelecionDeHora(this, gestion));
 			break;
+		case 7:
+			setContentPane(new CompraDeEntradas(this, gestion));
+			break;
 		}
 	}
 
 	public static void main(String[] args) {
 		VistaPrincipal ventana = new VistaPrincipal();
-	ventana.cambiarDePanel(0);
+		ventana.cambiarDePanel(0);
 		ventana.setVisible(true);
 	}
 

@@ -6,28 +6,32 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import logica.GestionDeLaInformacion;
 import modelobjeto.Pelicula;
+import modelobjeto.Sesion;
 import view.VistaPrincipal;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
-public class SelecionDeFechas extends JPanel {
+public class CompraDeEntradas extends JPanel {
 	private Pelicula peliculaElegida;
-	private ArrayList<String> dias;
+	private Sesion sesion;
+	private int contador = 0;
 
-	public SelecionDeFechas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
+	public CompraDeEntradas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		peliculaElegida = gestion.devolverPelicula();
-		dias = gestion.devolverSesiones();
+		sesion = gestion.devolverSesionPorDiaYHora();
 		// setSize(ventana.getSize());
 		setSize(620, 420);
 		setVisible(true);
 		setLayout(null);
-		
+
 		// Inicio de la parte del carrito y nombre del cine
 		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
 		lblNombreUsuario.setText(gestion.devolverNombreUsuario());
@@ -97,13 +101,6 @@ public class SelecionDeFechas extends JPanel {
 		lblPrecio.setBounds(176, 125, 129, 27);
 		panel.add(lblPrecio);
 
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(358, 70, 134, 22);
-		for (int i = 0; i < dias.size(); i++) {
-			comboBox.addItem(dias.get(i));
-		}
-		panel.add(comboBox);
-
 		JButton btnVolver = new JButton("");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,15 +111,68 @@ public class SelecionDeFechas extends JPanel {
 		btnVolver.setBounds(479, 11, 46, 43);
 		panel.add(btnVolver);
 
-		JButton btnElegirFecha = new JButton("Aceptar");
-		btnElegirFecha.addActionListener(new ActionListener() {
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gestion.elegirDia((String) comboBox.getSelectedItem());
-				ventana.cambiarDePanel(6);
+				gestion.añadirEntradas(contador, sesion);
+				ventana.cambiarDePanel(3);
 			}
 		});
-		btnElegirFecha.setBounds(358, 148, 134, 23);
-		panel.add(btnElegirFecha);
+		btnAceptar.setBounds(358, 219, 134, 23);
+		panel.add(btnAceptar);
+
+		JLabel lblSala = new JLabel("Sala: " + sesion.getId_sala());
+		lblSala.setFont(new Font("Nirmala UI", Font.BOLD, 12));
+		lblSala.setBounds(344, 49, 129, 27);
+		panel.add(lblSala);
+
+		JLabel lblHora = new JLabel("Hora:  " + sesion.getHora());
+		lblHora.setFont(new Font("Nirmala UI", Font.BOLD, 12));
+		lblHora.setBounds(344, 125, 129, 27);
+		panel.add(lblHora);
+
+		JLabel lblDia = new JLabel("Dia: " + sesion.getDia());
+		lblDia.setFont(new Font("Nirmala UI", Font.BOLD, 12));
+		lblDia.setBounds(344, 87, 129, 27);
+		panel.add(lblDia);
+
+		JLabel nombrepelicula_1 = new JLabel((String) null);
+		nombrepelicula_1.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		nombrepelicula_1.setBounds(340, 11, 129, 27);
+		panel.add(nombrepelicula_1);
+
+		JLabel lblContadorEntrada = new JLabel("" + contador);
+		lblContadorEntrada.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContadorEntrada.setBounds(402, 163, 46, 32);
+		panel.add(lblContadorEntrada);
+
+		JButton btnRestar = new JButton("<");
+		btnRestar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (contador == 0) {
+					JOptionPane.showMessageDialog(null, "No puedes bajar de cero");
+				} else {
+					contador--;
+				}
+				lblContadorEntrada.setText("" + contador);
+			}
+		});
+		btnRestar.setBounds(354, 163, 43, 32);
+		panel.add(btnRestar);
+
+		JButton btnSumar = new JButton(">");
+		btnSumar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (contador == 30) {
+					JOptionPane.showMessageDialog(null, "No puedes subir de 30");
+				} else {
+					contador++;
+				}
+				lblContadorEntrada.setText("" + contador);
+			}
+		});
+		btnSumar.setBounds(458, 163, 43, 32);
+		panel.add(btnSumar);
 
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import controlador.GestionBD;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.Compra;
 import modelobjeto.Entrada;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
@@ -29,6 +30,7 @@ public class GestionDeLaInformacion {
 	private String fecha;
 	private String hora;
 	private Sesion sesionElejida;
+	private Compra compraARealizar;
 	private ArrayList<Entrada> entradasCompradas;
 
 	private ObjetoManejoFicheros gestionFicheros;
@@ -160,6 +162,7 @@ public class GestionDeLaInformacion {
 
 	public void guardarUsuario(String dni) {
 		this.usuario = gestionBD.buscarUsuario(dni);
+		compraARealizar = new Compra(gestionBD.buscarCompraMasAlta(), usuario.getDni());
 	}
 
 	public String devolverNombreUsuario() {
@@ -170,6 +173,12 @@ public class GestionDeLaInformacion {
 	public Integer devolverLongitudDeEntradas() {
 		Integer longitudEntradas = entradasCompradas.size();
 		return longitudEntradas;
+	}
+
+	public void añadirEntradas(int cantidad, Sesion sesionElegida) {
+		for (int i = 0; i < cantidad; i++) {
+			entradasCompradas.add(new Entrada(sesionElegida.getid_sesiones(), compraARealizar.getIDCompra()));
+		}
 	}
 
 }

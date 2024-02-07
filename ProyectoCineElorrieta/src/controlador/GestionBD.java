@@ -255,4 +255,25 @@ public class GestionBD {
 		return sesion;
 	}
 
+	public int buscarCompraMasAlta() {
+		int id = 0;
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "SELECT max(ID_Compra) FROM `compras`";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				if (resultadoConsulta.getInt(1) == 0) {
+					id = 0;
+				} else {
+					id = resultadoConsulta.getInt(1);
+				}
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+
 }
