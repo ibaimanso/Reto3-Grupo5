@@ -220,7 +220,7 @@ public class GestionBD {
 					+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
 					+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
 					+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
-					+ "' and pel.ID_Pelicula = " + IDPelicula + "and ses.Dia like '" + dia + "'";
+					+ "' and pel.ID_Pelicula = " + IDPelicula + " and ses.Dia like '" + dia + "'";
 			ResultSet resultadoConsulta = consulta.executeQuery(query);
 			while (resultadoConsulta.next()) {
 				sesion = new Sesion(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
@@ -239,12 +239,9 @@ public class GestionBD {
 		Sesion sesion = new Sesion();
 		try {
 			Statement consulta = conexion.createStatement();
-			String query = "select ses.ID_Sesion, ses.Hora, ses.Dia, ses.ID_Sala, ses.ID_Pelicula from peliculas pel \r\n"
-					+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
-					+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
-					+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
-					+ "' and pel.ID_Pelicula = " + IDPelicula + "and ses.Dia like '" + dia + "' and ses.Hora like '"
-					+ hora + "'";
+			String query = "select ses.ID_Sesion, ses.Hora, ses.Dia, ses.ID_Sala, ses.ID_Pelicula from peliculas pel join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula join salas sal on ses.ID_Sala = sal.ID_Sala join cines cin on sal.ID_Cine = cin.ID_Cine where cin.ID_Cine like '"
+					+ IDCine + "' and pel.ID_Pelicula = " + IDPelicula + " and ses.Dia like '" + dia
+					+ "' and ses.Hora like '" + hora + "'";
 			ResultSet resultadoConsulta = consulta.executeQuery(query);
 			while (resultadoConsulta.next()) {
 				sesion = new Sesion(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
