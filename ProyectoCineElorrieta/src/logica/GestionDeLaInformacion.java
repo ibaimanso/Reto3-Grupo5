@@ -130,9 +130,12 @@ public class GestionDeLaInformacion {
 		peliculaSelecionada = pelicula;
 	}
 
-	public ArrayList<Sesion> devolverSesiones() {
-		this.sesiones = gestionBD.buscarSesiones(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine());
-		return this.sesiones;
+	public Pelicula devolverPelicula() {
+		return peliculaSelecionada;
+	}
+
+	public ArrayList<String> devolverSesiones() {
+		return gestionBD.buscarSesiones(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine());
 	}
 
 	public void elegirDia(String dia) {
