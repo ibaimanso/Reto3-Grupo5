@@ -27,7 +27,9 @@ public class GestionBD {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
-			//conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
+			// conexion =
+			// DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root",
+			// "");
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
@@ -190,28 +192,25 @@ public class GestionBD {
 		return usuario;
 	}
 
-	public ArrayList<Sesion> buscarSesiones(int IDPelicula, String IDCine) {
-		ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
-		Sesion sesion;
+	public ArrayList<String> buscarSesiones(int IDPelicula, String IDCine) {
+		ArrayList<String> dias = new ArrayList<String>();
 		try {
 			Statement consulta = conexion.createStatement();
-			String query = "select ses.ID_Sesion, ses.Hora, ses.Dia, ses.ID_Sala, ses.ID_Pelicula from peliculas pel \r\n"
-					+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
-					+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
-					+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
+			String query = "select distinct ses.Dia\r\n" + "from cinegrupo5.peliculas pel \r\n"
+					+ "join cinegrupo5.sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+					+ "join cinegrupo5.salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+					+ "join cinegrupo5.cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
 					+ "' and pel.ID_Pelicula = " + IDPelicula;
 			ResultSet resultadoConsulta = consulta.executeQuery(query);
 			while (resultadoConsulta.next()) {
-				sesion = new Sesion(resultadoConsulta.getInt(1), resultadoConsulta.getString(2),
-						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getInt(5));
-				sesiones.add(sesion);
+				dias.add(resultadoConsulta.getString(1));
 			}
 			consulta.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return sesiones;
+		return dias;
 	}
 
 	public ArrayList<Sesion> buscarSesionesPorFecha(int IDPelicula, String IDCine, String dia) {

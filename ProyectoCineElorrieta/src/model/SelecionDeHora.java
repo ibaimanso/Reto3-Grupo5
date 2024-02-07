@@ -10,19 +10,20 @@ import javax.swing.JPanel;
 
 import logica.GestionDeLaInformacion;
 import modelobjeto.Pelicula;
+import modelobjeto.Sesion;
 import view.VistaPrincipal;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SelecionDeFechas extends JPanel {
+public class SelecionDeHora extends JPanel {
 	private Pelicula peliculaElegida;
-	private ArrayList<String> dias;
+	private ArrayList<Sesion> sesiones;
 
-	public SelecionDeFechas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
+	public SelecionDeHora(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		peliculaElegida = gestion.devolverPelicula();
-		dias = gestion.devolverSesiones();
+		sesiones = gestion.devolverSesionesPorDia();
 		// setSize(ventana.getSize());
 		setSize(620, 420);
 		setVisible(true);
@@ -64,15 +65,15 @@ public class SelecionDeFechas extends JPanel {
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(358, 70, 134, 22);
 		panel.add(comboBox);
-		for (int i = 0; i < dias.size(); i++) {
-			comboBox.addItem(dias.get(i));
+		for (int i = 0; i < sesiones.size(); i++) {
+			comboBox.addItem(sesiones.get(i).getHora());
 		}
 
 		JButton btnElegirFecha = new JButton("Aceptar");
 		btnElegirFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gestion.elegirDia((String) comboBox.getSelectedItem());
-				ventana.cambiarDePanel(6);
+				gestion.elegirHora((String) comboBox.getSelectedItem());
+				//ventana.cambiarDePanel(7);
 			}
 		});
 		btnElegirFecha.setBounds(358, 148, 134, 23);
