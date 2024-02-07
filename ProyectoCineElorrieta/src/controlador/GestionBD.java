@@ -26,10 +26,8 @@ public class GestionBD {
 	public void iniciarConexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
-			// conexion =
-			// DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root",
-			// "");
+//			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
@@ -197,10 +195,10 @@ public class GestionBD {
 		try {
 			Statement consulta = conexion.createStatement();
 			String query = "select distinct ses.Dia\r\n" + "from cinegrupo5.peliculas pel \r\n"
-					+ "join cinegrupo5.sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
-					+ "join cinegrupo5.salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
-					+ "join cinegrupo5.cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
-					+ "' and pel.ID_Pelicula = " + IDPelicula;
+					+ "join sesiones ses on pel.ID_Pelicula = ses.ID_Pelicula\r\n"
+					+ "join salas sal on ses.ID_Sala = sal.ID_Sala\r\n"
+					+ "join cines cin on sal.ID_Cine = cin.ID_Cine\r\n" + "where cin.ID_Cine like '" + IDCine
+					+ "' and pel.ID_Pelicula = " + IDPelicula + " order by ses.Dia asc";
 			ResultSet resultadoConsulta = consulta.executeQuery(query);
 			while (resultadoConsulta.next()) {
 				dias.add(resultadoConsulta.getString(1));
