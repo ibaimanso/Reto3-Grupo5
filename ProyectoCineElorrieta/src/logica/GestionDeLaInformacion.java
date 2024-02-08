@@ -100,7 +100,6 @@ public class GestionDeLaInformacion {
 	}
 
 	public boolean testUsuarioYContraseña(String usuario, String contraseña) {
-
 		boolean login = false;
 		login = gestionBD.Login(usuario, contraseña);
 		return login;
