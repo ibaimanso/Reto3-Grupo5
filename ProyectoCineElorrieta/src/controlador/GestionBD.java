@@ -276,4 +276,39 @@ public class GestionBD {
 		return id;
 	}
 
+	public double recogerPrecio(int id_sesion) {
+		double precio = 0;
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "SELECT pel.Precio FROM sesiones as ses JOIN peliculas as pel on pel.ID_Pelicula = ses.ID_Pelicula where ses.ID_Sesion = "
+					+ id_sesion;
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				precio = resultadoConsulta.getDouble(1);
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return precio;
+	}
+
+	public int recogerIDPelicula(int id_sesion) {
+		int iDPelicula = 0;
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "SELECT ses.ID_Pelicula FROM sesiones as ses where ses.ID_Sesion = " + id_sesion;
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				iDPelicula = resultadoConsulta.getInt(1);
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return iDPelicula;
+	}
+
 }

@@ -9,7 +9,6 @@ public class Compra {
 	private String DNI_Cliente;
 
 	public Compra(int iDCompra, String dNI_Cliente) {
-		super();
 		IDCompra = iDCompra;
 		DNI_Cliente = dNI_Cliente;
 	}

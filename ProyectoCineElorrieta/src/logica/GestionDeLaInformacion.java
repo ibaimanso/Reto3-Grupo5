@@ -162,7 +162,7 @@ public class GestionDeLaInformacion {
 
 	public void guardarUsuario(String dni) {
 		this.usuario = gestionBD.buscarUsuario(dni);
-		compraARealizar = new Compra(gestionBD.buscarCompraMasAlta(), usuario.getDni());
+		compraARealizar = new Compra(gestionBD.buscarCompraMasAlta() + 1, usuario.getDni());
 	}
 
 	public String devolverNombreUsuario() {
@@ -179,6 +179,41 @@ public class GestionDeLaInformacion {
 		for (int i = 0; i < cantidad; i++) {
 			entradasCompradas.add(new Entrada(sesionElegida.getid_sesiones(), compraARealizar.getIDCompra()));
 		}
+	}
+
+	public Compra calcularCompra() {
+		double precioTotal = 0;
+		ArrayList<Integer> contador = new ArrayList<Integer>();
+		for (int i = 0; i < entradasCompradas.size(); i++) {
+			precioTotal += gestionBD.recogerPrecio(entradasCompradas.get(i).getId_sesion());
+			if (contador.size() == 0) {
+				contador.add(Integer.valueOf(gestionBD.recogerIDPelicula(entradasCompradas.get(i).getId_sesion())));
+			} else {
+				for (int j = 0; j < contador.size(); j++) {
+					if (gestionBD.recogerIDPelicula(entradasCompradas.get(i).getId_sesion()) != contador.get(j)
+							.intValue()) {
+						contador.add(
+								Integer.valueOf(gestionBD.recogerIDPelicula(entradasCompradas.get(i).getId_sesion())));
+					}
+				}
+			}
+		}
+		int cantidadDePeliculasDiferentes = contador.size();
+		int descuento;
+		if (cantidadDePeliculasDiferentes == 2) {
+			descuento = 20;
+		} else if (cantidadDePeliculasDiferentes >= 3) {
+			descuento = 30;
+		} else {
+			descuento = 0;
+		}
+		int cantidadDeEntradas = entradasCompradas.size();
+		double precioDescontado = (precioTotal * (descuento + 100)) / 100;
+		compraARealizar.setPrecioTotal(precioTotal);
+		compraARealizar.setCantodadEntradas(cantidadDeEntradas);
+		compraARealizar.setDescuento(descuento);
+		compraARealizar.setPrecioDescontado(precioDescontado);
+		return compraARealizar;
 	}
 
 }
