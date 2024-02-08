@@ -104,6 +104,7 @@ public class SelecionDeFechas extends JPanel {
 		}
 		panel.add(comboBox);
 
+
 		JButton btnVolver = new JButton("");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

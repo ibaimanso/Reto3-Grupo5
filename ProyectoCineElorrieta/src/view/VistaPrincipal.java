@@ -11,6 +11,7 @@ import model.Peliculas;
 import model.Registro;
 import model.SelecionDeFechas;
 import model.SelecionDeHora;
+import model.carritoDeLaCompra;
 
 import java.awt.Toolkit;
 
@@ -54,6 +55,10 @@ public class VistaPrincipal extends JFrame {
 		case 7:
 			setContentPane(new CompraDeEntradas(this, gestion));
 			break;
+		case 8:
+			setContentPane(new carritoDeLaCompra(this, gestion));
+			break;
+		
 		}
 	}
 

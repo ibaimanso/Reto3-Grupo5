@@ -276,4 +276,5 @@ public class GestionBD {
 		return id;
 	}
 
-}
+			public 
+		}
