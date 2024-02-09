@@ -40,16 +40,18 @@ public class Cines extends JPanel {
 		add(lblCirculoRojo);
 
 		JButton btnCarrito = new JButton("");
-		btnCarrito.setFocusPainted(false);
-		btnCarrito.setBorderPainted(false);
-		// btnCarrito.setContentAreaFilled(false);
-		btnCarrito.setBackground(new Color(0, 0, 0));
-		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
 		btnCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambiarDePanel(8);
 			}
 		});
+		btnCarrito.setFocusPainted(false);
+		btnCarrito.setBorderPainted(false);
+		// btnCarrito.setContentAreaFilled(false);
+		btnCarrito.setBackground(new Color(0, 0, 0));
+		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
+	
+			
 		btnCarrito.setBounds(10, 29, 60, 60);
 		add(btnCarrito);
 

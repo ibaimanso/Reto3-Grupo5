@@ -4,19 +4,28 @@ import javax.swing.JPanel;
 
 import logica.GestionDeLaInformacion;
 import modelobjeto.Compra;
+import modelobjeto.LineaDeFactura;
 import view.VistaPrincipal;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class carritoDeLaCompra extends JPanel{
 	
 	private Compra compra;
+	private ArrayList<LineaDeFactura> factura;
 	
 	public carritoDeLaCompra(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		
+		factura = gestion.devolverfactura();
 		compra = gestion.calcularCompra();
+		int longitud = factura.size();
 		setLayout(null);
 		setSize(620, 420);
 		setVisible(true);
@@ -31,95 +40,68 @@ public class carritoDeLaCompra extends JPanel{
 		panel.setLayout(null);
 		
 	
-		JLabel lblCompra1 = new JLabel("New label");
+		JLabel lblCompra1 = new JLabel("");
 		lblCompra1.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra1.setBounds(10, 11, 230, 14);
+		if (longitud >= 1)
+			lblCompra1.setText(factura.get(0).getNombrePelicula() + " ---> " + factura.get(0).getNombreCine() + " // Sala: " + factura.get(0).getNombreSala() +" Fecha: " + factura.get(0).getDia() + " // " +  factura.get(0).getHora());
+
+		lblCompra1.setBounds(10, 11, 528, 14);
 		panel.add(lblCompra1);
 		
-		JLabel separador1 = new JLabel("New label");
-		separador1.setIcon(new ImageIcon("C:\\Users\\in1dm3-v\\Downloads\\Color_negro.png"));
-		separador1.setBounds(250, 0, 8, 223);
-		panel.add(separador1);
-		
-		JLabel lblCompra2 = new JLabel("info");
+		JLabel lblCompra2 = new JLabel("");
+		if (longitud >= 2) 
+			lblCompra2.setText(factura.get(1).getNombrePelicula() + " ---> " + factura.get(1).getNombreCine() + " // Sala: " + factura.get(1).getNombreSala() +" Fecha: " + factura.get(1).getDia() + " // " +  factura.get(1).getHora()) ;
 		lblCompra2.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra2.setBounds(10, 34, 230, 14);
+		lblCompra2.setBounds(10, 34, 528, 14);
 		panel.add(lblCompra2);
 		
-		JLabel lblCompra3 = new JLabel("PELI2");
+		
+		JLabel lblCompra3 = new JLabel("");
+		if (longitud >= 3) 
+		lblCompra3.setText(factura.get(2).getNombrePelicula() + " ---> " + factura.get(2).getNombreCine() + " // Sala: " + factura.get(2).getNombreSala() +" Fecha: " + factura.get(2).getDia() + " // " +  factura.get(2).getHora());
 		lblCompra3.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra3.setBounds(10, 59, 230, 14);
+		lblCompra3.setBounds(10, 59, 528, 14);
 		panel.add(lblCompra3);
 		
 		JLabel lblCompra4 = new JLabel("");
+		if (longitud >= 4) 
+			lblCompra4.setText(factura.get(3).getNombrePelicula() + " ---> " + factura.get(3).getNombreCine() + " // Sala: " + factura.get(3).getNombreSala() +" Fecha: " + factura.get(3).getDia() + " // " +  factura.get(3).getHora());
 		lblCompra4.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra4.setBounds(10, 86, 230, 14);
+		lblCompra4.setBounds(10, 86, 528, 14);
 		panel.add(lblCompra4);
 		
-		JLabel lblCompra5 = new JLabel("peli3");
+		JLabel lblCompra5 = new JLabel("");
+		if (longitud >= 5) 
+			lblCompra5.setText(factura.get(4).getNombrePelicula() + " ---> " + factura.get(4).getNombreCine() + " // Sala: " + factura.get(4).getNombreSala() +" Fecha: " + factura.get(4).getDia() + " // " +  factura.get(4).getHora());
 		lblCompra5.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra5.setBounds(10, 111, 230, 14);
+		lblCompra5.setBounds(10, 111, 528, 14);
 		panel.add(lblCompra5);
 		
 		JLabel lblCompra6 = new JLabel("");
+		if (longitud >= 6) 
+			lblCompra6.setText(factura.get(5).getNombrePelicula() + " ---> " + factura.get(5).getNombreCine() + " // Sala: " + factura.get(5).getNombreSala() +" Fecha: " + factura.get(5).getDia() + " // " +  factura.get(5).getHora());
 		lblCompra6.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra6.setBounds(10, 136, 230, 14);
+		lblCompra6.setBounds(10, 136, 528, 14);
 		panel.add(lblCompra6);
 		
-		JLabel lblCompra7 = new JLabel("peli4");
+		JLabel lblCompra7 = new JLabel("");
+		if (longitud >= 7) 
+			lblCompra7.setText(factura.get(6).getNombrePelicula() + " ---> " + factura.get(6).getNombreCine() + " // Sala: " + factura.get(6).getNombreSala() +" Fecha: " + factura.get(6).getDia() + " // " +  factura.get(6).getHora());
 		lblCompra7.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra7.setBounds(10, 161, 230, 14);
+		lblCompra7.setBounds(10, 161, 528, 14);
 		panel.add(lblCompra7);
 		
 		JLabel lblCompra8 = new JLabel("");
+		if (longitud == 8) 
+			lblCompra8.setText(factura.get(7).getNombrePelicula() + " ---> " + factura.get(7).getNombreCine() + " // Sala: " + factura.get(7).getNombreSala() +" Fecha: " + factura.get(7).getDia() + " // " +  factura.get(7).getHora());
 		lblCompra8.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra8.setBounds(10, 186, 230, 14);
+		lblCompra8.setBounds(10, 186, 528, 14);
 		panel.add(lblCompra8);
-		
-		JLabel lblCompra17 = new JLabel("New label");
-		lblCompra17.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra17.setBounds(268, 11, 270, 14);
-		panel.add(lblCompra17);
-		
-		JLabel lblCompra18 = new JLabel("");
-		lblCompra18.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra18.setBounds(268, 33, 270, 14);
-		panel.add(lblCompra18);
-		
-		JLabel lblCompra19 = new JLabel("peli6");
-		lblCompra19.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra19.setBounds(268, 58, 270, 14);
-		panel.add(lblCompra19);
-		
-		JLabel lblCompra20 = new JLabel("");
-		lblCompra20.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra20.setBounds(268, 85, 270, 14);
-		panel.add(lblCompra20);
-		
-		JLabel lblCompra21 = new JLabel("peli7");
-		lblCompra21.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra21.setBounds(268, 110, 270, 14);
-		panel.add(lblCompra21);
-		
-		JLabel lblCompra22 = new JLabel("");
-		lblCompra22.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra22.setBounds(268, 135, 270, 14);
-		panel.add(lblCompra22);
-		
-		JLabel lblCompra23 = new JLabel("peli8");
-		lblCompra23.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra23.setBounds(268, 160, 270, 14);
-		panel.add(lblCompra23);
-		
-		JLabel lblCompra24 = new JLabel("");
-		lblCompra24.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
-		lblCompra24.setBounds(268, 185, 270, 14);
-		panel.add(lblCompra24);
 		
 		JLabel lblCarritoDeLaCompra = new JLabel("Carrito De La Compra");
 		lblCarritoDeLaCompra.setForeground(new Color(255, 255, 255));
 		lblCarritoDeLaCompra.setFont(new Font("Centaur", Font.BOLD, 30));
-		lblCarritoDeLaCompra.setBounds(31, 0, 342, 39);
+		lblCarritoDeLaCompra.setBounds(27, 11, 342, 39);
 		add(lblCarritoDeLaCompra);
 		
 		JLabel lblUsuario = new JLabel("");
@@ -142,11 +124,28 @@ public class carritoDeLaCompra extends JPanel{
 		lblTotal.setBounds(0, 0, 548, 28);
 		panel_1.add(lblTotal);
 		
+		JButton btnVolver = new JButton("");
+		btnVolver.setBounds(522, 39, 46, 43);
+		add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.cambiarDePanel(3);
+			}
+		});
+		btnVolver.setIcon(new ImageIcon("multimedia/flecha_volver (1).png"));
+		
 
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon("multimedia/fondopiedra.jpg"));
 		lblFondo.setBounds(0, 0, 620, 420);
 		add(lblFondo);
+		
+		JLabel separador1 = new JLabel("New label");
+		separador1.setBounds(560, 89, 8, 223);
+		add(separador1);
+		separador1.setIcon(new ImageIcon("C:\\Users\\in1dm3-v\\Downloads\\Color_negro.png"));
+		
+		
 		
 	}
 }
