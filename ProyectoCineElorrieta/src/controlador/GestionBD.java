@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.Compra;
+import modelobjeto.Entrada;
 import modelobjeto.LineaDeFactura;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
@@ -277,7 +279,6 @@ public class GestionBD {
 		return id;
 	}
 
-
 	public double recogerPrecio(int id_sesion) {
 		double precio = 0;
 		try {
@@ -311,9 +312,9 @@ public class GestionBD {
 			e.printStackTrace();
 		}
 		return iDPelicula;
-	
 
 	}
+
 	public LineaDeFactura devolverFacturas(int id_sesion) {
 		LineaDeFactura lineaDeFactura = new LineaDeFactura();
 		try {
@@ -333,8 +334,37 @@ public class GestionBD {
 		return lineaDeFactura;
 	}
 
+	public void insertarCompra(Compra compraARealizar) {
+		try {
+			Statement consulta = conexion.createStatement();
+
+			String insert = "INSERT INTO compras (PrecioTotal,CantidadEntradas,Descuento,PrecioDescontado,DNI_Cliente) VALUES ( "
+					+ compraARealizar.getPrecioTotal() + ", " + compraARealizar.getCantodadEntradas() + ", "
+					+ compraARealizar.getDescuento() + ", " + compraARealizar.getPrecioDescontado() + ", '"
+					+ compraARealizar.getDNI_Cliente() + "')";
+
+			consulta.executeUpdate(insert);
+			consulta.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void insertarEntradas(ArrayList<Entrada> entradasCompradas) {
+		try {
+			Statement consulta = conexion.createStatement();
+			for (int i = 0; i < entradasCompradas.size(); i++) {
+				String insert = "INSERT INTO entradas (ID_Sesion, ID_Compra) VALUES ("
+						+ entradasCompradas.get(i).getId_sesion() + ", " + entradasCompradas.get(i).getId_compra()
+						+ ")";
+				consulta.executeUpdate(insert);
+			}
+			consulta.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
-
-
-		
