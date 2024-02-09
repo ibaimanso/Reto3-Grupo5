@@ -27,7 +27,7 @@ public class Peliculas extends JPanel {
 
 		peliculas = gestion.devolverPeliculas();
 		cineElegido = gestion.sacarCine();
-
+		
 		/**
 		 * Se le da una altura y una anchura al JPanel. Se hace que no se pueda
 		 * redimensionar la VentanaPrincipal

@@ -39,7 +39,16 @@ public class carritoDeLaCompra extends JPanel{
 		add(panel);
 		panel.setLayout(null);
 		
-	
+
+		JButton btnComprar = new JButton("Comprar");
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.cambiarDePanel(9);
+			}
+		});
+		btnComprar.setBounds(479, 318, 89, 29);
+		add(btnComprar);
+		
 		JLabel lblCompra1 = new JLabel("");
 		lblCompra1.setFont(new Font("Lucida Fax", Font.PLAIN, 12));
 		if (longitud >= 1)

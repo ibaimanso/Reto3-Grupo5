@@ -18,9 +18,11 @@ import java.awt.Color;
 
 public class Cines extends JPanel {
 	private ArrayList<Cine> cines;
+	private Integer contador;
 
 	public Cines(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		cines = gestion.devolverCines();
+		contador = gestion.devolverLongitudDeEntradas();
 
 		// setSize(ventana.getSize());
 		setSize(620, 420);
@@ -33,6 +35,13 @@ public class Cines extends JPanel {
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(10, 11, 145, 18);
 		add(lblNombreUsuario);
+		
+		
+		
+		JLabel lblContador = new JLabel();
+		lblContador.setFont(new Font("Rockwell", Font.BOLD, 16));
+		lblContador.setBounds(73, 74, 46, 14);
+		add(lblContador);
 		
 		JLabel lblCirculoRojo = new JLabel("");
 		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
@@ -112,10 +121,7 @@ public class Cines extends JPanel {
 		lblFoto.setIcon(new ImageIcon("multimedia/fondo-cines.jpg"));
 		add(lblFoto);
 		
-		JLabel lblContador = new JLabel("2");
-		lblContador.setFont(new Font("Rockwell", Font.BOLD, 16));
-		lblContador.setBounds(73, 74, 46, 14);
-		add(lblContador);
+
 		
 		
 	}
