@@ -43,7 +43,9 @@ public class carritoDeLaCompra extends JPanel {
 		JButton btnComprar = new JButton("Comprar");
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				gestion.insertarCompraEnBaseDeDatos();
 				ventana.cambiarDePanel(9);
+				
 			}
 		});
 		btnComprar.setBounds(479, 318, 89, 29);
