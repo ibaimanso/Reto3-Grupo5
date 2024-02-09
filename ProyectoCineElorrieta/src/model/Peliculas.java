@@ -51,6 +51,7 @@ public class Peliculas extends JPanel {
 		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
 		btnCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.cambiarDePanel(8);
 			}
 		});
 		btnCarrito.setBounds(523, 29, 60, 60);

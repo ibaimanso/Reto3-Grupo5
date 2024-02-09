@@ -207,11 +207,11 @@ public class GestionDeLaInformacion {
 			descuento = 0;
 		}
 		int cantidadDeEntradas = entradasCompradas.size();
-		double precioDescontado = (precioTotal * (descuento + 100)) / 100;
-		compraARealizar.setPrecioTotal(precioTotal);
+		double precioDescontado = (precioTotal * (100 - descuento)) / 100;
+		compraARealizar.setPrecioTotal((double)Math.round(precioTotal * 100d) / 100d);
 		compraARealizar.setCantodadEntradas(cantidadDeEntradas);
 		compraARealizar.setDescuento(descuento);
-		compraARealizar.setPrecioDescontado(precioDescontado);
+		compraARealizar.setPrecioDescontado((double)Math.round(precioDescontado * 100d) / 100d);
 		return compraARealizar;
 	}
 

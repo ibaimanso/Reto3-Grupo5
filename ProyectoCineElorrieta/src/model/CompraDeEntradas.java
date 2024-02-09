@@ -104,7 +104,7 @@ public class CompraDeEntradas extends JPanel {
 		JButton btnVolver = new JButton("");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambiarDePanel(3);
+				ventana.cambiarDePanel(4);
 			}
 		});
 		btnVolver.setIcon(new ImageIcon("multimedia/flecha_volver (1).png"));

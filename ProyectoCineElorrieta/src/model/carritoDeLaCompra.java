@@ -3,6 +3,7 @@ package model;
 import javax.swing.JPanel;
 
 import logica.GestionDeLaInformacion;
+import modelobjeto.Compra;
 import view.VistaPrincipal;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -11,7 +12,11 @@ import java.awt.Font;
 
 public class carritoDeLaCompra extends JPanel{
 	
+	private Compra compra;
+	
 	public carritoDeLaCompra(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
+		
+		compra = gestion.calcularCompra();
 		setLayout(null);
 		setSize(620, 420);
 		setVisible(true);
@@ -21,7 +26,7 @@ public class carritoDeLaCompra extends JPanel{
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(22, 115, 548, 223);
+		panel.setBounds(20, 89, 548, 223);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -112,32 +117,36 @@ public class carritoDeLaCompra extends JPanel{
 		panel.add(lblCompra24);
 		
 		JLabel lblCarritoDeLaCompra = new JLabel("Carrito De La Compra");
+		lblCarritoDeLaCompra.setForeground(new Color(255, 255, 255));
 		lblCarritoDeLaCompra.setFont(new Font("Centaur", Font.BOLD, 30));
-		lblCarritoDeLaCompra.setBounds(33, 26, 342, 39);
+		lblCarritoDeLaCompra.setBounds(31, 0, 342, 39);
 		add(lblCarritoDeLaCompra);
 		
 		JLabel lblUsuario = new JLabel("");
+		lblUsuario.setForeground(new Color(255, 255, 255));
 		lblUsuario.setText(gestion.devolverNombreUsuario());
 		lblUsuario.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
-		lblUsuario.setBounds(33, 76, 246, 28);
+		lblUsuario.setBounds(31, 50, 246, 28);
 		add(lblUsuario);
 		
 		
 
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon("multimedia/fondo_carrito.jpg"));
-		lblFondo.setBounds(0, 0, 620, 420);
-		add(lblFondo);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
-		panel_1.setBounds(22, 345, 548, 28);
+		panel_1.setBounds(20, 319, 548, 28);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblTotal = new JLabel("TOTAL: ");
+		JLabel lblTotal = new JLabel("TOTAL: " + compra.getPrecioTotal() + "€" + "|| Descuento= " + compra.getPrecioDescontado() + "€");
 		lblTotal.setFont(new Font("Sitka Small", Font.BOLD, 14));
 		lblTotal.setBounds(0, 0, 548, 28);
 		panel_1.add(lblTotal);
+		
+
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon("multimedia/fondopiedra.jpg"));
+		lblFondo.setBounds(0, 0, 620, 420);
+		add(lblFondo);
+		
 	}
 }
