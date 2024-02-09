@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.LineaDeFactura;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 import view.VistaPrincipal;
@@ -309,6 +310,25 @@ public class GestionBD {
 			e.printStackTrace();
 		}
 		return iDPelicula;
+	}
+
+	public LineaDeFactura devolverFacturas(int id_sesion) {
+		LineaDeFactura lineaDeFactura = new LineaDeFactura();
+		try {
+			Statement consulta = conexion.createStatement();
+			String query = "SELECT cin.Nombre_Cine, sal.ID_Sala, pel.Nombre_Pelicula, ses.Dia, ses.Hora FROM cines as cin JOIN salas as sal on sal.ID_Cine = cin.ID_Cine JOIN sesiones as ses on ses.ID_Sala = sal.ID_Sala JOIN peliculas as pel on pel.ID_Pelicula = ses.ID_Pelicula WHERE ses.ID_Sesion = "
+					+ id_sesion;
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				lineaDeFactura = new LineaDeFactura(resultadoConsulta.getString(1), resultadoConsulta.getString(2),
+						resultadoConsulta.getString(3), resultadoConsulta.getString(4), resultadoConsulta.getString(5));
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lineaDeFactura;
 	}
 
 }

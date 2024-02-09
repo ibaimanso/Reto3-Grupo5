@@ -13,6 +13,7 @@ import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Compra;
 import modelobjeto.Entrada;
+import modelobjeto.LineaDeFactura;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 import view.VistaPrincipal;
@@ -207,12 +208,21 @@ public class GestionDeLaInformacion {
 			descuento = 0;
 		}
 		int cantidadDeEntradas = entradasCompradas.size();
-		double precioDescontado = (precioTotal * (descuento + 100)) / 100;
+		double precioDescontado = (precioTotal * (100 - descuento)) / 100;
 		compraARealizar.setPrecioTotal(precioTotal);
 		compraARealizar.setCantodadEntradas(cantidadDeEntradas);
 		compraARealizar.setDescuento(descuento);
 		compraARealizar.setPrecioDescontado(precioDescontado);
 		return compraARealizar;
+	}
+
+	public ArrayList<LineaDeFactura> devolverfactura() {
+		ArrayList<LineaDeFactura> factura = new ArrayList<LineaDeFactura>();
+		for (int i = 0; i < entradasCompradas.size(); i++) {
+			LineaDeFactura lineadefactura = gestionBD.devolverFacturas(entradasCompradas.get(i).getId_sesion());
+			factura.add(lineadefactura);
+		}
+		return factura;
 	}
 
 }
