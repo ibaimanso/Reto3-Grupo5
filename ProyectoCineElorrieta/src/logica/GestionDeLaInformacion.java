@@ -209,10 +209,10 @@ public class GestionDeLaInformacion {
 		}
 		int cantidadDeEntradas = entradasCompradas.size();
 		double precioDescontado = (precioTotal * (100 - descuento)) / 100;
-		compraARealizar.setPrecioTotal((double)Math.round(precioTotal * 100d) / 100d);
+		compraARealizar.setPrecioTotal((double) Math.round(precioTotal * 100d) / 100d);
 		compraARealizar.setCantodadEntradas(cantidadDeEntradas);
 		compraARealizar.setDescuento(descuento);
-		compraARealizar.setPrecioDescontado((double)Math.round(precioDescontado * 100d) / 100d);
+		compraARealizar.setPrecioDescontado((double) Math.round(precioDescontado * 100d) / 100d);
 		return compraARealizar;
 	}
 
@@ -223,6 +223,12 @@ public class GestionDeLaInformacion {
 			factura.add(lineadefactura);
 		}
 		return factura;
+
+	}
+
+	public void insertarCompraEnBaseDeDatos() {
+		gestionBD.insertarCompra(compraARealizar);
+		gestionBD.insertarEntradas(entradasCompradas);
 	}
 
 }
