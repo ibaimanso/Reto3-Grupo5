@@ -13,6 +13,7 @@ import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Compra;
 import modelobjeto.Entrada;
+import modelobjeto.LineaDeFactura;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 import view.VistaPrincipal;
@@ -213,6 +214,15 @@ public class GestionDeLaInformacion {
 		compraARealizar.setDescuento(descuento);
 		compraARealizar.setPrecioDescontado((double)Math.round(precioDescontado * 100d) / 100d);
 		return compraARealizar;
+	}
+
+	public ArrayList<LineaDeFactura> devolverfactura() {
+		ArrayList<LineaDeFactura> factura = new ArrayList<LineaDeFactura>();
+		for (int i = 0; i < entradasCompradas.size(); i++) {
+			LineaDeFactura lineadefactura = gestionBD.devolverFacturas(entradasCompradas.get(i).getId_sesion());
+			factura.add(lineadefactura);
+		}
+		return factura;
 	}
 
 }
