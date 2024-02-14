@@ -2,6 +2,8 @@ package model;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import logica.GestionDeLaInformacion;
 import modelobjeto.Cine;
 import modelobjeto.Pelicula;
@@ -42,11 +44,22 @@ public class Peliculas extends JPanel {
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(495, 11, 145, 18);
 		add(lblNombreUsuario);
+		
+		JLabel lblContadorCompra = new JLabel("0");
+		lblContadorCompra.setForeground(new Color(255, 255, 255));
+		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContadorCompra.setBounds(561, 70, 37, 32);
+		add(lblContadorCompra);
+		
+		JLabel lblCirculoRojo = new JLabel("");
+		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
+		lblCirculoRojo.setBounds(561, 57, 43, 61);
+		add(lblCirculoRojo);
 
 		JButton btnCarrito = new JButton("");
 		btnCarrito.setFocusPainted(false);
 		btnCarrito.setBorderPainted(false);
-		// btnCarrito.setContentAreaFilled(false);
+		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setBackground(new Color(0, 0, 0));
 		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
 		btnCarrito.addActionListener(new ActionListener() {
@@ -63,13 +76,18 @@ public class Peliculas extends JPanel {
 		add(lblFondoParaCarrito);
 
 		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-			lblFondoParaCarrito.setVisible(false);
+		lblFondoParaCarrito.setVisible(false);
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
+			lblCirculoRojo.setVisible(false);
+			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
-			btnCarrito.setVisible(true);
-			lblNombreUsuario.setVisible(true);
+		btnCarrito.setVisible(true);
+		lblNombreUsuario.setVisible(true);
+		lblNombreUsuario.setVisible(true);
+		lblContadorCompra.setVisible(true);
+		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntrada());
 		}
 		// Fin de la parte del carrito y nombre del cine
 

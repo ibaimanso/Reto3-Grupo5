@@ -36,12 +36,11 @@ public class Cines extends JPanel {
 		lblNombreUsuario.setBounds(10, 11, 145, 18);
 		add(lblNombreUsuario);
 		
-		
-		
-		JLabel lblContador = new JLabel();
-		lblContador.setFont(new Font("Rockwell", Font.BOLD, 16));
-		lblContador.setBounds(73, 74, 46, 14);
-		add(lblContador);
+		JLabel lblContadorCompra = new JLabel("0");
+		lblContadorCompra.setForeground(new Color(255, 255, 255));
+		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContadorCompra.setBounds(37, 70, 37, 32);
+		add(lblContadorCompra);
 		
 		JLabel lblCirculoRojo = new JLabel("");
 		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
@@ -56,7 +55,8 @@ public class Cines extends JPanel {
 		});
 		btnCarrito.setFocusPainted(false);
 		btnCarrito.setBorderPainted(false);
-		// btnCarrito.setContentAreaFilled(false);
+		btnCarrito.setContentAreaFilled(false);
+		//
 		btnCarrito.setBackground(new Color(0, 0, 0));
 		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
 	
@@ -74,11 +74,14 @@ public class Cines extends JPanel {
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
 			lblCirculoRojo.setVisible(false);
+			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
 		btnCarrito.setVisible(true);
 		lblNombreUsuario.setVisible(true);
 		lblNombreUsuario.setVisible(true);
+		lblContadorCompra.setVisible(true);
+		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntrada());
 		}
 		// Fin de la parte del carrito y nombre del cine
 

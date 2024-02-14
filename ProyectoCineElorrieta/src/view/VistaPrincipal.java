@@ -23,6 +23,7 @@ public class VistaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gestion = new GestionDeLaInformacion();
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
+		setLocationRelativeTo(null);
 		// cambiarDePanel(0);
 		setSize(620, 420);
 		setResizable(false);

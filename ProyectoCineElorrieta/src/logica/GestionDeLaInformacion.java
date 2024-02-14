@@ -101,6 +101,10 @@ public class GestionDeLaInformacion {
 		}
 
 	}
+	
+	public int devolverLongitudDeEntrada() {
+		return entradasCompradas.size();
+	}
 
 	public boolean testUsuarioYContraseña(String usuario, String contraseña) {
 		boolean login = false;

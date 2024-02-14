@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import logica.GestionDeLaInformacion;
 import modelobjeto.Pelicula;
@@ -19,10 +20,12 @@ import java.awt.event.ActionEvent;
 public class SelecionDeFechas extends JPanel {
 	private Pelicula peliculaElegida;
 	private ArrayList<String> dias;
+	private String cineElegido;
 
 	public SelecionDeFechas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		peliculaElegida = gestion.devolverPelicula();
 		dias = gestion.devolverSesiones();
+		cineElegido = gestion.sacarCine();
 		// setSize(ventana.getSize());
 		setSize(620, 420);
 		setVisible(true);
@@ -34,15 +37,27 @@ public class SelecionDeFechas extends JPanel {
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(495, 11, 145, 18);
 		add(lblNombreUsuario);
+		
+		JLabel lblContadorCompra = new JLabel("0");
+		lblContadorCompra.setForeground(new Color(255, 255, 255));
+		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContadorCompra.setBounds(561, 70, 37, 32);
+		add(lblContadorCompra);
+		
+		JLabel lblCirculoRojo = new JLabel("");
+		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
+		lblCirculoRojo.setBounds(561, 57, 43, 61);
+		add(lblCirculoRojo);
 
 		JButton btnCarrito = new JButton("");
 		btnCarrito.setFocusPainted(false);
 		btnCarrito.setBorderPainted(false);
-		// btnCarrito.setContentAreaFilled(false);
+		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setBackground(new Color(0, 0, 0));
 		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
 		btnCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.cambiarDePanel(8);
 			}
 		});
 		btnCarrito.setBounds(523, 29, 60, 60);
@@ -54,20 +69,25 @@ public class SelecionDeFechas extends JPanel {
 		add(lblFondoParaCarrito);
 
 		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-			lblFondoParaCarrito.setVisible(false);
+		lblFondoParaCarrito.setVisible(false);
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
+			lblCirculoRojo.setVisible(false);
+			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
-			btnCarrito.setVisible(true);
-			lblNombreUsuario.setVisible(true);
+		btnCarrito.setVisible(true);
+		lblNombreUsuario.setVisible(true);
+		lblNombreUsuario.setVisible(true);
+		lblContadorCompra.setVisible(true);
+		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntrada());
 		}
 		// Fin de la parte del carrito y nombre del cine
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setForeground(Color.WHITE);
-		panel.setBounds(31, 82, 623, 264);
+		panel.setBounds(31, 93, 623, 264);
 		add(panel);
 		panel.setLayout(null);
 
@@ -114,6 +134,16 @@ public class SelecionDeFechas extends JPanel {
 		btnVolver.setIcon(new ImageIcon("multimedia/flecha_volver (1).png"));
 		btnVolver.setBounds(479, 11, 46, 43);
 		panel.add(btnVolver);
+		
+		JLabel lblNombreEmpresa = new JLabel("FINEST CINES");
+		lblNombreEmpresa.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 34));
+		lblNombreEmpresa.setBounds(31, 11, 431, 46);
+		add(lblNombreEmpresa);
+
+		JLabel lblCineElegido = new JLabel(cineElegido);
+		lblCineElegido.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 11));
+		lblCineElegido.setBounds(31, 68, 95, 14);
+		add(lblCineElegido);
 
 		JButton btnElegirFecha = new JButton("Aceptar");
 		btnElegirFecha.addActionListener(new ActionListener() {
@@ -124,6 +154,8 @@ public class SelecionDeFechas extends JPanel {
 		});
 		btnElegirFecha.setBounds(358, 148, 134, 23);
 		panel.add(btnElegirFecha);
+		
+		
 
 	}
 }
