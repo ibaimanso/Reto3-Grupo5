@@ -35,7 +35,6 @@ public class GestionDeLaInformacion {
 	private Cine cineSelecionado;
 	private ArrayList<Pelicula> peliculas;
 	private Pelicula peliculaSelecionada;
-	private ArrayList<Sesion> sesiones;
 	private String fecha;
 	private String hora;
 	private Sesion sesionElejida;
@@ -211,28 +210,47 @@ public class GestionDeLaInformacion {
 	}
 
 	/**
-	 * Metodo que devuelve sesiones en base a
+	 * Metodo que devuelve sesiones a modo de fecha en base a la pelicula y cine
+	 * elegido
 	 * 
-	 * @return
+	 * @return Devuelve un arraylis de Strings con las fechas
 	 */
 	public ArrayList<String> devolverSesiones() {
 		return gestionBD.buscarSesiones(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine());
 	}
 
+	/**
+	 * Metodo utilizado para guardar el dia elegido en esta clase para su futuro uso
+	 * en una query de busqueda de sesiones
+	 * 
+	 * @param dia Dia elegido en forma de String
+	 */
 	public void elegirDia(String dia) {
 		fecha = dia;
 	}
 
+	/**
+	 * Metodo utilizado para devolver sesiones en base al id de la pelicula y el
+	 * cine y el dia anteriormente elegido
+	 * 
+	 * @return Devuelve un arraylist de sesiones para su uso en el panel de SelecionDeHoras
+	 */
 	public ArrayList<Sesion> devolverSesionesPorDia() {
-		this.sesiones = gestionBD.buscarSesionesPorFecha(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine(),
-				fecha);
-		return this.sesiones;
+		return gestionBD.buscarSesionesPorFecha(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine(), fecha);
 	}
 
+	/**
+	 * Metodo utilizado para guardar el dia en la clase para su futuro uso en una query de busqueda de sesion;
+	 * @param hora
+	 */
 	public void elegirHora(String hora) {
 		this.hora = hora;
 	}
 
+	/**
+	 * Metodo para buscar una sesion en base a la id de pelicula y cine, la hora y el dia
+	 * @return Devuelve un objeto Sesion para cla compra y creación de entradas
+	 */
 	public Sesion devolverSesionPorDiaYHora() {
 		this.sesionElejida = gestionBD.buscarSesion(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine(),
 				fecha, hora);
