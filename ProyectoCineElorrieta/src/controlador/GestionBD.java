@@ -16,6 +16,12 @@ import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 import view.VistaPrincipal;
 
+/**
+ * En la clase GestionBD nos encontraremos con metodos y ArrayList construidos
+ * por querys de MySQL que recogen informacion de la base de datos para luego
+ * llamar a estos metodos en otra clase, normalmente se les llamara en la clase
+ * GestionDeLaInformacion
+ */
 public class GestionBD {
 
 	public GestionBD() {
@@ -29,8 +35,7 @@ public class GestionBD {
 	public void iniciarConexion() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-	conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/basegrupo5", "root", "");
-			//conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/cinegrupo5", "root", "");
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado la libreria");
@@ -54,33 +59,17 @@ public class GestionBD {
 		System.out.println("Conexion cerrada");
 	}
 
-//	public void informacioncliente() {
-//		// Query para sacar toda la info de los departamentos
-//		try {
-//			Statement consulta = conexion.createStatement();
-//
-//			String query = "SELECT * FROM cliente ";
-//			ResultSet resultadoConsulta = consulta.executeQuery(query);
-//			while (resultadoConsulta.next()) {
-//				System.out.println(resultadoConsulta.getString(1) + "\t" + resultadoConsulta.getString(2) + "\t"
-//						+ resultadoConsulta.getString(3) + resultadoConsulta.getString(4) + "\t"
-//						+ resultadoConsulta.getString(5) + "\t");
-
-//			}
-//			consulta.close();
-
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-
-	// Insert de el panel de registro para poder registrar nuevos ususarios en
-	// la Base de Datos de la aplicación
-
+	/**
+	 * 
+	 * @param cliente
+	 * @param ventana
+	 * 
+	 *                Metodo para insertar los datos del registro en la base de
+	 *                datos.
+	 * 
+	 */
 	public void insertUsuario(Cliente cliente, VistaPrincipal ventana) {
 
-		// Query para sacar toda la info de los departamentos
 		try {
 			Statement consulta = conexion.createStatement();
 
@@ -99,6 +88,17 @@ public class GestionBD {
 		}
 
 	}
+
+	/**
+	 * 
+	 * @param usuario
+	 * @param contraseña
+	 * @return
+	 * 
+	 *         Metodo para el login. Comprueba si existe un usuario y contraseña que
+	 *         coincidan con lod datos de la tabla clientes en la base de datos.
+	 * 
+	 */
 
 	public boolean Login(String usuario, String contraseña) {
 		boolean login = false;
@@ -125,6 +125,12 @@ public class GestionBD {
 
 	}
 
+	/**
+	 * ArrayList para almacenar los Cines de la Base de Datos, hace uso de una query
+	 * que saca el nombre de los cines de la tabla cines de la base de datos.
+	 * 
+	 */
+
 	public ArrayList<Cine> buscarCines() {
 		ArrayList<Cine> cines = new ArrayList<Cine>();
 		Cine cine;
@@ -144,6 +150,15 @@ public class GestionBD {
 		}
 		return cines;
 	}
+
+	/**
+	 * ArrayList para almacenar las Peliculas de la Base de Datos, hace uso de una
+	 * query que saca el ID_Pelicula, Nombre_Pelicula, Genero_Pelicula, Duracion,
+	 * Precio y fecha de varias tablas de la base de datos. A este ArrayList se le
+	 * llamara para que en el panel de peliculas aparezcan las peliculas de el cine
+	 * elegido
+	 * 
+	 */
 
 	public ArrayList<Pelicula> buscarPelis(String idCine) {
 		ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
@@ -169,7 +184,10 @@ public class GestionBD {
 	}
 
 	/**
-	 * Metodo para buscra un cliente en la base de datos
+	 * Metodo para buscar un cliente en la base de datos Hace uso de una query que
+	 * saca el DNI del cliente que se ha loggeado y luego se utiliza para que en los
+	 * labels que hay a lo largo de la aplicacion aparezca el nombre o DNI de la
+	 * persona.
 	 * 
 	 * @param dni
 	 * @return
@@ -193,6 +211,14 @@ public class GestionBD {
 		return usuario;
 	}
 
+	/**
+	 * ArrayList Para recoger los dias en los que se retansmiten las sesiones de las
+	 * peliculas
+	 * 
+	 * @param IDPelicula
+	 * @param IDCine
+	 * @return
+	 */
 	public ArrayList<String> buscarSesiones(int IDPelicula, String IDCine) {
 		ArrayList<String> dias = new ArrayList<String>();
 		try {
@@ -214,6 +240,14 @@ public class GestionBD {
 		return dias;
 	}
 
+	/**
+	 * Se crea el ArrayList buscarSesionesPorFecha para que recoga una sola sesion.
+	 * 
+	 * @param IDPelicula
+	 * @param IDCine
+	 * @param dia
+	 * @return
+	 */
 	public ArrayList<Sesion> buscarSesionesPorFecha(int IDPelicula, String IDCine, String dia) {
 		ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
 		Sesion sesion;
@@ -238,6 +272,19 @@ public class GestionBD {
 		return sesiones;
 	}
 
+	/**
+	 * 
+	 * Busca una sesión de pelicula en base a ciertos parametros. Mas tarde
+	 * llamaremos a este metodo para que se puedan recoger las sesiones de las
+	 * peliculas seleccionadas
+	 * 
+	 * @param IDPelicula
+	 * @param IDCine
+	 * @param dia
+	 * @param hora
+	 * @return
+	 */
+
 	public Sesion buscarSesion(int IDPelicula, String IDCine, String dia, String hora) {
 		Sesion sesion = new Sesion();
 		try {
@@ -257,6 +304,13 @@ public class GestionBD {
 		}
 		return sesion;
 	}
+
+	/**
+	 * Metodo para buscar la compra mas alta en la tabla de compras de la base de
+	 * datos
+	 * 
+	 * @return
+	 */
 
 	public int buscarCompraMasAlta() {
 		int id = 0;
@@ -279,6 +333,13 @@ public class GestionBD {
 		return id;
 	}
 
+	/**
+	 * Metodo para recoger el precio de cada pelicula de la base de datos para asi
+	 * luego calcular el precio de nuestra compra de entradas
+	 * 
+	 * @param id_sesion
+	 * @return
+	 */
 	public double recogerPrecio(int id_sesion) {
 		double precio = 0;
 		try {
@@ -297,6 +358,13 @@ public class GestionBD {
 		return precio;
 	}
 
+	/**
+	 * Metodo para recoger el id de la pelicula seleccionada para que aparezca el
+	 * dia en el que se retransmite la pelicula
+	 * 
+	 * @param id_sesion
+	 * @return
+	 */
 	public int recogerIDPelicula(int id_sesion) {
 		int iDPelicula = 0;
 		try {
@@ -314,6 +382,14 @@ public class GestionBD {
 		return iDPelicula;
 
 	}
+
+	/**
+	 * Metodo que recoge todo lo que queremos de la base de datos que aparezca en la
+	 * factura al realizar la compra
+	 * 
+	 * @param id_sesion
+	 * @return
+	 */
 
 	public LineaDeFactura devolverFacturas(int id_sesion) {
 		LineaDeFactura lineaDeFactura = new LineaDeFactura();
@@ -334,6 +410,11 @@ public class GestionBD {
 		return lineaDeFactura;
 	}
 
+	/**
+	 * Metodo para insertar los datos de la compra realizada en la Base de datos
+	 * 
+	 * @param compraARealizar
+	 */
 	public void insertarCompra(Compra compraARealizar) {
 		try {
 			Statement consulta = conexion.createStatement();
@@ -351,6 +432,12 @@ public class GestionBD {
 		}
 	}
 
+	/**
+	 * Metodo para insertar en la tabla entradas de la base de datos las entradas
+	 * compradas
+	 * 
+	 * @param entradasCompradas
+	 */
 	public void insertarEntradas(ArrayList<Entrada> entradasCompradas) {
 		try {
 			Statement consulta = conexion.createStatement();

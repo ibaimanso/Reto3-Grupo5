@@ -23,6 +23,10 @@ public class Bienvenida extends JPanel {
 		setVisible(true);
 		setLayout(null);
 
+
+		/**
+		 * Etiqueta principal con el nombre de la empresa en la que si haces click pasaremos al panel de login
+		 */
 		JLabel lblFinestCines = new JLabel("FINEST CINES");
 		lblFinestCines.setFont(new Font("Ink Free", Font.BOLD, 39));
 		lblFinestCines.setBounds(164, 38, 399, 178);
