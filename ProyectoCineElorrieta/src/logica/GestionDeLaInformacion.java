@@ -1,6 +1,8 @@
 package logica;
 
 import java.security.Key;
+import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.regex.Matcher;
@@ -229,6 +231,17 @@ public class GestionDeLaInformacion {
 	public void insertarCompraEnBaseDeDatos() {
 		gestionBD.insertarCompra(compraARealizar);
 		gestionBD.insertarEntradas(entradasCompradas);
+	}
+	public void escribirFactura() throws IOException {
+		
+		BufferedWriter fichero = new BufferedWriter (new FileWriter("Factura.txt"));
+		for (int i = 0; i < devolverfactura().size(); i++) {
+			fichero.write("Compra: "+i);
+			fichero.newLine();
+			
+			
+		}
+
 	}
 
 }

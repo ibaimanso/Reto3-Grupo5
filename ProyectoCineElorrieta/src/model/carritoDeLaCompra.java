@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JList;
 
@@ -44,6 +45,11 @@ public class carritoDeLaCompra extends JPanel {
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestion.insertarCompraEnBaseDeDatos();
+				try {
+					gestion.escribirFactura();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				ventana.cambiarDePanel(9);
 				
 			}
