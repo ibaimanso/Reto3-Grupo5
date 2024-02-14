@@ -11,6 +11,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 import controlador.GestionBD;
+import model.SelecionDeFechas;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Compra;
@@ -19,6 +20,11 @@ import modelobjeto.LineaDeFactura;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 import view.VistaPrincipal;
+
+/**
+ * Clase utilizada para la gestión de la información entre paneles y base de
+ * datos
+ */
 
 public class GestionDeLaInformacion {
 
@@ -35,15 +41,19 @@ public class GestionDeLaInformacion {
 	private Sesion sesionElejida;
 	private Compra compraARealizar;
 	private ArrayList<Entrada> entradasCompradas;
-
 	private ObjetoManejoFicheros gestionFicheros;
 
+	/**
+	 * Constructor de la clase GestionDeLaInformacion. Este constructor solamente
+	 * inicializa alguna de las previas variables ya que son utilizadas a traves de
+	 * todo el programa
+	 */
 	public GestionDeLaInformacion() {
 		gestionBD = new GestionBD();
 		entradasCompradas = new ArrayList<Entrada>();
 	}
 
-	/*
+	/**
 	 * Metodo para encriptar la contraseña en la base de datos
 	 */
 
@@ -56,9 +66,17 @@ public class GestionDeLaInformacion {
 		return desencriptado;
 	}
 
+	/**
+	 * Metodo para recoger informacio del registro y validarlos mediante regex
+	 * 
+	 * @param cliente Recoge el objeto cliente que se genera en la clase registro
+	 * @param ventana Recoge la ventana para poder sacar mensajes de error en el
+	 *                panel
+	 */
+
 	public void recogerInformacionFormulario(Cliente cliente, VistaPrincipal ventana) {
 
-		/*
+		/**
 		 * Regex para que en el panel de registro toda la informacion se introduzca
 		 * correctamente
 		 */
@@ -101,10 +119,26 @@ public class GestionDeLaInformacion {
 		}
 
 	}
-	
+
+	/**
+	 * Metodo creado para devolver la longitud de la entrada para su aparcición al
+	 * lado del carrito de compra
+	 * 
+	 * @return devuelve un int sacado de la longitud del arraylist de entradas
+	 */
 	public int devolverLongitudDeEntrada() {
 		return entradasCompradas.size();
 	}
+
+	/**
+	 * Metodo para comprobar que el usuario y contraseña insertados en el login son
+	 * correctos mediante una query
+	 * 
+	 * @param usuario    Es el usuario sacado del login
+	 * @param contraseña Es la contraseña sacada del login
+	 * @return En caso de que el login sea correcto se devuelve true y en caso de
+	 *         que sea incorrecto false
+	 */
 
 	public boolean testUsuarioYContraseña(String usuario, String contraseña) {
 		boolean login = false;
@@ -112,11 +146,21 @@ public class GestionDeLaInformacion {
 		return login;
 	}
 
+	/**
+	 * Metodo utilizado para devolver un arraylist de cines para su implementación
+	 * en un combobox en el panel de Peliculas.
+	 */
 	public ArrayList<Cine> devolverCines() {
 		this.cine = gestionBD.buscarCines();
 		return this.cine;
 	}
 
+	/**
+	 * Metodo utilizado para guardar un objeto cine en esta clase para sub futuro
+	 * uso en querys y en titulos de diversos paneles
+	 * 
+	 * @param nombre Es el nombre de la pelicula elegida en el panel Peliculas
+	 */
 	public void elegirCine(String nombre) {
 		for (int i = 0; i < cine.size(); i++) {
 			if (cine.get(i).getNombrecine().equalsIgnoreCase(nombre)) {
@@ -125,23 +169,52 @@ public class GestionDeLaInformacion {
 		}
 	}
 
+	/**
+	 * Metodo utilizado para devolver el nombre del cine previamente elegido
+	 * 
+	 * @return Devuelve el nombre en forma de String
+	 */
 	public String sacarCine() {
 		return cineSelecionado.getNombrecine();
 	}
 
+	/**
+	 * Metodo utilizado para buscar peliculas en la base de datos mediante el id del
+	 * cine previamente elegido y guardarlas en la clase para su futuro uso
+	 * 
+	 * @return devuelve un arraylist del objeto Pelicula el cual se usara en el
+	 *         panel de Peliculas.
+	 */
 	public ArrayList<Pelicula> devolverPeliculas() {
 		this.peliculas = gestionBD.buscarPelis(cineSelecionado.getId_cine());
 		return this.peliculas;
 	}
 
+	/**
+	 * Metodo utilizado para guardar la pelicula elegida en el panel de peliculas
+	 * 
+	 * @param pelicula Pelicula elegida en el panel de peliculas
+	 */
 	public void elegirPelicula(Pelicula pelicula) {
 		peliculaSelecionada = pelicula;
 	}
 
+	/**
+	 * Metodo utilizado para devolver la pelicula selecionada a los paneles de
+	 * SelecionDeFechas, SelecionDeHoras y CompraDeEntradas
+	 * 
+	 * @return Devuelve un objeto Pelicula a los paneles para poder mostrar sus
+	 *         propiedades en ellos
+	 */
 	public Pelicula devolverPelicula() {
 		return peliculaSelecionada;
 	}
 
+	/**
+	 * Metodo que devuelve sesiones en base a
+	 * 
+	 * @return
+	 */
 	public ArrayList<String> devolverSesiones() {
 		return gestionBD.buscarSesiones(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine());
 	}
@@ -236,14 +309,14 @@ public class GestionDeLaInformacion {
 		gestionBD.insertarCompra(compraARealizar);
 		gestionBD.insertarEntradas(entradasCompradas);
 	}
+
 	public void escribirFactura() throws IOException {
-		
-		BufferedWriter fichero = new BufferedWriter (new FileWriter("Factura.txt"));
+
+		BufferedWriter fichero = new BufferedWriter(new FileWriter("Factura.txt"));
 		for (int i = 0; i < devolverfactura().size(); i++) {
-			fichero.write("Compra: "+i);
+			fichero.write("Compra: " + i);
 			fichero.newLine();
-			
-			
+
 		}
 
 	}
