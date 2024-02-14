@@ -23,6 +23,7 @@ import view.VistaPrincipal;
 public class GestionDeLaInformacion {
 
 	private GestionBD gestionBD;
+	private ObjetoManejoFicheros ficheros;
 	private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 	private Cliente usuario;
 	private ArrayList<Cine> cine;
@@ -40,6 +41,7 @@ public class GestionDeLaInformacion {
 
 	public GestionDeLaInformacion() {
 		gestionBD = new GestionBD();
+		ficheros = new ObjetoManejoFicheros();
 		entradasCompradas = new ArrayList<Entrada>();
 	}
 
@@ -233,13 +235,8 @@ public class GestionDeLaInformacion {
 		gestionBD.insertarEntradas(entradasCompradas);
 	}
 	public void escribirFactura() throws IOException {
+		ficheros.escribirFichero(devolverfactura());
 		
-		FileWriter fichero = new FileWriter ("facturas/factura.txt");
-		for (int i = 0; i < devolverfactura().size(); i++) {
-			fichero.write("Compra:" + "\n");
-			
-		}
-		fichero.close();
 	}
 
 }

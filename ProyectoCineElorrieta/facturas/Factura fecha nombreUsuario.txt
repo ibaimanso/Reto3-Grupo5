@@ -1,0 +1,20 @@
+Entrada 0: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 1: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 2: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 3: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 4: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 5: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 6: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 7: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 8: null ---> null // Sala: null Fecha: null // null
+******************
+Entrada 9: null ---> null // Sala: null Fecha: null // null
+******************
