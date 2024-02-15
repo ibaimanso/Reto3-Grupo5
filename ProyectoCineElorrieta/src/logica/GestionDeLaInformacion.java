@@ -1,8 +1,8 @@
 package logica;
 
 import java.security.Key;
-import java.io.File;
-import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.regex.Matcher;
@@ -29,6 +29,7 @@ import view.VistaPrincipal;
 public class GestionDeLaInformacion {
 
 	private GestionBD gestionBD;
+	private ObjetoManejoFicheros ficheros;
 	private final String CLAVE_ENCRIPTACION = "clavecompartidanorevelarnuncamas";
 	private Cliente usuario;
 	private ArrayList<Cine> cine;
@@ -49,6 +50,7 @@ public class GestionDeLaInformacion {
 	 */
 	public GestionDeLaInformacion() {
 		gestionBD = new GestionBD();
+		ficheros = new ObjetoManejoFicheros();
 		entradasCompradas = new ArrayList<Entrada>();
 	}
 
@@ -363,17 +365,12 @@ public class GestionDeLaInformacion {
 	 * Metodo para escribir factura de las compras realizadas
 	 */
 	public void escribirFactura() throws IOException {
-
-		BufferedWriter fichero = new BufferedWriter(new FileWriter("Factura.txt"));
-		for (int i = 0; i < devolverfactura().size(); i++) {
-			fichero.write("Compra: " + i);
-			fichero.newLine();
-		}
-
+		ficheros.escribirFichero(devolverfactura());
 	}
-	
+
 	/**
-	 * Metodo utilizado para limpiar al arrylist de entradas para que el siguiente usuario no tenga las mismas entrdas
+	 * Metodo utilizado para limpiar al arrylist de entradas para que el siguiente
+	 * usuario no tenga las mismas entrdas
 	 */
 	public void limpiarArrayListEntradas() {
 		entradasCompradas = new ArrayList<Entrada>();

@@ -1,3 +1,4 @@
+
 package view;
 
 import javax.swing.JFrame;
@@ -16,10 +17,21 @@ import model.carritoDeLaCompra;
 
 import java.awt.Toolkit;
 
+/**
+ * En esta clase nos encontraremos el JFrame principal sobre el que estan todos
+ * los paneles
+ */
 public class VistaPrincipal extends JFrame {
+
 	private GestionDeLaInformacion gestion;
 
 	public VistaPrincipal() {
+
+		/**
+		 * Se le asignan a la ventana principal unos parametros como: Que se pueda
+		 * cerrar por completo El icono de la aplicacion Y el tamaño principal de la
+		 * ventana, ademas de que no se puede redimensionar.
+		 */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gestion = new GestionDeLaInformacion();
 		setIconImage(Toolkit.getDefaultToolkit().getImage("multimedia/logo.jpg"));
@@ -30,6 +42,11 @@ public class VistaPrincipal extends JFrame {
 
 	}
 
+	/**
+	 * Metodo para cambiar entre los paneles
+	 * 
+	 * @param i
+	 */
 	public void cambiarDePanel(int i) {
 
 		switch (i) {

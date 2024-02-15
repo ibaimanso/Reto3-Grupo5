@@ -1,7 +1,6 @@
 package model;
 
 import javax.swing.JPanel;
-
 import view.VistaPrincipal;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -16,6 +15,11 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * En esta clase podremos seleccionar el cine de el que queremos ver las
+ * peliculas disponibles, ademas de que cuando compremos
+ */
+
 public class Cines extends JPanel {
 	private ArrayList<Cine> cines;
 	private Integer contador;
@@ -24,12 +28,13 @@ public class Cines extends JPanel {
 		cines = gestion.devolverCines();
 		contador = gestion.devolverLongitudDeEntradas();
 
-		// setSize(ventana.getSize());
 		setSize(620, 420);
 		setVisible(true);
 		setLayout(null);
 
-		// Inicio de la parte del carrito y nombre del cine
+		/**
+		 * Inicio de la parte del carrito y nombre del cine
+		 */
 		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
 		lblNombreUsuario.setText(gestion.devolverNombreUsuario());
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
@@ -56,13 +61,17 @@ public class Cines extends JPanel {
 		btnCarrito.setFocusPainted(false);
 		btnCarrito.setBorderPainted(false);
 		btnCarrito.setContentAreaFilled(false);
-		//
 		btnCarrito.setBackground(new Color(0, 0, 0));
 		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
 
 		btnCarrito.setBounds(10, 29, 60, 60);
 		add(btnCarrito);
 
+		/**
+		 * lbl Para dar un detalle a la interfaz de seleccion de peliculas, que solo se
+		 * va a ver cuando ya hayamos comprado una entrada y nuestro carrito de la
+		 * compra tenga contenido
+		 */
 		JLabel lblFondoParaCarrito = new JLabel("");
 		lblFondoParaCarrito.setIcon(new ImageIcon("multimedia/rectangulo-negro-login.png"));
 		lblFondoParaCarrito.setBounds(-373, -279, 600, 397);
@@ -78,9 +87,9 @@ public class Cines extends JPanel {
 			lblFondoParaCarrito.setVisible(true);
 			btnCarrito.setVisible(true);
 			lblNombreUsuario.setVisible(true);
-			lblNombreUsuario.setVisible(true);
 			lblContadorCompra.setVisible(true);
 			lblContadorCompra.setText("" + gestion.devolverLongitudDeEntradas());
+
 		}
 		// Fin de la parte del carrito y nombre del cine
 
@@ -90,6 +99,10 @@ public class Cines extends JPanel {
 		lblBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBienvenida.setBounds(37, 74, 540, 89);
 		add(lblBienvenida);
+
+		/**
+		 * Combo Box donde aparaceran los cines que hay en la base de datos.
+		 */
 
 		JComboBox<String> comboBox = new JComboBox<String>();
 		for (int i = 0; i < cines.size(); i++) {
