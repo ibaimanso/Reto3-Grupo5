@@ -1,7 +1,5 @@
 package modelobjeto;
 
-import java.io.File;
-
 public class Pelicula {
 	/*
 	 * Objeto Entrada se utiliza para almacenar una fila de la tabla Entrada
@@ -10,11 +8,9 @@ public class Pelicula {
 	private String nombrepeli;
 	private String genero;
 	private int duracion;
-	
-	
 
 	public Pelicula() {
-		
+
 	}
 
 	public Pelicula(int idpeli, String nombrepeli, String genero, int duracion, double precio) {
@@ -72,6 +68,5 @@ public class Pelicula {
 	}
 
 	private double precio;
-
 
 }

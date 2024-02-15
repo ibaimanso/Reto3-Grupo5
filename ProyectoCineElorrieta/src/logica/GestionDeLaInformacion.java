@@ -1,7 +1,6 @@
 package logica;
 
 import java.security.Key;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -11,7 +10,6 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 import controlador.GestionBD;
-import model.SelecionDeFechas;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Compra;
@@ -41,7 +39,6 @@ public class GestionDeLaInformacion {
 	private Sesion sesionElejida;
 	private Compra compraARealizar;
 	private ArrayList<Entrada> entradasCompradas;
-	private ObjetoManejoFicheros gestionFicheros;
 
 	/**
 	 * Constructor de la clase GestionDeLaInformacion. Este constructor solamente
