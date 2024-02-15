@@ -1,6 +1,10 @@
 package modelobjeto;
 
 public class Entrada {
+	
+	/*
+	 * Objeto Entrada se utiliza para almacenar una fila de la tabla Entrada
+	 */
 	private int id_sesion;
 	private int id_compra;
 

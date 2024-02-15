@@ -13,16 +13,18 @@ import javax.swing.SwingConstants;
 
 import controlador.GestionBD;
 
-
-
 /**
  * En esta clase nos encontraremos la base de el panel de bienvenida.
  */
 public class Bienvenida extends JPanel {
+	/**
+	 * 
+	 * @param ventana panel de Bienvenida con los parametros de VistaPrincipal
+	 */
 	public Bienvenida(VistaPrincipal ventana) {
 		/**
 		 * Se le da una altura y una anchura al JPanel. Se hace que no se pueda
-		 * redimensionar la VentanaPrincipal
+		 * redimensionar la VentanaPrincipal.
 		 */
 		setSize(ventana.getSize());
 		setVisible(true);
@@ -60,6 +62,9 @@ public class Bienvenida extends JPanel {
 				ventana.cambiarDePanel(1);
 			}
 		});
+		/**
+		 * Es tele es la ruta donde esta la imagen de fondo de bienvenida.
+		 */
 		lblFondo.setIcon(new ImageIcon("multimedia/cine.jpg"));
 		lblFondo.setBounds(0, -166, 595, 712);
 		add(lblFondo);

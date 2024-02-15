@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -25,6 +26,8 @@ public class Registro extends JPanel {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldContraseña;
+	private JRadioButton rdbHombre;
+	private JRadioButton rdbMujer;
 
 	public Registro(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 
@@ -105,6 +108,10 @@ public class Registro extends JPanel {
 		rdbMujer.setBounds(319, 143, 37, 23);
 		add(rdbMujer);
 
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbMujer);
+		group.add(rdbHombre);
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("multimedia/FondoLogin.png"));
 		lblNewLabel.setBounds(-22, -59, 644, 556);
@@ -130,8 +137,7 @@ public class Registro extends JPanel {
 
 				if (rdbHombre.isSelected()) {
 					cliente.setSexo(rdbHombre.getText());
-				}
-				if (rdbMujer.isSelected()) {
+				} else if (rdbMujer.isSelected()) {
 					cliente.setSexo(rdbMujer.getText());
 				}
 				GestionBD gestionBd = new GestionBD();

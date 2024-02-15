@@ -1,6 +1,8 @@
 package modelobjeto;
 
 public class LineaDeFactura {
+	/*
+	 * Objeto LineDefactura es un objeto sacado de una query 	 */
 	private String nombreCine, nombreSala, nombrePelicula, dia, hora;
 
 	public LineaDeFactura() {

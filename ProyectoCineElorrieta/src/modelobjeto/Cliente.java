@@ -2,7 +2,7 @@ package modelobjeto;
 
 public class Cliente {
 	/*
-	 * Objeto CLiente
+	 * Objeto cliente se utiliza para almacenar una fila de la tabla cliente
 	 */
 
 	private String dni;

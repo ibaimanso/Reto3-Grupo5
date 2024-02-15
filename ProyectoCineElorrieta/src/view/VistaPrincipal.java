@@ -22,7 +22,6 @@ import java.awt.Toolkit;
  * los paneles
  */
 public class VistaPrincipal extends JFrame {
-
 	private GestionDeLaInformacion gestion;
 
 	public VistaPrincipal() {

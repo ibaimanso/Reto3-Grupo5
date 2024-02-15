@@ -24,6 +24,7 @@ public class CompraDeEntradas extends JPanel {
 	private Sesion sesion;
 	private String cineElegido;
 	private int contador = 0;
+	
 
 	public CompraDeEntradas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		peliculaElegida = gestion.devolverPelicula();
@@ -86,7 +87,9 @@ public class CompraDeEntradas extends JPanel {
 		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntradas());
 		}
 		// Fin de la parte del carrito y nombre del cine
-
+/*
+ * panel con las fotos de la pelicula,nombre,duracion,genero y precio
+ */
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setForeground(Color.WHITE);

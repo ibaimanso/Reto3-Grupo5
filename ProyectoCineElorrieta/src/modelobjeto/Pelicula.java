@@ -3,6 +3,9 @@ package modelobjeto;
 import java.io.File;
 
 public class Pelicula {
+	/*
+	 * Objeto Entrada se utiliza para almacenar una fila de la tabla Entrada
+	 */
 	private int idpeli;
 	private String nombrepeli;
 	private String genero;
