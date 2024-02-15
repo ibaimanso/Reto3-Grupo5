@@ -17,6 +17,7 @@ import model.carritoDeLaCompra;
 import java.awt.Toolkit;
 
 public class VistaPrincipal extends JFrame {
+	
 	private GestionDeLaInformacion gestion;
 
 	public VistaPrincipal() {
@@ -29,6 +30,7 @@ public class VistaPrincipal extends JFrame {
 		setResizable(false);
 
 	}
+	
 
 	public void cambiarDePanel(int i) {
 

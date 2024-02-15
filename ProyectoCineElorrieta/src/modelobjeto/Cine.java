@@ -1,6 +1,10 @@
 package modelobjeto;
 
 public class Cine {
+	/**
+	 * Objeto cine se utiliza para almacenar una fila de la tabla cine 
+	 */
+
 	private String id_cine;
 	private String nombrecine;
 	private String localicacion;

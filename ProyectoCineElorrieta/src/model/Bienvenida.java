@@ -14,10 +14,15 @@ import javax.swing.SwingConstants;
 import controlador.GestionBD;
 
 public class Bienvenida extends JPanel {
+/**
+ * 
+ * @param ventana 
+ * panel de Bienvenida  con los parametros de VistaPrincipal  
+ */
 	public Bienvenida(VistaPrincipal ventana) {
 		/**
 		 * Se le da una altura y una anchura al JPanel. Se hace que no se pueda
-		 * redimensionar la VentanaPrincipal
+		 * redimensionar la VentanaPrincipal.
 		 */
 		setSize(ventana.getSize());
 		setVisible(true);
@@ -36,6 +41,10 @@ public class Bienvenida extends JPanel {
 				ventana.cambiarDePanel(1);
 			}
 		});
+		/**
+		 * Accion que cuando pulsas al nombre "FINEST CINE" o 
+		 * en la imagen fondo bienvenida se cambiara al siguiente panel en este caso al login.
+		 */
 		JLabel lblFondo = new JLabel("fondoBienvenida");
 		lblFondo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -46,6 +55,9 @@ public class Bienvenida extends JPanel {
 				ventana.cambiarDePanel(1);
 			}
 		});
+		/**
+		 * Es tele es la ruta donde esta la imagen de fondo de bienvenida.
+		 */
 		lblFondo.setIcon(new ImageIcon("multimedia/cine.jpg"));
 		lblFondo.setBounds(0, -166, 595, 712);
 		add(lblFondo);

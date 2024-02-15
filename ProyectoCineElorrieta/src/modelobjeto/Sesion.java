@@ -1,6 +1,9 @@
 package modelobjeto;
 
 public class Sesion {
+	/*
+	 * Objeto Sesion se utiliza para almacenar una fila de la tabla Sesion
+	 */
 	private int id_sesiones;
 	private String id_sala;
 	private int id_pelicula;

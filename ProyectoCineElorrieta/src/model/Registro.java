@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -21,6 +22,8 @@ public class Registro extends JPanel {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldContraseña;
+	private JRadioButton rdbHombre;
+	private JRadioButton rdbMujer;
 
 	public Registro(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 
@@ -89,13 +92,18 @@ public class Registro extends JPanel {
 		btnRegistro.setBounds(284, 339, 156, 23);
 		add(btnRegistro);
 
-		JRadioButton rdbHombre = new JRadioButton("H");
+		rdbHombre = new JRadioButton("H");
 		rdbHombre.setBounds(284, 205, 109, 23);
+		rdbHombre.setEnabled(true);
 		add(rdbHombre);
 
-		JRadioButton rdbMujer = new JRadioButton("M");
+		rdbMujer = new JRadioButton("M");
 		rdbMujer.setBounds(396, 205, 109, 23);
 		add(rdbMujer);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbMujer);
+		group.add(rdbHombre);
 
 		/*
 		 * Función para que los textfields de el panel de registro se guarden en los
@@ -112,8 +120,7 @@ public class Registro extends JPanel {
 
 				if (rdbHombre.isSelected()) {
 					cliente.setSexo(rdbHombre.getText());
-				}
-				if (rdbMujer.isSelected()) {
+				} else if (rdbMujer.isSelected()) {
 					cliente.setSexo(rdbMujer.getText());
 				}
 				GestionBD gestionBd = new GestionBD();

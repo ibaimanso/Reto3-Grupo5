@@ -31,7 +31,9 @@ public class SelecionDeFechas extends JPanel {
 		setVisible(true);
 		setLayout(null);
 		
-		// Inicio de la parte del carrito y nombre del cine
+		/**
+		 *  Inicio de la parte del carrito y nombre del cine
+		 */
 		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
 		lblNombreUsuario.setText(gestion.devolverNombreUsuario());
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
@@ -82,7 +84,9 @@ public class SelecionDeFechas extends JPanel {
 		lblContadorCompra.setVisible(true);
 		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntrada());
 		}
-		// Fin de la parte del carrito y nombre del cine
+		/**
+		 *  Fin de la parte del carrito y nombre del cine
+		 */
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);

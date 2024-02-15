@@ -1,6 +1,9 @@
 package modelobjeto;
 
 public class Sala {
+	/*
+	 * Objeto Sala se utiliza para almacenar una fila de la tabla Sala
+	 */
 	private String id_sala;
 	private String nombre_sala;
 	private String genero;

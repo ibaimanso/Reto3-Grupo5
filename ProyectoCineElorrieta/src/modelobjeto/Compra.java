@@ -1,6 +1,9 @@
 package modelobjeto;
 
 public class Compra {
+	/*
+	 * Objeto Compra se añade los IDCompra y DNI_Cliente se alamcenan los demas
+	 */
 	private int IDCompra;
 	private double PrecioTotal;
 	private int cantodadEntradas;
