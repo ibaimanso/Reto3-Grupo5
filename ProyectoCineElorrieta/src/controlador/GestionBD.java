@@ -60,13 +60,10 @@ public class GestionBD {
 	}
 
 	/**
+	 * Metodo para insertar los datos del registro en la base de datos.
 	 * 
 	 * @param cliente
 	 * @param ventana
-	 * 
-	 *                Metodo para insertar los datos del registro en la base de
-	 *                datos.
-	 * 
 	 */
 	public void insertUsuario(Cliente cliente, VistaPrincipal ventana) {
 
@@ -90,14 +87,12 @@ public class GestionBD {
 	}
 
 	/**
+	 * Metodo para el login. Comprueba si existe un usuario y contraseña que
+	 * coincidan con lod datos de la tabla clientes en la base de datos.
 	 * 
 	 * @param usuario
 	 * @param contraseña
 	 * @return
-	 * 
-	 *         Metodo para el login. Comprueba si existe un usuario y contraseña que
-	 *         coincidan con lod datos de la tabla clientes en la base de datos.
-	 * 
 	 */
 
 	public boolean Login(String usuario, String contraseña) {
