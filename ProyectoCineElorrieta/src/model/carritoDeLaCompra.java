@@ -20,6 +20,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JList;
 
+/**
+ * En esta clase nos vamos a encontrar con el panel que nos mostrara el resumen
+ * de las peliculas compradas
+ */
 public class carritoDeLaCompra extends JPanel {
 
 	private Compra compra;
@@ -41,6 +45,10 @@ public class carritoDeLaCompra extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 
+		/**
+		 * Se crea el boton de Compra que llamara al metodo para imprimir el ticket y
+		 * nos llevara al panel de despedida.
+		 */
 		JButton btnComprar = new JButton("Comprar");
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -51,11 +59,18 @@ public class carritoDeLaCompra extends JPanel {
 					e1.printStackTrace();
 				}
 				ventana.cambiarDePanel(9);
-				
+
 			}
 		});
 		btnComprar.setBounds(479, 318, 89, 29);
 		add(btnComprar);
+
+		/**
+		 * Se crea la lista donde apareceran todas la entradas compradas junto con la
+		 * informacion de estas. Incluyendo el nombre del cine, la sala en la que se
+		 * retransmitira la pelicula, el id de la sala y la fecha en la que se
+		 * retransmitira.
+		 */
 
 		JList<String> list = new JList<String>();
 		list.setFont(new Font("Georgia", Font.BOLD, 12));
@@ -94,6 +109,11 @@ public class carritoDeLaCompra extends JPanel {
 		add(panel_1);
 		panel_1.setLayout(null);
 
+		/**
+		 * Se crea el label donde aparecera el precio total de las entradas compradas
+		 * junto a su descuento, en caso de que lo tenga. Llama al metodo que hace el
+		 * calculo de el precio en gestion de la informacion
+		 */
 		JLabel lblTotal = new JLabel(
 				"TOTAL: " + compra.getPrecioTotal() + "€" + "|| Descuento= " + compra.getPrecioDescontado() + "€");
 		lblTotal.setFont(new Font("Sitka Small", Font.BOLD, 14));

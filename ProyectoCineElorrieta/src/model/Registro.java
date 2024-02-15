@@ -16,6 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 
+/**
+ * En esta clase nos encontraremos el panel de Registro que mandara los datos
+ * introducidos directamente a la base de datos
+ */
 public class Registro extends JPanel {
 	private JTextField txtDni;
 	private JTextField textFieldNombre;
@@ -33,7 +37,7 @@ public class Registro extends JPanel {
 		lblFinestCines.setFont(new Font("Lucida Bright", Font.PLAIN, 25));
 		lblFinestCines.setBounds(170, 11, 186, 90);
 		add(lblFinestCines);
-		
+
 		JButton btnVolver = new JButton("");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,8 +93,6 @@ public class Registro extends JPanel {
 		textFieldContraseña.setBounds(284, 211, 156, 20);
 		add(textFieldContraseña);
 
-	
-
 		JButton btnRegistro = new JButton("Registrarse");
 		btnRegistro.setBounds(284, 277, 156, 23);
 		add(btnRegistro);
@@ -102,7 +104,7 @@ public class Registro extends JPanel {
 		JRadioButton rdbMujer = new JRadioButton("M");
 		rdbMujer.setBounds(319, 143, 37, 23);
 		add(rdbMujer);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("multimedia/FondoLogin.png"));
 		lblNewLabel.setBounds(-22, -59, 644, 556);
@@ -113,6 +115,11 @@ public class Registro extends JPanel {
 		 * atributos de el objeto cliente al hacer click en el boton de registro.
 		 */
 
+		/**
+		 * Se crea el boton de registro que al hacer click sobre el nos llevara al panel
+		 * de login de vuelta y ademas insertara en la base de datos los datos
+		 * introducidos en el formulario de registro.
+		 */
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cliente cliente = new Cliente();
@@ -131,7 +138,7 @@ public class Registro extends JPanel {
 				gestionBd.insertUsuario(cliente, ventana);
 			}
 		});
-	
+
 	}
-	
+
 }

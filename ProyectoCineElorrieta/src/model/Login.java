@@ -23,7 +23,6 @@ public class Login extends JPanel {
 	private String lblUsuario;
 	public JTextField txtfieldUsuario;
 	public JTextField textFieldContraseña;
-	// private GestionDeLaInformacion gestion;
 
 	public Login(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		/**
@@ -38,7 +37,7 @@ public class Login extends JPanel {
 		panelLogin.setLayout(null);
 
 		/**
-		 * Una label con el nombre "Cine Elorrieta"
+		 * Una label con el nombre "Finest Cines"
 		 */
 		JLabel lblCineElorrieta = new JLabel("Finest Cines");
 		lblCineElorrieta.setHorizontalAlignment(SwingConstants.LEFT);
@@ -79,9 +78,10 @@ public class Login extends JPanel {
 		panelLogin.add(textFieldContraseña);
 
 		/**
-		 * Boton cuya función es que pase del PanelLogin al PanelListaGeneros o al
-		 * PanelAdmin, dependiendo del // usuario y contraseña, cuando el usuario y
-		 * contraseña estén bien, si no salta un error.
+		 * Boton cuya función es que pase del PanelLogin al panel de Elegir cine siempre
+		 * y cuando el nombre de usuario coincida con un usuario registrado en la base
+		 * datos, pasara lo mismo con la contraseña, los dos deben de estar registrados
+		 * en la base de datos.
 		 */
 		JButton btnContinuar = new JButton("Login");
 		btnContinuar.setBackground(Color.LIGHT_GRAY);
@@ -124,9 +124,9 @@ public class Login extends JPanel {
 		});
 		btnContinuar.setBounds(200, 305, 175, 20);
 		panelLogin.add(btnContinuar);
-
+		
 		/**
-		 * Label para el fondo del panel
+		 * Boton de registro que nos llevara al panel de registro
 		 */
 
 		JButton btnRegistrarse = new JButton("Registrarse");

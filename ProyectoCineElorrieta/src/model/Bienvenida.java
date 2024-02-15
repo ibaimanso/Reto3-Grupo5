@@ -13,6 +13,11 @@ import javax.swing.SwingConstants;
 
 import controlador.GestionBD;
 
+
+
+/**
+ * En esta clase nos encontraremos la base de el panel de bienvenida.
+ */
 public class Bienvenida extends JPanel {
 	public Bienvenida(VistaPrincipal ventana) {
 		/**
@@ -23,9 +28,9 @@ public class Bienvenida extends JPanel {
 		setVisible(true);
 		setLayout(null);
 
-
 		/**
-		 * Etiqueta principal con el nombre de la empresa en la que si haces click pasaremos al panel de login
+		 * Etiqueta principal con el nombre de la empresa en la que si haces click
+		 * pasaremos al panel de login
 		 */
 		JLabel lblFinestCines = new JLabel("FINEST CINES");
 		lblFinestCines.setFont(new Font("Ink Free", Font.BOLD, 39));
@@ -40,6 +45,11 @@ public class Bienvenida extends JPanel {
 				ventana.cambiarDePanel(1);
 			}
 		});
+
+		/**
+		 * Etiqueta en la que esta la imagen de el fondo de la bienvenida, en el que si
+		 * hacemos click no mandara al panel de login.
+		 */
 		JLabel lblFondo = new JLabel("fondoBienvenida");
 		lblFondo.addMouseListener(new MouseAdapter() {
 			@Override
