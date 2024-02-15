@@ -80,7 +80,7 @@ public class SelecionDeFechas extends JPanel {
 		lblNombreUsuario.setVisible(true);
 		lblNombreUsuario.setVisible(true);
 		lblContadorCompra.setVisible(true);
-		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntrada());
+		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntradas());
 		}
 		// Fin de la parte del carrito y nombre del cine
 

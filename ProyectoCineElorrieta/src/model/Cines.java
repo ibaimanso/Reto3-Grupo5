@@ -35,13 +35,13 @@ public class Cines extends JPanel {
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(10, 11, 145, 18);
 		add(lblNombreUsuario);
-		
+
 		JLabel lblContadorCompra = new JLabel("0");
 		lblContadorCompra.setForeground(new Color(255, 255, 255));
 		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContadorCompra.setBounds(37, 70, 37, 32);
 		add(lblContadorCompra);
-		
+
 		JLabel lblCirculoRojo = new JLabel("");
 		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
 		lblCirculoRojo.setBounds(37, 57, 43, 61);
@@ -59,8 +59,7 @@ public class Cines extends JPanel {
 		//
 		btnCarrito.setBackground(new Color(0, 0, 0));
 		btnCarrito.setIcon(new ImageIcon("multimedia/CarritoBlanco (1) (1).png"));
-	
-			
+
 		btnCarrito.setBounds(10, 29, 60, 60);
 		add(btnCarrito);
 
@@ -70,18 +69,18 @@ public class Cines extends JPanel {
 		add(lblFondoParaCarrito);
 
 		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-		lblFondoParaCarrito.setVisible(false);
+			lblFondoParaCarrito.setVisible(false);
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
 			lblCirculoRojo.setVisible(false);
 			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
-		btnCarrito.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblContadorCompra.setVisible(true);
-		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntrada());
+			btnCarrito.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblContadorCompra.setVisible(true);
+			lblContadorCompra.setText("" + gestion.devolverLongitudDeEntradas());
 		}
 		// Fin de la parte del carrito y nombre del cine
 
@@ -111,7 +110,7 @@ public class Cines extends JPanel {
 
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {
 				gestion.elegirCine((String) comboBox.getSelectedItem());
 				ventana.cambiarDePanel(4);
 			}
@@ -123,9 +122,6 @@ public class Cines extends JPanel {
 		lblFoto.setBounds(0, 0, 620, 420);
 		lblFoto.setIcon(new ImageIcon("multimedia/fondo-cines.jpg"));
 		add(lblFoto);
-		
 
-		
-		
 	}
 }

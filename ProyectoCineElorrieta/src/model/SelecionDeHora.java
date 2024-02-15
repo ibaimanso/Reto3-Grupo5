@@ -38,13 +38,13 @@ public class SelecionDeHora extends JPanel {
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(495, 11, 145, 18);
 		add(lblNombreUsuario);
-		
+
 		JLabel lblContadorCompra = new JLabel("0");
 		lblContadorCompra.setForeground(new Color(255, 255, 255));
 		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContadorCompra.setBounds(561, 70, 37, 32);
 		add(lblContadorCompra);
-		
+
 		JLabel lblCirculoRojo = new JLabel("");
 		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
 		lblCirculoRojo.setBounds(561, 57, 43, 61);
@@ -70,18 +70,18 @@ public class SelecionDeHora extends JPanel {
 		add(lblFondoParaCarrito);
 
 		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-		lblFondoParaCarrito.setVisible(false);
+			lblFondoParaCarrito.setVisible(false);
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
 			lblCirculoRojo.setVisible(false);
 			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
-		btnCarrito.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblContadorCompra.setVisible(true);
-		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntrada());
+			btnCarrito.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblContadorCompra.setVisible(true);
+			lblContadorCompra.setText("" + gestion.devolverLongitudDeEntradas());
 		}
 		// Fin de la parte del carrito y nombre del cine
 
@@ -144,7 +144,7 @@ public class SelecionDeHora extends JPanel {
 		});
 		btnElegirFecha.setBounds(358, 148, 134, 23);
 		panel.add(btnElegirFecha);
-		
+
 		JLabel lblNombreEmpresa = new JLabel("FINEST CINES");
 		lblNombreEmpresa.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 34));
 		lblNombreEmpresa.setBounds(31, 11, 431, 46);

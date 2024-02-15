@@ -73,6 +73,7 @@ public class GestionDeLaInformacion {
 	 *                panel
 	 */
 
+	// TODO Crear clase que recoja los metodos
 	public void recogerInformacionFormulario(Cliente cliente, VistaPrincipal ventana) {
 
 		/**
@@ -117,16 +118,6 @@ public class GestionDeLaInformacion {
 		} else {
 		}
 
-	}
-
-	/**
-	 * Metodo creado para devolver la longitud de la entrada para su aparcición al
-	 * lado del carrito de compra
-	 * 
-	 * @return devuelve un int sacado de la longitud del arraylist de entradas
-	 */
-	public int devolverLongitudDeEntrada() {
-		return entradasCompradas.size();
 	}
 
 	/**
@@ -233,14 +224,17 @@ public class GestionDeLaInformacion {
 	 * Metodo utilizado para devolver sesiones en base al id de la pelicula y el
 	 * cine y el dia anteriormente elegido
 	 * 
-	 * @return Devuelve un arraylist de sesiones para su uso en el panel de SelecionDeHoras
+	 * @return Devuelve un arraylist de sesiones para su uso en el panel de
+	 *         SelecionDeHoras
 	 */
 	public ArrayList<Sesion> devolverSesionesPorDia() {
 		return gestionBD.buscarSesionesPorFecha(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine(), fecha);
 	}
 
 	/**
-	 * Metodo utilizado para guardar el dia en la clase para su futuro uso en una query de busqueda de sesion;
+	 * Metodo utilizado para guardar el dia en la clase para su futuro uso en una
+	 * query de busqueda de sesion;
+	 * 
 	 * @param hora
 	 */
 	public void elegirHora(String hora) {
@@ -248,8 +242,10 @@ public class GestionDeLaInformacion {
 	}
 
 	/**
-	 * Metodo para buscar una sesion en base a la id de pelicula y cine, la hora y el dia
-	 * @return Devuelve un objeto Sesion para cla compra y creación de entradas
+	 * Metodo para buscar una sesion en base a la id de pelicula y cine, la hora y
+	 * el dia
+	 * 
+	 * @return Devuelve un objeto Sesion para la compra y creación de entradas
 	 */
 	public Sesion devolverSesionPorDiaYHora() {
 		this.sesionElejida = gestionBD.buscarSesion(peliculaSelecionada.getIdpeli(), cineSelecionado.getId_cine(),
@@ -257,27 +253,52 @@ public class GestionDeLaInformacion {
 		return this.sesionElejida;
 	}
 
+	/**
+	 * Metodo para recoger el usuario dentro de un objeto Cliente para su futuro uso
+	 * en el objeto compra y su nombre en el carrito de la compra
+	 * 
+	 * @param dni Es el dni del usuario que se utiliza para buscar el usuario en la
+	 *            base de datos
+	 */
 	public void guardarUsuario(String dni) {
 		this.usuario = gestionBD.buscarUsuario(dni);
 		compraARealizar = new Compra(gestionBD.buscarCompraMasAlta() + 1, usuario.getDni());
 	}
 
+	/**
+	 * Metodo para devolver un string con el nombre y apellidos del cliente
+	 * 
+	 * @return String con el nombre y apellido del cliente
+	 */
 	public String devolverNombreUsuario() {
 		String respuesta = usuario.getNombrecli() + " " + usuario.getApellido();
 		return respuesta;
 	}
 
+	/**
+	 * Metodo creado para devolver la longitud de la entrada para su aparcición al
+	 * lado del carrito de compra
+	 * 
+	 * @return devuelve un int sacado de la longitud del arraylist de entradas
+	 */
 	public Integer devolverLongitudDeEntradas() {
 		Integer longitudEntradas = entradasCompradas.size();
 		return longitudEntradas;
 	}
 
+	/**
+	 * Metodo para generar entradas y añadirlas a un arraylist de entradas
+	 * 
+	 * @param cantidad      numero de entradas a añadir
+	 * @param sesionElegida sesion de la cual se va a crear la entrada
+	 */
 	public void añadirEntradas(int cantidad, Sesion sesionElegida) {
 		for (int i = 0; i < cantidad; i++) {
 			entradasCompradas.add(new Entrada(sesionElegida.getid_sesiones(), compraARealizar.getIDCompra()));
 		}
 	}
 
+	// TODO crear nueva clase que separe el metodo
 	public Compra calcularCompra() {
 		double precioTotal = 0;
 		ArrayList<Integer> contador = new ArrayList<Integer>();
@@ -313,6 +334,13 @@ public class GestionDeLaInformacion {
 		return compraARealizar;
 	}
 
+	/**
+	 * Metodo para devolver las entradas pero con su fecha, hora, Nombre de cine y
+	 * pelicula relacionadas
+	 * 
+	 * @return Arraylist de Linea de Factura con los parametros previamnete
+	 *         mencionados
+	 */
 	public ArrayList<LineaDeFactura> devolverfactura() {
 		ArrayList<LineaDeFactura> factura = new ArrayList<LineaDeFactura>();
 		for (int i = 0; i < entradasCompradas.size(); i++) {
@@ -323,11 +351,17 @@ public class GestionDeLaInformacion {
 
 	}
 
+	/**
+	 * Metodo para guardar las compras en la base de datos
+	 */
 	public void insertarCompraEnBaseDeDatos() {
 		gestionBD.insertarCompra(compraARealizar);
 		gestionBD.insertarEntradas(entradasCompradas);
 	}
 
+	/**
+	 * Metodo para escribir factura de las compras realizadas
+	 */
 	public void escribirFactura() throws IOException {
 
 		BufferedWriter fichero = new BufferedWriter(new FileWriter("Factura.txt"));
