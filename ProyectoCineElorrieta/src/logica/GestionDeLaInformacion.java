@@ -368,9 +368,15 @@ public class GestionDeLaInformacion {
 		for (int i = 0; i < devolverfactura().size(); i++) {
 			fichero.write("Compra: " + i);
 			fichero.newLine();
-
 		}
 
+	}
+	
+	/**
+	 * Metodo utilizado para limpiar al arrylist de entradas para que el siguiente usuario no tenga las mismas entrdas
+	 */
+	public void limpiarArrayListEntradas() {
+		entradasCompradas = new ArrayList<Entrada>();
 	}
 
 }

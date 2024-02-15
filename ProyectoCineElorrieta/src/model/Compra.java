@@ -13,6 +13,11 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 
 public class Compra extends JPanel {
+	/**
+	 * Panel de finazlización que te deja imprimir un tiquet despues de la compra
+	 * @param ventana objeto ventana utilizado para cambiar de panel
+	 * @param gestion objeto gestion utilizado para usar fuciones relacionadas con la información
+	 */
 	public Compra(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		setSize(620, 420);
 		setVisible(true);
@@ -30,6 +35,7 @@ public class Compra extends JPanel {
 				long tiempoDeActivacion = System.currentTimeMillis() + 0500;
 				while (System.currentTimeMillis() < tiempoDeActivacion) {
 				}
+				gestion.limpiarArrayListEntradas();
 				ventana.cambiarDePanel(0);
 			}
 		});
@@ -46,6 +52,7 @@ public class Compra extends JPanel {
 				long tiempoDeActivacion = System.currentTimeMillis() + 0500;
 				while (System.currentTimeMillis() < tiempoDeActivacion) {
 				}
+				gestion.limpiarArrayListEntradas();
 				ventana.cambiarDePanel(0);
 			}
 		});

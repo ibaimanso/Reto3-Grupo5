@@ -22,6 +22,14 @@ public class SelecionDeFechas extends JPanel {
 	private ArrayList<String> dias;
 	private String cineElegido;
 
+	/**
+	 * Objeto utilizado para mostrar y elegir el dia de la sesión en base a la
+	 * pelicula elegida
+	 * 
+	 * @param ventana Objeto ventana utilizado para cambiar de panel
+	 * @param gestion Objeto utilizado para realizar funciones relacionadas con el
+	 *                uso de la informacion
+	 */
 	public SelecionDeFechas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		peliculaElegida = gestion.devolverPelicula();
 		dias = gestion.devolverSesiones();
@@ -30,25 +38,31 @@ public class SelecionDeFechas extends JPanel {
 		setSize(620, 420);
 		setVisible(true);
 		setLayout(null);
-		
+
 		// Inicio de la parte del carrito y nombre del cine
 		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
 		lblNombreUsuario.setText(gestion.devolverNombreUsuario());
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(495, 11, 145, 18);
 		add(lblNombreUsuario);
-		
+
+		/**
+		 * Contador que muestra la cantidad de entradas añadidas al carrito
+		 */
 		JLabel lblContadorCompra = new JLabel("0");
 		lblContadorCompra.setForeground(new Color(255, 255, 255));
 		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContadorCompra.setBounds(561, 70, 37, 32);
 		add(lblContadorCompra);
-		
+
 		JLabel lblCirculoRojo = new JLabel("");
 		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
 		lblCirculoRojo.setBounds(561, 57, 43, 61);
 		add(lblCirculoRojo);
 
+		/**
+		 * Boton para ir al resumen de la compra
+		 */
 		JButton btnCarrito = new JButton("");
 		btnCarrito.setFocusPainted(false);
 		btnCarrito.setBorderPainted(false);
@@ -68,19 +82,22 @@ public class SelecionDeFechas extends JPanel {
 		lblFondoParaCarrito.setBounds(435, -286, 600, 397);
 		add(lblFondoParaCarrito);
 
+		/**
+		 * Función que oculta o muestra el carrito en caso de tener una compra o no
+		 */
 		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-		lblFondoParaCarrito.setVisible(false);
+			lblFondoParaCarrito.setVisible(false);
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
 			lblCirculoRojo.setVisible(false);
 			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
-		btnCarrito.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblContadorCompra.setVisible(true);
-		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntradas());
+			btnCarrito.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblContadorCompra.setVisible(true);
+			lblContadorCompra.setText("" + gestion.devolverLongitudDeEntradas());
 		}
 		// Fin de la parte del carrito y nombre del cine
 
@@ -117,6 +134,9 @@ public class SelecionDeFechas extends JPanel {
 		lblPrecio.setBounds(176, 125, 129, 27);
 		panel.add(lblPrecio);
 
+		/**
+		 * Combobox que muestra los dias de la pelicula elegida
+		 */
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(358, 70, 134, 22);
 		for (int i = 0; i < dias.size(); i++) {
@@ -124,7 +144,9 @@ public class SelecionDeFechas extends JPanel {
 		}
 		panel.add(comboBox);
 
-
+		/**
+		 * Boton cuya función es ir al panel anterior
+		 */
 		JButton btnVolver = new JButton("");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -134,7 +156,7 @@ public class SelecionDeFechas extends JPanel {
 		btnVolver.setIcon(new ImageIcon("multimedia/flecha_volver (1).png"));
 		btnVolver.setBounds(479, 11, 46, 43);
 		panel.add(btnVolver);
-		
+
 		JLabel lblNombreEmpresa = new JLabel("FINEST CINES");
 		lblNombreEmpresa.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 34));
 		lblNombreEmpresa.setBounds(31, 11, 431, 46);
@@ -145,6 +167,10 @@ public class SelecionDeFechas extends JPanel {
 		lblCineElegido.setBounds(31, 68, 95, 14);
 		add(lblCineElegido);
 
+		/**
+		 * Boton cuya función es elegir el dia selecionado en el combobox y cambiar al
+		 * panel de seleción de horas
+		 */
 		JButton btnElegirFecha = new JButton("Aceptar");
 		btnElegirFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,8 +180,6 @@ public class SelecionDeFechas extends JPanel {
 		});
 		btnElegirFecha.setBounds(358, 148, 134, 23);
 		panel.add(btnElegirFecha);
-		
-		
 
 	}
 }
