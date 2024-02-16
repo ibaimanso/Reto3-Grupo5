@@ -22,6 +22,8 @@ import java.awt.Toolkit;
  * los paneles
  */
 public class VistaPrincipal extends JFrame {
+	private static final long serialVersionUID = 1L;
+
 	private GestionDeLaInformacion gestion;
 
 	public VistaPrincipal() {
@@ -81,11 +83,4 @@ public class VistaPrincipal extends JFrame {
 			break;
 		}
 	}
-
-	public static void main(String[] args) {
-		VistaPrincipal ventana = new VistaPrincipal();
-		ventana.cambiarDePanel(0);
-		ventana.setVisible(true);
-	}
-
 }

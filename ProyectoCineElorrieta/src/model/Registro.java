@@ -22,12 +22,11 @@ import javax.swing.JButton;
  * introducidos directamente a la base de datos
  */
 public class Registro extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JTextField txtDni;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldContraseña;
-	private JRadioButton rdbHombre;
-	private JRadioButton rdbMujer;
 
 	public Registro(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 

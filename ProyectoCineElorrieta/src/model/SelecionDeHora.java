@@ -23,6 +23,8 @@ import java.awt.event.ActionEvent;
  * queremos de la pelicula que vayamos a comprar.
  */
 public class SelecionDeHora extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	private Pelicula peliculaElegida;
 	private ArrayList<Sesion> sesiones;
 	private String cineElegido;

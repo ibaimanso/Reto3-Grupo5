@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class SelecionDeFechas extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	private Pelicula peliculaElegida;
 	private ArrayList<String> dias;
 	private String cineElegido;

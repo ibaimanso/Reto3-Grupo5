@@ -2,8 +2,6 @@ package model;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -13,18 +11,18 @@ import logica.GestionDeLaInformacion;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 import view.VistaPrincipal;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 public class CompraDeEntradas extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	private Pelicula peliculaElegida;
 	private Sesion sesion;
 	private String cineElegido;
 	private int contador = 0;
-	
 
 	public CompraDeEntradas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		peliculaElegida = gestion.devolverPelicula();
@@ -41,13 +39,13 @@ public class CompraDeEntradas extends JPanel {
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(495, 11, 145, 18);
 		add(lblNombreUsuario);
-		
+
 		JLabel lblContadorCompra = new JLabel("0");
 		lblContadorCompra.setForeground(new Color(255, 255, 255));
 		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContadorCompra.setBounds(561, 70, 37, 32);
 		add(lblContadorCompra);
-		
+
 		JLabel lblCirculoRojo = new JLabel("");
 		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
 		lblCirculoRojo.setBounds(561, 57, 43, 61);
@@ -73,23 +71,23 @@ public class CompraDeEntradas extends JPanel {
 		add(lblFondoParaCarrito);
 
 		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-		lblFondoParaCarrito.setVisible(false);
+			lblFondoParaCarrito.setVisible(false);
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
 			lblCirculoRojo.setVisible(false);
 			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
-		btnCarrito.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblContadorCompra.setVisible(true);
-		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntradas());
+			btnCarrito.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblContadorCompra.setVisible(true);
+			lblContadorCompra.setText("" + gestion.devolverLongitudDeEntradas());
 		}
 		// Fin de la parte del carrito y nombre del cine
-/*
- * panel con las fotos de la pelicula,nombre,duracion,genero y precio
- */
+		/*
+		 * panel con las fotos de la pelicula,nombre,duracion,genero y precio
+		 */
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setForeground(Color.WHITE);
@@ -195,7 +193,7 @@ public class CompraDeEntradas extends JPanel {
 		});
 		btnSumar.setBounds(458, 163, 43, 32);
 		panel.add(btnSumar);
-		
+
 		JLabel lblNombreEmpresa = new JLabel("FINEST CINES");
 		lblNombreEmpresa.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 34));
 		lblNombreEmpresa.setBounds(31, 11, 431, 46);

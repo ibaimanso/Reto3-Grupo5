@@ -21,12 +21,11 @@ import java.awt.Color;
  */
 
 public class Cines extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Cine> cines;
-	private Integer contador;
 
 	public Cines(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		cines = gestion.devolverCines();
-		contador = gestion.devolverLongitudDeEntradas();
 
 		setSize(620, 420);
 		setVisible(true);

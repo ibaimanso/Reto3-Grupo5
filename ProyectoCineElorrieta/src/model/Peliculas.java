@@ -3,22 +3,21 @@ package model;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
 import logica.GestionDeLaInformacion;
-import modelobjeto.Cine;
 import modelobjeto.Pelicula;
 import view.VistaPrincipal;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.awt.Dimension;
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Peliculas extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	private int contador;
 	private JButton btnUltimo;
 	private JButton btnPrimero;
@@ -27,13 +26,15 @@ public class Peliculas extends JPanel {
 
 	/**
 	 * Objeto utilizado para mostrar y elegir las peliculas en base al cine elegido
+	 * 
 	 * @param ventana Objeto ventana utilizado para cambiar de panel
-	 * @param gestion Objeto utilizado para realizar funciones relacionadas con el uso de la informacion
+	 * @param gestion Objeto utilizado para realizar funciones relacionadas con el
+	 *                uso de la informacion
 	 */
 	public Peliculas(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 		peliculas = gestion.devolverPeliculas();
 		cineElegido = gestion.sacarCine();
-		
+
 		setSize(new Dimension(664, 452));
 		setVisible(true);
 		setLayout(null);
@@ -44,7 +45,7 @@ public class Peliculas extends JPanel {
 		lblNombreUsuario.setForeground(new Color(255, 255, 255));
 		lblNombreUsuario.setBounds(495, 11, 145, 18);
 		add(lblNombreUsuario);
-		
+
 		/**
 		 * Contador que muestra la cantidad de entradas añadidas al carrito
 		 */
@@ -53,7 +54,7 @@ public class Peliculas extends JPanel {
 		lblContadorCompra.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContadorCompra.setBounds(561, 70, 37, 32);
 		add(lblContadorCompra);
-		
+
 		JLabel lblCirculoRojo = new JLabel("");
 		lblCirculoRojo.setIcon(new ImageIcon("multimedia/circulo_rojo (1) (1).png"));
 		lblCirculoRojo.setBounds(561, 57, 43, 61);
@@ -85,18 +86,18 @@ public class Peliculas extends JPanel {
 		 * Función que oculta o muestra el carrito en caso de tener una compra o no
 		 */
 		if (gestion.devolverLongitudDeEntradas() == 0 || gestion.devolverLongitudDeEntradas() == null) {
-		lblFondoParaCarrito.setVisible(false);
+			lblFondoParaCarrito.setVisible(false);
 			btnCarrito.setVisible(false);
 			lblNombreUsuario.setVisible(false);
 			lblCirculoRojo.setVisible(false);
 			lblContadorCompra.setVisible(false);
 		} else {
 			lblFondoParaCarrito.setVisible(true);
-		btnCarrito.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblNombreUsuario.setVisible(true);
-		lblContadorCompra.setVisible(true);
-		lblContadorCompra.setText(""+ gestion.devolverLongitudDeEntradas());
+			btnCarrito.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblNombreUsuario.setVisible(true);
+			lblContadorCompra.setVisible(true);
+			lblContadorCompra.setText("" + gestion.devolverLongitudDeEntradas());
 		}
 		// Fin de la parte del carrito y nombre del cine
 
@@ -135,7 +136,8 @@ public class Peliculas extends JPanel {
 		panel.add(lblPrecio);
 
 		/**
-		 * Boton que tiene como funcion ir a la ultima pelicula del arraylist de peliculas y desactivar el mismo boton
+		 * Boton que tiene como funcion ir a la ultima pelicula del arraylist de
+		 * peliculas y desactivar el mismo boton
 		 */
 		btnUltimo = new JButton("Ultima");
 		btnUltimo.addActionListener(new ActionListener() {
@@ -155,7 +157,8 @@ public class Peliculas extends JPanel {
 		panel.add(btnUltimo);
 
 		/**
-		 * Boton que tiene como funcion ir a la primera pelicula del arraylist de peliculas y desactivar el mismo boton
+		 * Boton que tiene como funcion ir a la primera pelicula del arraylist de
+		 * peliculas y desactivar el mismo boton
 		 */
 		btnPrimero = new JButton("Primera");
 		btnPrimero.setBounds(10, 241, 89, 23);

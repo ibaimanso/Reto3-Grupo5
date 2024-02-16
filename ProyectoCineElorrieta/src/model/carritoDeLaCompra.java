@@ -25,7 +25,8 @@ import javax.swing.JList;
  * de las peliculas compradas
  */
 public class carritoDeLaCompra extends JPanel {
-
+	private static final long serialVersionUID = 1L;
+	
 	private Compra compra;
 	private ArrayList<LineaDeFactura> factura;
 
@@ -33,7 +34,7 @@ public class carritoDeLaCompra extends JPanel {
 
 		factura = gestion.devolverfactura();
 		compra = gestion.calcularCompra();
-		int longitud = factura.size();
+
 		setLayout(null);
 		setSize(620, 420);
 		setVisible(true);

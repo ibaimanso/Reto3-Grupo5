@@ -297,7 +297,11 @@ public class GestionDeLaInformacion {
 		}
 	}
 
-	// TODO crear nueva clase que separe el metodo
+	/**
+	 * Metodo para calcular los valores restantes del objeto compra
+	 * 
+	 * @return devuelve el objeto compra con todos sus valores
+	 */
 	public Compra calcularCompra() {
 		double precioTotal = 0;
 		ArrayList<Integer> contador = new ArrayList<Integer>();

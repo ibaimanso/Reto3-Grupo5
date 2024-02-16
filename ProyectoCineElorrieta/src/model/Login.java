@@ -20,7 +20,8 @@ import view.VistaPrincipal;
 import java.awt.Dimension;
 
 public class Login extends JPanel {
-	private String lblUsuario;
+
+	private static final long serialVersionUID = 1L;
 	public JTextField txtfieldUsuario;
 	public JTextField textFieldContraseña;
 
@@ -124,7 +125,7 @@ public class Login extends JPanel {
 		});
 		btnContinuar.setBounds(200, 305, 175, 20);
 		panelLogin.add(btnContinuar);
-		
+
 		/**
 		 * Boton de registro que nos llevara al panel de registro
 		 */

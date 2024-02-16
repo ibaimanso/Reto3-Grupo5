@@ -9,14 +9,13 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
-import javax.swing.SwingConstants;
-
-import controlador.GestionBD;
 
 /**
  * En esta clase nos encontraremos la base de el panel de bienvenida.
  */
 public class Bienvenida extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * 
 	 * @param ventana panel de Bienvenida con los parametros de VistaPrincipal
