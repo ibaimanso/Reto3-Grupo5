@@ -1,28 +1,42 @@
-Entrada 0: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
+Entrada 0: Pulp Fiction ---> CINE ELORRIETA // Sala: 002// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 1: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
+Entrada 1: Pulp Fiction ---> CINE ELORRIETA // Sala: 002// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 2: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
+Entrada 2: Pulp Fiction ---> CINE ELORRIETA // Sala: 002// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 3: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
+Entrada 3: Pulp Fiction ---> CINE ELORRIETA // Sala: 002// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 4: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
+Entrada 4: Pulp Fiction ---> Metro Cinemas // Sala: 008// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 5: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 5: Pulp Fiction ---> Metro Cinemas // Sala: 008// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 6: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 6: Pulp Fiction ---> Metro Cinemas // Sala: 008// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 7: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 7: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
 **************************************************
-Entrada 8: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 8: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
 **************************************************
-Entrada 9: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 9: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
 **************************************************
-Entrada 10: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 10: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
 **************************************************
-Entrada 11: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 11: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
 **************************************************
-Entrada 12: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 12: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
 **************************************************
-Entrada 13: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 13: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
+**************************************************
+Entrada 14: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
+**************************************************
+Entrada 15: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
+**************************************************
+Entrada 16: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
+**************************************************
+Entrada 17: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
+**************************************************
+Entrada 18: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
+**************************************************
+Entrada 19: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
+**************************************************
+Entrada 20: Inception ---> SILVER SCREENS // Sala: 005// Fecha: 2024-01-03 // 17:30:00
 **************************************************
