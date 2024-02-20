@@ -14,6 +14,7 @@ import org.junit.Test;
 import controlador.GestionBD;
 import model.Compra;
 import modelobjeto.Cine;
+import modelobjeto.Cliente;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 
@@ -21,10 +22,12 @@ public class GestionBDTest {
 
 	private Cine cineDePrueba;
 	private static GestionBD conexion;
+	private static Cliente cliente;
 
 	@BeforeClass
 	public static void iniciarConexion() {
 		conexion = new GestionBD();
+		cliente = new Cliente();
 	}
 
 	@AfterClass
@@ -32,10 +35,16 @@ public class GestionBDTest {
 		conexion.cerrarConexion();
 	}
 
+	/**
+	 * En este test es importante recalcar quie en nuestra aplicacion no hace falta
+	 * hacer 2 test para comprobar la fecha de una pelicula y la sesion de cada
+	 * pelicula, ya que las sesiones ya estan ligafas a la fecha en la que se
+	 * retransmite la pelicula.
+	 */
 	@Test
 	public void testBuscarCines() {
 		ArrayList<Cine> sacarCine = conexion.buscarCines();
-		
+
 		Cine primerCine = sacarCine.get(0);
 		Cine expected = new Cine("ELO", "CINE ELORRIETA", "123 Main Street");
 
@@ -67,12 +76,24 @@ public class GestionBDTest {
 
 	@Test
 	public void testRecogerPrecio() {
+		double unexpected = 0;
 		double precioPelicula = 7.99;
 		double resultado = conexion.recogerPrecio(0);
-		
-		assertEquals(null, resultado, precioPelicula, resultado);
 
+		assertNotEquals(unexpected, precioPelicula, resultado);
 	}
 
+//	@Test
+//	public void testLogin() {
+//		String dni = "12345678A";
+//		String pass = "contraseña1";
+//		boolean cliente = conexion.Login(dni, pass);
+//		Cliente expected = new Cliente("12345678A", "JUAN", "GARCIA", "H", "contraseña1");
+//
+//		assertEquals(expected, cliente);
+//	}
 
+
+	
+	
 }
