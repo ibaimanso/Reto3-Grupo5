@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
@@ -21,6 +22,23 @@ import java.awt.Color;
  */
 
 public class Cines extends JPanel {
+	@Override
+	public int hashCode() {
+		return Objects.hash(cines);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cines other = (Cines) obj;
+		return Objects.equals(cines, other.cines);
+	}
+
 	private ArrayList<Cine> cines;
 	private Integer contador;
 

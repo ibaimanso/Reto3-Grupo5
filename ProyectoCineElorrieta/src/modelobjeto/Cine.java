@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.util.Objects;
+
 public class Cine {
 	/**
 	 * Objeto cine se utiliza para almacenar una fila de la tabla cine 
@@ -28,6 +30,24 @@ public class Cine {
 	public String getNombrecine() {
 		return nombrecine;
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_cine, localicacion, nombrecine);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cine other = (Cine) obj;
+		return Objects.equals(id_cine, other.id_cine) && Objects.equals(localicacion, other.localicacion)
+				&& Objects.equals(nombrecine, other.nombrecine);
+	}
+
 	public void setNombrecine(String nombrecine) {
 		this.nombrecine = nombrecine;
 	}

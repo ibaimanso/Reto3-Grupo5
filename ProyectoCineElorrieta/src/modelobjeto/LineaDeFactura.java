@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.util.Objects;
+
 public class LineaDeFactura {
 	/*
 	 * Objeto LineDefactura es un objeto sacado de una query 	 */
@@ -54,6 +56,25 @@ public class LineaDeFactura {
 
 	public void setHora(String hora) {
 		this.hora = hora;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dia, hora, nombreCine, nombrePelicula, nombreSala);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LineaDeFactura other = (LineaDeFactura) obj;
+		return Objects.equals(dia, other.dia) && Objects.equals(hora, other.hora)
+				&& Objects.equals(nombreCine, other.nombreCine) && Objects.equals(nombrePelicula, other.nombrePelicula)
+				&& Objects.equals(nombreSala, other.nombreSala);
 	}
 
 }

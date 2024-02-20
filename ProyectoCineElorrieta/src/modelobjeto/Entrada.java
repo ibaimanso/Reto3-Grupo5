@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.util.Objects;
+
 public class Entrada {
 	
 	/*
@@ -36,6 +38,23 @@ public class Entrada {
 	@Override
 	public String toString() {
 		return "entradas [id_sesion=" + id_sesion + ", id_compra=" + id_compra + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_compra, id_sesion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Entrada other = (Entrada) obj;
+		return id_compra == other.id_compra && id_sesion == other.id_sesion;
 	}
 
 }
