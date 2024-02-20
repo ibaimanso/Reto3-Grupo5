@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -19,34 +20,34 @@ import modelobjeto.Sesion;
 public class GestionBDTest {
 
 	private Cine cineDePrueba;
-	private GestionBD conexion;
+	private static GestionBD conexion;
 
-	@Before
-	public void iniciarConexion() {
-		conexion.iniciarConexion();
-
+	@BeforeClass
+	public static void iniciarConexion() {
+		conexion = new GestionBD();
 	}
 
-
+	@AfterClass
+	public static void cerrarConexion() {
+		conexion.cerrarConexion();
+	}
 
 	@Test
 	public void testBuscarCines() {
-		GestionBD instancia = new GestionBD();
-		ArrayList<Cine> sacarCine = instancia.buscarCines();
+		ArrayList<Cine> sacarCine = conexion.buscarCines();
 		
 		Cine primerCine = sacarCine.get(0);
-		Cine expected = new Cine("ELO", "Cine Elorrieta", "123 Main Street");
+		Cine expected = new Cine("ELO", "CINE ELORRIETA", "123 Main Street");
 
 		assertEquals(expected, primerCine);
 	}
 
 	@Test
 	public void testBuscarPelis() {
-		GestionBD instancia = new GestionBD();
 
 		String idCine = "ELO";
 
-		ArrayList<Pelicula> resultado = instancia.buscarPelis(idCine);
+		ArrayList<Pelicula> resultado = conexion.buscarPelis(idCine);
 
 		assertNotNull(resultado);
 
@@ -54,12 +55,11 @@ public class GestionBDTest {
 
 	@Test
 	public void testBuscarSesionesPorFecha() {
-		GestionBD instancia = new GestionBD();
 		int IDPelicula = 1;
 		String IDCine = "ELO";
 		String dia = "2024-01-01";
 
-		ArrayList<Sesion> resultado = instancia.buscarSesionesPorFecha(IDPelicula, IDCine, dia);
+		ArrayList<Sesion> resultado = conexion.buscarSesionesPorFecha(IDPelicula, IDCine, dia);
 
 		Assert.assertNotNull(resultado);
 
@@ -67,18 +67,12 @@ public class GestionBDTest {
 
 	@Test
 	public void testRecogerPrecio() {
-		GestionBD instancia = new GestionBD();
 		double precioPelicula = 7.99;
-		double resultado = instancia.recogerPrecio(0);
+		double resultado = conexion.recogerPrecio(0);
 		
 		assertEquals(null, resultado, precioPelicula, resultado);
 
 	}
 
-	
-	@After
-	public void cerrarConexion() {
-		conexion.cerrarConexion();
-	}
 
 }
