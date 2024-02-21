@@ -1,28 +1,6 @@
-Entrada 0: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
+Entrada 0: Pulp Fiction ---> CINE ELORRIETA // Sala: 002// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 1: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
+Entrada 1: Pulp Fiction ---> CINE ELORRIETA // Sala: 002// Fecha: 2024-01-01 // 13:30:00
 **************************************************
-Entrada 2: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
-**************************************************
-Entrada 3: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
-**************************************************
-Entrada 4: The Matrix ---> Metro Cinemas // Sala: 007// Fecha: 2024-01-02 // 16:30:00
-**************************************************
-Entrada 5: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 6: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 7: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 8: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 9: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 10: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 11: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 12: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
-**************************************************
-Entrada 13: Interstellar ---> Metro Cinemas // Sala: 009// Fecha: 2024-01-02 // 17:00:00
+Entrada 2: Pulp Fiction ---> CINE ELORRIETA // Sala: 002// Fecha: 2024-01-01 // 13:30:00
 **************************************************

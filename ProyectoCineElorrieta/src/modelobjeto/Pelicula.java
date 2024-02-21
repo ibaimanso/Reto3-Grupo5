@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.util.Objects;
+
 public class Pelicula {
 	/*
 	 * Objeto Entrada se utiliza para almacenar una fila de la tabla Entrada
@@ -68,5 +70,24 @@ public class Pelicula {
 	}
 
 	private double precio;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(duracion, genero, idpeli, nombrepeli, precio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pelicula other = (Pelicula) obj;
+		return duracion == other.duracion && Objects.equals(genero, other.genero) && idpeli == other.idpeli
+				&& Objects.equals(nombrepeli, other.nombrepeli)
+				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio);
+	}
 
 }

@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.util.Objects;
+
 public class Sala {
 	/*
 	 * Objeto Sala se utiliza para almacenar una fila de la tabla Sala
@@ -60,6 +62,26 @@ public class Sala {
 	public String toString() {
 		return "sala [id_sala=" + id_sala + ", nombre_sala=" + nombre_sala + ", genero=" + genero + ", id_cine="
 				+ id_cine + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(genero, id_cine, id_sala, nombre_sala);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sala other = (Sala) obj;
+		return Objects.equals(genero, other.genero) && Objects.equals(id_cine, other.id_cine)
+				&& Objects.equals(id_sala, other.id_sala) && Objects.equals(nombre_sala, other.nombre_sala);
 	}
 	
 

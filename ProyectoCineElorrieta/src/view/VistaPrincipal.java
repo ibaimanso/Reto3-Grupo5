@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import logica.GestionDeLaInformacion;
 import model.Bienvenida;
 import model.Cines;
-import model.Compra;
+import model.PanelCompra;
 import model.CompraDeEntradas;
 import model.Login;
 import model.Peliculas;
@@ -79,7 +79,7 @@ public class VistaPrincipal extends JFrame {
 			setContentPane(new CarritoDeLaCompra(this, gestion));
 			break;
 		case 9:
-			setContentPane(new Compra(this, gestion));
+			setContentPane(new PanelCompra(this, gestion));
 			break;
 		}
 	}

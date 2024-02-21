@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.util.Objects;
+
 public class Sesion {
 	/*
 	 * Objeto Sesion se utiliza para almacenar una fila de la tabla Sesion
@@ -66,6 +68,24 @@ public class Sesion {
 	public String toString() {
 		return "Sesiones [id_sesiones=" + id_sesiones + ", id_sala=" + id_sala + ", id_pelicula=" + id_pelicula
 				+ ", Hora=" + Hora + ", Dia=" + Dia + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Dia, Hora, id_pelicula, id_sala, id_sesiones);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sesion other = (Sesion) obj;
+		return Objects.equals(Dia, other.Dia) && Objects.equals(Hora, other.Hora) && id_pelicula == other.id_pelicula
+				&& Objects.equals(id_sala, other.id_sala) && id_sesiones == other.id_sesiones;
 	}
 
 }

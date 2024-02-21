@@ -35,6 +35,7 @@ public class CarritoDeLaCompra extends JPanel {
 		factura = gestion.devolverfactura();
 		compra = gestion.calcularCompra();
 
+
 		setLayout(null);
 		setSize(620, 420);
 		setVisible(true);

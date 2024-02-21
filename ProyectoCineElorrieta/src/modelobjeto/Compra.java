@@ -1,5 +1,7 @@
 package modelobjeto;
 
+import java.util.Objects;
+
 public class Compra {
 	/*
 	 * Objeto Compra se añade los IDCompra y DNI_Cliente se alamcenan los demas
@@ -62,6 +64,26 @@ public class Compra {
 
 	public void setDNI_Cliente(String dNI_Cliente) {
 		DNI_Cliente = dNI_Cliente;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(DNI_Cliente, IDCompra, PrecioDescontado, PrecioTotal, cantodadEntradas, descuento);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compra other = (Compra) obj;
+		return Objects.equals(DNI_Cliente, other.DNI_Cliente) && IDCompra == other.IDCompra
+				&& Double.doubleToLongBits(PrecioDescontado) == Double.doubleToLongBits(other.PrecioDescontado)
+				&& Double.doubleToLongBits(PrecioTotal) == Double.doubleToLongBits(other.PrecioTotal)
+				&& cantodadEntradas == other.cantodadEntradas && descuento == other.descuento;
 	}
 
 }
