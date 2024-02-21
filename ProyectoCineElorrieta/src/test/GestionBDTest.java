@@ -1,26 +1,29 @@
-package Test;
+package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 
 import java.util.ArrayList;
 
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import controlador.GestionBD;
-import model.PanelCompra;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
+import modelobjeto.Compra;
+import modelobjeto.Entrada;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 
+
 public class GestionBDTest {
 
-	private Cine cineDePrueba;
 	private static GestionBD conexion;
 	private static Cliente cliente;
 
@@ -83,17 +86,25 @@ public class GestionBDTest {
 		assertNotEquals(unexpected, precioPelicula, resultado);
 	}
 
-//	@Test
-//	public void testLogin() {
-//		String dni = "12345678A";
-//		String pass = "contraseña1";
-//		boolean cliente = conexion.Login(dni, pass);
-//		Cliente expected = new Cliente("12345678A", "JUAN", "GARCIA", "H", "contraseña1");
-//
-//		assertEquals(expected, cliente);
-//	}
+    @Test
+    public void testLogin() {
+        String usuario = "12345678O";
+        String contraseña = "123";
+        
+  
+        boolean correcto = conexion.Login(usuario, contraseña);
+        
+        assertTrue(correcto);
 
+        
+    }
+    
+    @Test 
+    public void InsertarCompra() {
+   
+    
+    }
+    
 
-	
-	
 }
+

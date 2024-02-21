@@ -196,6 +196,11 @@ public class CompraDeEntradas extends JPanel {
 		btnSumar.setBounds(458, 163, 43, 32);
 		panel.add(btnSumar);
 		
+		JLabel lblNEntradas = new JLabel("Nº Entradas");
+		lblNEntradas.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		lblNEntradas.setBounds(247, 163, 129, 27);
+		panel.add(lblNEntradas);
+		
 		JLabel lblNombreEmpresa = new JLabel("FINEST CINES");
 		lblNombreEmpresa.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 34));
 		lblNombreEmpresa.setBounds(31, 11, 431, 46);

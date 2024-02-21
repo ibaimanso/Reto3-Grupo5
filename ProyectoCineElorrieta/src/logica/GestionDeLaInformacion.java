@@ -297,7 +297,6 @@ public class GestionDeLaInformacion {
 		}
 	}
 
-	// TODO crear nueva clase que separe el metodo
 	public Compra calcularCompra() {
 		double precioTotal = 0;
 		ArrayList<Integer> contador = new ArrayList<Integer>();
