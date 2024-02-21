@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import controlador.GestionBD;
-import model.Compra;
+import model.PanelCompra;
 import modelobjeto.Cine;
 import modelobjeto.Cliente;
 import modelobjeto.Pelicula;
