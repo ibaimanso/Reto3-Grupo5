@@ -24,13 +24,13 @@ import javax.swing.JList;
  * En esta clase nos vamos a encontrar con el panel que nos mostrara el resumen
  * de las peliculas compradas
  */
-public class carritoDeLaCompra extends JPanel {
+public class CarritoDeLaCompra extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Compra compra;
 	private ArrayList<LineaDeFactura> factura;
 
-	public carritoDeLaCompra(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
+	public CarritoDeLaCompra(VistaPrincipal ventana, GestionDeLaInformacion gestion) {
 
 		factura = gestion.devolverfactura();
 		compra = gestion.calcularCompra();
