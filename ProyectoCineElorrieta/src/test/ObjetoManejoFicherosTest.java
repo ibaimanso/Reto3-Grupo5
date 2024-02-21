@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -42,11 +42,12 @@ public class ObjetoManejoFicherosTest {
 					leedor.readLine();
 					i++;
 				} else {
-					assertEquals("Archivo contiene más líneas de las esperadas", "", linea);
+					assertEquals("Error", "", linea);
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	
 }
