@@ -64,11 +64,11 @@ public class GestionBDTest {
 
 	@Test
 	public void testBuscarSesionesPorFecha() {
-		int IDPelicula = 1;
-		String IDCine = "ELO";
+		int iDPelicula = 1;
+		String iDCine = "ELO";
 		String dia = "2024-01-01";
 
-		ArrayList<Sesion> resultado = conexion.buscarSesionesPorFecha(IDPelicula, IDCine, dia);
+		ArrayList<Sesion> resultado = conexion.buscarSesionesPorFecha(iDPelicula, iDCine, dia);
 
 		Assert.assertNotNull(resultado);
 

@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,7 +13,7 @@ import logica.GestionDeLaInformacion;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 import view.VistaPrincipal;
-import javax.swing.JComboBox;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

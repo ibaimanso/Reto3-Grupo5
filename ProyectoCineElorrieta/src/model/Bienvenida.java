@@ -9,9 +9,9 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
-import javax.swing.SwingConstants;
 
-import controlador.GestionBD;
+
+
 
 /**
  * En esta clase nos encontraremos la base de el panel de bienvenida.

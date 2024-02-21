@@ -9,8 +9,8 @@ public class Sesion {
 	private int id_sesiones;
 	private String id_sala;
 	private int id_pelicula;
-	private String Hora;
-	private String Dia;
+	private String hora;
+	private String dia;
 
 	public Sesion() {
 
@@ -20,8 +20,8 @@ public class Sesion {
 		id_sesiones = iD_Sesiones;
 		this.id_sala = id_sala;
 		this.id_pelicula = id_pelicula;
-		Hora = hora;
-		Dia = dia;
+		hora = hora;
+		dia = dia;
 	}
 
 	public int getid_sesiones() {
@@ -49,30 +49,30 @@ public class Sesion {
 	}
 
 	public String getHora() {
-		return Hora;
+		return hora;
 	}
 
 	public void setHora(String hora) {
-		Hora = hora;
+		hora = hora;
 	}
 
 	public String getDia() {
-		return Dia;
+		return dia;
 	}
 
 	public void setDia(String dia) {
-		Dia = dia;
+		dia = dia;
 	}
 
 	@Override
 	public String toString() {
 		return "Sesiones [id_sesiones=" + id_sesiones + ", id_sala=" + id_sala + ", id_pelicula=" + id_pelicula
-				+ ", Hora=" + Hora + ", Dia=" + Dia + "]";
+				+ ", Hora=" + hora + ", Dia=" + dia + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Dia, Hora, id_pelicula, id_sala, id_sesiones);
+		return Objects.hash(dia, hora, id_pelicula, id_sala, id_sesiones);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class Sesion {
 		if (getClass() != obj.getClass())
 			return false;
 		Sesion other = (Sesion) obj;
-		return Objects.equals(Dia, other.Dia) && Objects.equals(Hora, other.Hora) && id_pelicula == other.id_pelicula
+		return Objects.equals(dia, other.dia) && Objects.equals(hora, other.hora) && id_pelicula == other.id_pelicula
 				&& Objects.equals(id_sala, other.id_sala) && id_sesiones == other.id_sesiones;
 	}
 
