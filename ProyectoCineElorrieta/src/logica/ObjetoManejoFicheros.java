@@ -13,7 +13,8 @@ public class ObjetoManejoFicheros {
 
 	}
 
-	public void escribirFichero(ArrayList<LineaDeFactura> factura) {
+	public boolean escribirFichero(ArrayList<LineaDeFactura> factura) {
+		boolean correcto = false;
 		try {
 			BufferedWriter escribirFichero = new BufferedWriter(new FileWriter("facturas/Factura.txt"));
 			for (int i = 0; i < factura.size(); i++) {
@@ -25,10 +26,12 @@ public class ObjetoManejoFicheros {
 				escribirFichero.newLine();
 			}
 			escribirFichero.close();
+			correcto = true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return correcto;
 	}
 
 }

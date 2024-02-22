@@ -141,6 +141,16 @@ public class CarritoDeLaCompra extends JPanel {
 		separador1.setBounds(560, 89, 8, 223);
 		add(separador1);
 		separador1.setIcon(new ImageIcon("C:\\Users\\in1dm3-v\\Downloads\\Color_negro.png"));
+		
+		JButton btnLimpiarYVolver = new JButton("Limpiar");
+		btnLimpiarYVolver.setBounds(430, 39, 82, 43);
+		btnLimpiarYVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gestion.limpiarArrayListEntradas();
+				ventana.cambiarDePanel(3);
+			}
+		});
+		add(btnLimpiarYVolver);
 
 	}
 }

@@ -1,8 +1,8 @@
 package model;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import controlador.GestionBD;
 import logica.GestionDeLaInformacion;
 import modelobjeto.Cliente;
 import view.VistaPrincipal;
@@ -135,15 +135,24 @@ public class Registro extends JPanel {
 				cliente.setContraseña(textFieldContraseña.getText());
 
 				if (rdbHombre.isSelected()) {
-					cliente.setSexo(rdbHombre.getText());
+					cliente.setSexo("H");
 				} else if (rdbMujer.isSelected()) {
-					cliente.setSexo(rdbMujer.getText());
+					cliente.setSexo("M");
 				}
-				GestionBD gestionBd = new GestionBD();
-				gestionBd.insertUsuario(cliente);
+				
+				if(!gestion.recogerInformacionFormulario(cliente)) {
+					JOptionPane.showMessageDialog(null, "Parametros incorrectos");
+				}else {
+					if(!gestion.validarExistenciaEnLaBaseDeDatos(cliente)) {
+						JOptionPane.showMessageDialog(null, "DNI ya existe en la base de datos");
+					}else {
+						JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+						ventana.cambiarDePanel(1);
+					}
+				}
+				
 			}
 		});
 
 	}
-
 }

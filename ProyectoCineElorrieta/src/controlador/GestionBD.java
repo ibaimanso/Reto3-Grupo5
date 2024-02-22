@@ -15,7 +15,6 @@ import modelobjeto.Entrada;
 import modelobjeto.LineaDeFactura;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
-import view.VistaPrincipal;
 
 /**
  * En la clase GestionBD nos encontraremos con metodos y ArrayList construidos
@@ -60,12 +59,38 @@ public class GestionBD {
 		System.out.println("Conexion cerrada");
 	}
 
+	
+	public boolean verificarUsuario(Cliente cliente) {
+		boolean correcto = true;
+		try {
+			Statement consulta = conexion.createStatement();
+
+			String query = "SELECT * FROM clientes ";
+			ResultSet resultadoConsulta = consulta.executeQuery(query);
+			while (resultadoConsulta.next()) {
+				if (resultadoConsulta.getString(1).contentEquals(cliente.getDni())) {
+					correcto = false;
+				}
+
+			}
+			consulta.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return correcto;
+	}
+	
+
 	/**
 	 * Metodo para insertar los datos del registro en la base de datos.
 	 * 
 	 * @param cliente
 	 * @param ventana
 	 */
+	
 	public boolean insertUsuario(Cliente cliente) {
 		boolean correcto = false;
 		try {
@@ -78,7 +103,7 @@ public class GestionBD {
 			consulta.executeUpdate(insert);
 			JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
 			consulta.close();
-
+			correcto = true;
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Campos inválidos");
 		}
@@ -421,7 +446,7 @@ public class GestionBD {
 
 			consulta.executeUpdate(insert);
 			consulta.close();
-
+			correcto = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -444,7 +469,7 @@ public class GestionBD {
 				consulta.executeUpdate(insert);
 			}
 			consulta.close();
-
+			correcto = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
