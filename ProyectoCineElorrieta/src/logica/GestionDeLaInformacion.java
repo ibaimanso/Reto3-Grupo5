@@ -307,6 +307,7 @@ public class GestionDeLaInformacion {
 	public Compra calcularCompra() {
 		double precioTotal = 0;
 		ArrayList<Integer> contador = new ArrayList<Integer>();
+		
 		for (int i = 0; i < entradasCompradas.size(); i++) {
 			precioTotal += gestionBD.recogerPrecio(entradasCompradas.get(i).getId_sesion());
 			if (contador.size() == 0) {

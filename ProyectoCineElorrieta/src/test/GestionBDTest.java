@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-
 import java.util.ArrayList;
 
 import org.junit.AfterClass;
@@ -15,22 +14,18 @@ import org.junit.Test;
 
 import controlador.GestionBD;
 import modelobjeto.Cine;
-import modelobjeto.Cliente;
-import modelobjeto.Compra;
-import modelobjeto.Entrada;
+
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
-
 
 public class GestionBDTest {
 
 	private static GestionBD conexion;
-	private static Cliente cliente;
 
 	@BeforeClass
 	public static void iniciarConexion() {
 		conexion = new GestionBD();
-		cliente = new Cliente();
+
 	}
 
 	@AfterClass
@@ -39,9 +34,9 @@ public class GestionBDTest {
 	}
 
 	/**
-	 * En este test es importante recalcar quie en nuestra aplicacion no hace falta
+	 * En este test es importante recalcar que en nuestra aplicacion no hace falta
 	 * hacer 2 test para comprobar la fecha de una pelicula y la sesion de cada
-	 * pelicula, ya que las sesiones ya estan ligafas a la fecha en la que se
+	 * pelicula, ya que las sesiones ya estan ligadas a la fecha en la que se
 	 * retransmite la pelicula.
 	 */
 	@Test
@@ -54,6 +49,14 @@ public class GestionBDTest {
 		assertEquals(expected, primerCine);
 	}
 
+	/**
+	 * Test Buscar Pelis: insertamos un String idCine con el valor "ELO" llamamos a
+	 * la arraylist del objeto pelicula con el nombre resultado y buscamos la idcine
+	 * desde el metodo buscarPeli.
+	 * 
+	 * 
+	 */
+
 	@Test
 	public void testBuscarPelis() {
 
@@ -65,6 +68,13 @@ public class GestionBDTest {
 
 	}
 
+	/**
+	 * insertamos las variables con los valores para la busqueda llamamos el
+	 * arraylist del objeto sesion con el nombre resultado y buscamos con el metodo
+	 * "buscarSesionesPorFecha" el IDPelicula, IDCine, dia.
+	 * 
+	 * 
+	 */
 	@Test
 	public void testBuscarSesionesPorFecha() {
 		int IDPelicula = 1;
@@ -77,6 +87,13 @@ public class GestionBDTest {
 
 	}
 
+	/**
+	 * Insertamos en assertNotEquals el resultado busca el precio de la pelicula de
+	 * la posicion 0 y lo compara con para con las variables precioPelicula y
+	 * unexpected si la variable precioPelicula es igual a resultado es correcto.
+	 * 
+	 */
+
 	@Test
 	public void testRecogerPrecio() {
 		double unexpected = 0;
@@ -86,25 +103,24 @@ public class GestionBDTest {
 		assertNotEquals(unexpected, precioPelicula, resultado);
 	}
 
-    @Test
-    public void testLogin() {
-        String usuario = "12345678O";
-        String contraseña = "123";
-        
-  
-        boolean correcto = conexion.Login(usuario, contraseña);
-        
-        assertTrue(correcto);
+	/**
+	 * insertamos variables y sus valores y con la variable boolean con el metodo
+	 * login comprobamos si esta registrado el usuario y contraseña
+	 */
+	@Test
+	public void testLogin() {
+		String usuario = "12345678O";
+		String contraseña = "123";
 
-        
-    }
-    
-    @Test 
-    public void InsertarCompra() {
-   
-    
-    }
-    
+		boolean correcto = conexion.Login(usuario, contraseña);
+
+		assertTrue(correcto);
+
+	}
+
+	@Test
+	public void InsertarCompra() {
+
+	}
 
 }
-
