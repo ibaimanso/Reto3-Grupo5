@@ -66,8 +66,8 @@ public class GestionBD {
 	 * @param cliente
 	 * @param ventana
 	 */
-	public void insertUsuario(Cliente cliente, VistaPrincipal ventana) {
-
+	public boolean insertUsuario(Cliente cliente) {
+		boolean correcto = false;
 		try {
 			Statement consulta = conexion.createStatement();
 
@@ -77,14 +77,12 @@ public class GestionBD {
 
 			consulta.executeUpdate(insert);
 			JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
-			ventana.cambiarDePanel(1);
 			consulta.close();
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Campos inválidos");
-			ventana.cambiarDePanel(2);
 		}
-
+		return correcto;
 	}
 
 	/**
@@ -411,7 +409,8 @@ public class GestionBD {
 	 * 
 	 * @param compraARealizar
 	 */
-	public void insertarCompra(Compra compraARealizar) {
+	public boolean insertarCompra(Compra compraARealizar) {
+		boolean correcto = false;
 		try {
 			Statement consulta = conexion.createStatement();
 
@@ -426,15 +425,16 @@ public class GestionBD {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return correcto;
 	}
-
 	/**
 	 * Metodo para insertar en la tabla entradas de la base de datos las entradas
 	 * compradas
 	 * 
 	 * @param entradasCompradas
 	 */
-	public void insertarEntradas(ArrayList<Entrada> entradasCompradas) {
+	public boolean insertarEntradas(ArrayList<Entrada> entradasCompradas) {
+		boolean correcto = false;
 		try {
 			Statement consulta = conexion.createStatement();
 			for (int i = 0; i < entradasCompradas.size(); i++) {
@@ -448,6 +448,7 @@ public class GestionBD {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return correcto;
 	}
 
 }

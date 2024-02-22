@@ -140,7 +140,7 @@ public class Registro extends JPanel {
 					cliente.setSexo(rdbMujer.getText());
 				}
 				GestionBD gestionBd = new GestionBD();
-				gestionBd.insertUsuario(cliente, ventana);
+				gestionBd.insertUsuario(cliente);
 			}
 		});
 

@@ -14,7 +14,9 @@ import org.junit.Test;
 
 import controlador.GestionBD;
 import modelobjeto.Cine;
-
+import modelobjeto.Cliente;
+import modelobjeto.Compra;
+import modelobjeto.Entrada;
 import modelobjeto.Pelicula;
 import modelobjeto.Sesion;
 
@@ -117,10 +119,35 @@ public class GestionBDTest {
 		assertTrue(correcto);
 
 	}
+	
+	@Test
+	public void insertarUsuario() {
+		Cliente cliente = new Cliente("88888888A", "JUAN", "LARREA", "H", "Contraseña1");
+		boolean correcto = conexion.insertUsuario(cliente);
+		assertTrue(correcto);
+	}
 
 	@Test
-	public void InsertarCompra() {
-
+	public void insertarCompra() {
+		Compra compra = new Compra(conexion.buscarCompraMasAlta() + 1, "12345678A");
+		compra.setCantodadEntradas(0);
+		compra.setDescuento(0);
+		compra.setPrecioDescontado(1.99);
+		compra.setPrecioTotal(1.99);
+		boolean correcto = conexion.insertarCompra(compra);
+		assertTrue(correcto);
 	}
+	
+	@Test
+	public void insertarEntradas() {
+		ArrayList<Entrada> entradas = new ArrayList<Entrada>();
+		entradas.add(new Entrada( 1, 1));
+		entradas.add(new Entrada( 1, 1));
+		entradas.add(new Entrada( 1, 1));
+		entradas.add(new Entrada( 1, 1));
+		boolean correcto = conexion.insertarEntradas(entradas);
+		assertTrue(correcto);
+	}
+	
 
 }

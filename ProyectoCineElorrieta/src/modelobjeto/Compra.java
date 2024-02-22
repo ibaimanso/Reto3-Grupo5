@@ -6,24 +6,24 @@ public class Compra {
 	/*
 	 * Objeto Compra se añade los IDCompra y DNI_Cliente se alamcenan los demas
 	 */
-	private int IDCompra;
-	private double PrecioTotal;
+	private int iDCompra;
+	private double precioTotal;
 	private int cantodadEntradas;
 	private int descuento;
-	private double PrecioDescontado;
-	private String DNI_Cliente;
+	private double precioDescontado;
+	private String dNI_Cliente;
 
 	public Compra(int iDCompra, String dNI_Cliente) {
-		IDCompra = iDCompra;
-		DNI_Cliente = dNI_Cliente;
+		this.iDCompra = iDCompra;
+		this.dNI_Cliente = dNI_Cliente;
 	}
 
 	public int getIDCompra() {
-		return IDCompra;
+		return iDCompra;
 	}
 
 	public double getPrecioTotal() {
-		return PrecioTotal;
+		return precioTotal;
 	}
 
 	public int getCantodadEntradas() {
@@ -35,19 +35,19 @@ public class Compra {
 	}
 
 	public double getPrecioDescontado() {
-		return PrecioDescontado;
+		return precioDescontado;
 	}
 
 	public String getDNI_Cliente() {
-		return DNI_Cliente;
+		return dNI_Cliente;
 	}
 
 	public void setIDCompra(int iDCompra) {
-		IDCompra = iDCompra;
+		this.iDCompra = iDCompra;
 	}
 
 	public void setPrecioTotal(double precioTotal) {
-		PrecioTotal = precioTotal;
+		this.precioTotal = precioTotal;
 	}
 
 	public void setCantodadEntradas(int cantodadEntradas) {
@@ -59,16 +59,16 @@ public class Compra {
 	}
 
 	public void setPrecioDescontado(double precioDescontado) {
-		PrecioDescontado = precioDescontado;
+		this.precioDescontado = precioDescontado;
 	}
 
 	public void setDNI_Cliente(String dNI_Cliente) {
-		DNI_Cliente = dNI_Cliente;
+		this.dNI_Cliente = dNI_Cliente;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(DNI_Cliente, IDCompra, PrecioDescontado, PrecioTotal, cantodadEntradas, descuento);
+		return Objects.hash(dNI_Cliente, iDCompra, precioDescontado, precioTotal, cantodadEntradas, descuento);
 	}
 
 	@Override
@@ -80,9 +80,9 @@ public class Compra {
 		if (getClass() != obj.getClass())
 			return false;
 		Compra other = (Compra) obj;
-		return Objects.equals(DNI_Cliente, other.DNI_Cliente) && IDCompra == other.IDCompra
-				&& Double.doubleToLongBits(PrecioDescontado) == Double.doubleToLongBits(other.PrecioDescontado)
-				&& Double.doubleToLongBits(PrecioTotal) == Double.doubleToLongBits(other.PrecioTotal)
+		return Objects.equals(dNI_Cliente, other.dNI_Cliente) && iDCompra == other.iDCompra
+				&& Double.doubleToLongBits(precioDescontado) == Double.doubleToLongBits(other.precioDescontado)
+				&& Double.doubleToLongBits(precioTotal) == Double.doubleToLongBits(other.precioTotal)
 				&& cantodadEntradas == other.cantodadEntradas && descuento == other.descuento;
 	}
 
