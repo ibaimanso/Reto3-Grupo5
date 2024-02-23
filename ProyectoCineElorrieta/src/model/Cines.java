@@ -114,7 +114,7 @@ public class Cines extends JPanel {
 		JButton btnNewButton = new JButton("¿Volver al login?");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO devolver variables a valor original
+			gestion.limpiarArrayListEntradas();
 				ventana.cambiarDePanel(1);
 			}
 		});
