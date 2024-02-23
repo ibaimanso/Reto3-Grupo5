@@ -135,7 +135,7 @@ public class Login extends JPanel {
 		btnRegistrarse.setBounds(200, 336, 175, 20);
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Complete los campos con sus datos, por favor");
+				//JOptionPane.showMessageDialog(null, "Complete los campos con sus datos, por favor");
 				ventana.cambiarDePanel(2);
 			}
 		});

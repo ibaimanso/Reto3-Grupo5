@@ -59,24 +59,10 @@ public class GestionDeLaInformacion {
 		 * correctamente
 		 */
 		
-		Pattern patron = Pattern.compile("^[0-9]{8}[A-Z]$", Pattern.CASE_INSENSITIVE);
+		Pattern patron = Pattern.compile("^\\d{8}[A-Z]$", Pattern.CASE_INSENSITIVE);
 		Matcher dni = patron.matcher(cliente.getDni());
 
 		if (!dni.find()) {
-			correcto = false;
-		} 
-		
-		Pattern patron2 = Pattern.compile("^[a-z]+$", Pattern.CASE_INSENSITIVE);
-		Matcher nombre = patron2.matcher(cliente.getNombrecli());
-
-		if (!nombre.find()) {
-			correcto = false;
-		} 
-
-		Pattern patron3 = Pattern.compile("^[a-z]+$", Pattern.CASE_INSENSITIVE);
-		Matcher apellido = patron3.matcher(cliente.getApellido());
-
-		if (!apellido.find()) {
 			correcto = false;
 		} 
 
