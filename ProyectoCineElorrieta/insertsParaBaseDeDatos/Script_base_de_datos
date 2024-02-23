@@ -1,0 +1,243 @@
+create database cinegrupo5 collate utf8mb4_spanish_ci;
+
+use cinegrupo5;
+
+CREATE TABLE `clientes` (
+  `DNI` char(9) primary key,
+  `Nombre` varchar(41) NOT NULL,
+  `Apellido` varchar(41) NOT NULL,
+  `Sexo` enum('H','M','O') NOT NULL,
+  `Contraseña` varchar(70) NOT NULL
+);
+
+create table cines (
+	ID_Cine char(3) primary key,
+    Nombre_Cine varchar(255) unique,
+    Localizacion varchar(255)
+);
+
+create table salas (
+	ID_Sala char(3) primary key,
+    Nombre_Sala varchar(255) unique,
+    ID_Cine char(3)
+);
+
+create table sesiones (
+	ID_Sesion int auto_increment primary key,
+    Hora time NOT NULL,
+    Dia date NOT NULL,
+    ID_Sala char(3),
+    ID_Pelicula int 
+);
+
+create table peliculas (
+	ID_Pelicula int auto_increment primary key,
+    Nombre_Pelicula varchar(255) unique,
+    Genero_Pelicula varchar(255) NOT NULL,
+    Duracion int NOT NULL,
+    Precio decimal(4,2) NOT NULL
+);
+
+create table entradas (
+	ID_Entrada int auto_increment primary key,
+    ID_Sesion int,
+    ID_Compra int
+);
+
+create table compras (
+	ID_Compra int auto_increment primary key,
+    PrecioTotal decimal(6,2) NOT NULL,
+    CantidadEntradas int NOT NULL,
+    Descuento int NOT NULL,
+    PrecioDescontado decimal(6,2) NOT NULL,
+    DNI_Cliente varchar(9)
+);
+
+-- alter table salas add constraint fk_cine_sala foreign key (ID_Cine) references cines(ID_Cine);
+-- alter table sesiones add constraint fk_sala_sesion foreign key (ID_Sala) references salas(ID_Sala);
+-- alter table sesiones add constraint fk_pelicula_sesion foreign key (ID_Pelicula) references peliculas(ID_Pelicula);
+-- alter table entradas add constraint fk_sesion_entrada foreign key (ID_Sesion) references sesiones(ID_Sesion);
+-- alter table entradas add constraint fk_compra_entrada foreign key (ID_Compra) references compras(ID_Compra);
+-- alter table compras add constraint fk_cliente_compra foreign key (DNI_Cliente) references clientes(DNI);
+
+-- Insert Cines
+INSERT INTO cines (ID_Cine, Nombre_Cine, Localizacion)
+VALUES ('ELO', 'CINE ELORRIETA', '123 Main Street');
+
+INSERT INTO cines (ID_Cine, Nombre_Cine, Localizacion)
+VALUES ('SIC', 'SILVER SCREENS', '456 Elm Avenue');
+
+INSERT INTO cines (ID_Cine, Nombre_Cine, Localizacion)
+VALUES ('MCI', 'Metro Cinemas', '789 Oak Boulevard');
+
+-- Insert Clientes
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('12345678A', 'JUAN', 'GARCIA', 'H', 'contraseña1');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('98765432B', 'MARIA', 'LOPEZ', 'M', 'contraseña2');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('87654321C', 'ANTONIO', 'MARTINEZ', 'H', 'contraseña3');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('23456789D', 'ANA', 'SANCHEZ', 'M', 'contraseña4');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('34567890E', 'CARLOS', 'GOMEZ', 'H', 'contraseña5');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('45678901F', 'ELENA', 'RODRIGUEZ', 'M', 'contraseña6');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('56789012G', 'JAVIER', 'PEREZ', 'H', 'contraseña7');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('67890123H', 'MARTA', 'GONZALEZ', 'M', 'contraseña8');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('78901234J', 'SERGIO', 'DIAZ', 'H', 'contraseña9');
+
+INSERT INTO clientes (DNI, Nombre, Apellido, Sexo, Contraseña)
+VALUES ('89012345K', 'CRISTINA', 'ALVAREZ', 'M', 'contraseña10');
+
+-- Insert Salas
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('001', 'SALA A', 'ELO');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('002', 'SALA B', 'ELO');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('003', 'SALA C', 'ELO');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('004', 'SALA D', 'SIC');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('005', 'SALA E', 'SIC');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('006', 'SALA F', 'SIC');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('007', 'SALA G', 'MCI');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('008', 'SALA H', 'MCI');
+
+INSERT INTO salas (ID_Sala, Nombre_Sala, ID_Cine)
+VALUES ('009', 'SALA I', 'MCI');
+
+-- Insert Peliculas
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('The Godfather', 'Drama', 175, 7.99);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('Pulp Fiction', 'Crimen', 154, 6.50);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('Forrest Gump', 'Drama', 142, 7.25);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('The Dark Knight', 'Acción', 152, 7.75);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('Inception', 'Ciencia Ficción', 169, 7.80);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('Interstellar', 'Ciencia Ficción', 148, 6.25);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('The Silence of the Lambs', 'Suspenso', 118, 6.75);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('Gladiator', 'Acción', 155, 7.50);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('The Matrix', 'Acción', 150, 7.95);
+
+INSERT INTO peliculas (Nombre_Pelicula, Genero_Pelicula, Duracion, Precio)
+VALUES ('The Shawshank Redemption', 'Drama', 142, 7.90);
+
+
+-- Inserts for ID_Sala '001'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('14:00:00', '2024-01-01', '001', 1),
+    ('17:00:00', '2024-01-01', '001', 1),
+    ('16:30:00', '2024-01-02', '001', 1),
+    ('19:30:00', '2024-01-02', '001', 2),
+    ('15:00:00', '2024-01-03', '001', 2),
+    ('18:00:00', '2024-01-03', '001', 2);
+
+-- Inserts for ID_Sala '002'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('13:30:00', '2024-01-01', '002', 2),
+    ('16:30:00', '2024-01-01', '002', 3),
+    ('15:00:00', '2024-01-02', '002', 3),
+    ('18:00:00', '2024-01-02', '002', 4),
+    ('14:30:00', '2024-01-03', '002', 4),
+    ('17:30:00', '2024-01-03', '002', 5);
+
+-- Inserts for ID_Sala '003'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('15:30:00', '2024-01-01', '003', 6),
+    ('18:30:00', '2024-01-01', '003', 6),
+    ('17:00:00', '2024-01-02', '003', 6),
+    ('20:00:00', '2024-01-02', '003', 6),
+    ('16:30:00', '2024-01-03', '003', 6),
+    ('19:30:00', '2024-01-03', '003', 6);
+
+-- Inserts for ID_Sala '004'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('14:00:00', '2024-01-01', '004', 1),
+    ('17:00:00', '2024-01-01', '004', 1),
+    ('16:30:00', '2024-01-02', '004', 1),
+    ('19:30:00', '2024-01-02', '004', 2),
+    ('15:00:00', '2024-01-03', '004', 8),
+    ('18:00:00', '2024-01-03', '004', 8);
+
+-- Inserts for ID_Sala '005'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('13:30:00', '2024-01-01', '005', 2),
+    ('16:30:00', '2024-01-01', '005', 3),
+    ('15:00:00', '2024-01-02', '005', 3),
+    ('18:00:00', '2024-01-02', '005', 4),
+    ('14:30:00', '2024-01-03', '005', 4),
+    ('17:30:00', '2024-01-03', '005', 5);
+
+-- Inserts for ID_Sala '006'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('15:30:00', '2024-01-01', '006', 6),
+    ('18:30:00', '2024-01-01', '006', 6),
+    ('17:00:00', '2024-01-02', '006', 7),
+    ('20:00:00', '2024-01-02', '006', 7),
+    ('16:30:00', '2024-01-03', '006', 7),
+    ('19:30:00', '2024-01-03', '006', 6);
+
+-- Inserts for ID_Sala '007'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('14:00:00', '2024-01-01', '007', 9),
+    ('17:00:00', '2024-01-01', '007', 9),
+    ('16:30:00', '2024-01-02', '007', 9),
+    ('19:30:00', '2024-01-02', '007', 8),
+    ('15:00:00', '2024-01-03', '007', 8),
+    ('18:00:00', '2024-01-03', '007', 8);
+
+-- Inserts for ID_Sala '008'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('13:30:00', '2024-01-01', '008', 2),
+    ('16:30:00', '2024-01-01', '008', 3),
+    ('15:00:00', '2024-01-02', '008', 3),
+    ('18:00:00', '2024-01-02', '008', 4),
+    ('14:30:00', '2024-01-03', '008', 4),
+    ('17:30:00', '2024-01-03', '008', 5);
+
+-- Inserts for ID_Sala '009'
+INSERT INTO sesiones (Hora, Dia, ID_Sala, ID_Pelicula) VALUES
+    ('15:30:00', '2024-01-01', '009', 6),
+    ('18:30:00', '2024-01-01', '009', 6),
+    ('17:00:00', '2024-01-02', '009', 6),
+    ('20:00:00', '2024-01-02', '009', 7),
+    ('16:30:00', '2024-01-03', '009', 7),
+    ('19:30:00', '2024-01-03', '009', 7);
