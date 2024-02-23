@@ -1,16 +1,6 @@
-Entrada 0: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
+Entrada 0: Pelicula ---> Cine // Sala: Sala1// Fecha: Dia // Hora
 **************************************************
-Entrada 1: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
+Entrada 1: Pelicula ---> Cine // Sala: Sala2// Fecha: Dia // Hora
 **************************************************
-Entrada 2: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
-**************************************************
-Entrada 3: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
-**************************************************
-Entrada 4: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
-**************************************************
-Entrada 5: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
-**************************************************
-Entrada 6: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
-**************************************************
-Entrada 7: Pulp Fiction ---> CINE ELORRIETA // Sala: 001// Fecha: 2024-01-02 // 19:30:00
+Entrada 2: Pelicula ---> Cine // Sala: Sala3// Fecha: Dia // Hora
 **************************************************

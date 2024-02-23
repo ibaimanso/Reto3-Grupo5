@@ -111,8 +111,8 @@ public class GestionBDTest {
 	 */
 	@Test
 	public void testLogin() {
-		String usuario = "12345678O";
-		String contraseña = "123";
+		String usuario = "12345678A";
+		String contraseña = "contraseña1";
 
 		boolean correcto = conexion.Login(usuario, contraseña);
 
@@ -122,7 +122,7 @@ public class GestionBDTest {
 	
 	@Test
 	public void insertarUsuario() {
-		Cliente cliente = new Cliente("88888888A", "JUAN", "LARREA", "H", "Contraseña1");
+		Cliente cliente = new Cliente("88888888B", "JUAN", "LARREA", "H", "Contraseña1");
 		boolean correcto = conexion.insertUsuario(cliente);
 		assertTrue(correcto);
 	}
