@@ -101,10 +101,13 @@ public class Registro extends JPanel {
 
 		JRadioButton rdbHombre = new JRadioButton("H");
 		rdbHombre.setBounds(284, 143, 33, 23);
+		rdbHombre.setContentAreaFilled(false);
 		add(rdbHombre);
 
 		JRadioButton rdbMujer = new JRadioButton("M");
 		rdbMujer.setBounds(319, 143, 37, 23);
+		rdbMujer.setContentAreaFilled(false);
+
 		add(rdbMujer);
 
 		ButtonGroup group = new ButtonGroup();
