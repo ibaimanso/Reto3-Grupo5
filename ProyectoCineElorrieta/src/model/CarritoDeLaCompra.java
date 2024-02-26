@@ -26,7 +26,7 @@ import javax.swing.JList;
  */
 public class CarritoDeLaCompra extends JPanel {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Compra compra;
 	private ArrayList<LineaDeFactura> factura;
 
@@ -34,7 +34,6 @@ public class CarritoDeLaCompra extends JPanel {
 
 		factura = gestion.devolverfactura();
 		compra = gestion.calcularCompra();
-
 
 		setLayout(null);
 		setSize(620, 420);
@@ -66,6 +65,19 @@ public class CarritoDeLaCompra extends JPanel {
 		});
 		btnComprar.setBounds(479, 318, 89, 29);
 		add(btnComprar);
+
+		/**
+		 * Boton para limpiar el carrito de la compra
+		 */
+		JButton btnLimpiarYVolver = new JButton("Limpiar");
+		btnLimpiarYVolver.setBounds(430, 39, 82, 43);
+		btnLimpiarYVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gestion.limpiarArrayListEntradas();
+				ventana.cambiarDePanel(3);
+			}
+		});
+		add(btnLimpiarYVolver);
 
 		/**
 		 * Se crea la lista donde apareceran todas la entradas compradas junto con la
@@ -141,16 +153,6 @@ public class CarritoDeLaCompra extends JPanel {
 		separador1.setBounds(560, 89, 8, 223);
 		add(separador1);
 		separador1.setIcon(new ImageIcon("C:\\Users\\in1dm3-v\\Downloads\\Color_negro.png"));
-		
-		JButton btnLimpiarYVolver = new JButton("Limpiar");
-		btnLimpiarYVolver.setBounds(430, 39, 82, 43);
-		btnLimpiarYVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				gestion.limpiarArrayListEntradas();
-				ventana.cambiarDePanel(3);
-			}
-		});
-		add(btnLimpiarYVolver);
 
 	}
 }
